@@ -1,0 +1,60 @@
+
+
+{% if product_meta_info['product_fabric'].size > 0 %}
+  <div class="product-fabric show">
+    {% assign product_fabric = product_meta_info['product_fabric'] %}
+    <h6>Fabric &amp; Care <span>></span></h6>
+    <div>{{ product_fabric }}</div>
+  </div>
+{% endif %}
+
+{% if product_meta_info['product_fit'].size > 0 %}
+  <div class="product-fit show">
+    {% assign product_fit = product_meta_info['product_fit'] %}
+    <h6>Size & Fit <span>></span></h6>
+    <div>
+      {{ product_fit }}
+      {% if product_meta_info['product_fit_image'].size > 0 %}
+        {% assign product_fit_image = product_meta_info['product_fit_image'] %}
+      <p style="margin-bottom:5px!important;margin-top:5px!important"><strong>How does the fit run?</strong></p>
+        {{ product_fit_image }}
+      {% endif %}
+    </div>
+    
+  </div>
+{% endif %}
+
+
+
+
+{% if product_meta_info['product_tip'].size > 0 %}
+  <div class="product-tip show">
+    {% assign product_tip = product_meta_info['product_tip'] %}
+    <h6>Designer's Notes & Features <span>></span></h6>
+    <div>{{ product_tip }}</div>
+  </div>
+{% endif %}
+
+{% if product_meta_info['product_facts'].size > 0 %}
+  <div class="product-facts show">
+    {% assign product_facts = product_meta_info['product_facts'] %}
+    <div>{{ product_facts }}</div>
+  </div>
+{% endif %}
+
+
+{% if settings.enable_sizeguide %}
+<div style='display:none'>
+  <div id="sizeguide">
+    {% assign product_meta_info = ['product'].metafields.custom_fields %}
+    {% if product_meta_info['size_guide'] %}
+      <h5>{{ product.title | escape }} Size Guide</h5>
+      <p> {{product_meta_info['size_guide_text']}}</p>
+          {{product_meta_info['size_guide']}}
+       <p> {{product_meta_info['size_guide_text_2']}}</p>
+    {% else %}
+      <img src="{{ 'size_guide.jpg' | asset_url }}" />
+    {% endif %}
+  </div>
+</div>
+{% endif %}

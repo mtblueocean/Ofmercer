@@ -1,0 +1,188 @@
+<script>
+fbq('track', 'Search', {
+search_string: '{{ search.terms }}'
+});
+</script>
+
+<div class="page" id="search-page">
+  <div class="wrapper">
+	 
+
+	{% if search.performed %}     
+    {% paginate search.results by 12 %}  
+    
+    <div class="search-header">
+	    <h2>{{ search.terms }}</h2>
+	    <span>{{ search.results_count }} Items Found</span>
+    </div>
+
+    <div id="search_results">  
+    {% if search.performed %}
+			{% if search.results == empty %}  
+			  <p>Your search for "{{search.terms | escape}}" did not yield any results</p>              
+			{% else %}
+			
+				<div class="acc-trigger sort-trigger">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				
+				<div class="acc-content sort-controls">
+					{% include 'collection-sort' %}
+					<span class="line"></span>
+				</div>
+							
+        <div id="collection-grid"> 
+          {% for item in search.results %}
+            <div class="collection-item"> 
+	            
+              <div class="collection-image">              
+                <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
+	                {% assign productImage1 = item.images[0] | img_url:'master' %}
+	                {% assign productImage2 = item.images[2] | img_url:'master' %}
+									<img class="img1" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
+										srcset="
+										{% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,
+										{% include 'imgix' src:productImage1 w:640 auto:'format' %} 640w,
+										{% include 'imgix' src:productImage1 w:960 auto:'format' %} 960w,
+										{% include 'imgix' src:productImage1 w:1280 auto:'format' %} 1280w,
+										{% include 'imgix' src:productImage1 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+									>	                
+									<img class="img2" src="{% include 'imgix' src:productImage2 w:960 auto:'format' %}"
+										srcset="
+										{% include 'imgix' src:productImage2 w:320 auto:'format' %} 320w,
+										{% include 'imgix' src:productImage2 w:640 auto:'format' %} 640w,
+										{% include 'imgix' src:productImage2 w:960 auto:'format' %} 960w,
+										{% include 'imgix' src:productImage2 w:1280 auto:'format' %} 1280w,
+										{% include 'imgix' src:productImage2 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+									>
+                </a>
+              </div>
+                
+              <div class="collection-item-detail">
+                <a href="{{ item.url }}">
+                  <h6>{{ item.title }}
+                  <span>
+	                  
+										{% for option in item.options %}
+										
+										  {% assign option_handle = option | handle %}
+										  {% assign option_index = forloop.index0 %}
+										
+										  {% assign is_color = false %}
+										  {% capture downcased_option %}{{ option | downcase }}{% endcapture %}
+										  {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+										    {% assign is_color = true %}
+										  {% endif %}
+										
+										  <div class="color-text">
+										
+										    <ul data-option-type="{{ option_handle }}" class="{{ option_handle }} options">
+										    {% assign values = '' %}
+										    {% for variant in item.variants %}
+										      {% assign value = variant.options[option_index] %}
+										      {% capture wrapped_value %},{{ value }},{% endcapture %}
+										      {% unless values contains wrapped_value %}
+										          {% if is_color %}
+										      <div data-option-title="{{ value | escape }}" class="{% if is_color %}color {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
+										        {% if is_color %}
+										        {{ value }}
+										        {% else %}
+										        
+										        {% endif %}
+										        
+										      </div>
+										      {% capture values %}{{ values }}{{ wrapped_value }}{% endcapture %}
+										           {% endif %}
+										      {% endunless %}
+										    {% endfor %}
+										    </ul>
+										  </div><!-- .swatch -->
+										
+										{% endfor %}
+                    	</span>  
+			            {% if item.title == 'Of Mercer Gift Card' %}
+			              from {{ item.price_min | money }} - {{ item.price_max | money }} 
+			            {% else %}
+			              <span class="right">{{ item.price | money }} {% if item.price < item.compare_at_price %} was {{ item.compare_at_price | money }}</span>{% endif %}
+			            {% endif %}
+                    </h6>
+                </a>
+              </div>
+        
+            </div>
+          {% endfor %}
+        </div>       
+			{% endif %}
+	  {% endif %}
+    </div>
+    
+		<div id="bottom-paginate-bar" class="twelve columns">
+      {% if paginate.pages > 1 %}
+      <ul class="pagination">
+	      
+        {% if paginate.previous %}
+          <li class="arrow">{{ '&laquo;' | link_to: paginate.previous.url }}</li>
+        {% endif %}
+          
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <li>{{ part.title | link_to: part.url }}</li>
+          {% else %}
+            {% if part.title == '&hellip;' %}
+            <li>{{ part.title }}</li>
+            {% else %}
+            <li class="current">{{ part.title | link_to: part.url }}</li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+          
+        {% if paginate.next %}
+          <li class="arrow">{{ '&raquo;' | link_to: paginate.next.url }}</li>
+        {% endif %}
+          
+	      {% if collection.products_count > 32 %}
+	        <li><a href="/collections/{{ collection.handle }}?view=all" style="margin-left: 10px">View All</a></li>
+	      {% endif %}
+	      
+      </ul>
+      {% endif %}  
+                
+     </div>
+  	{% endpaginate %}
+
+	{% else %}
+  
+    <div id="paginate-bar">
+      <div class="left">
+        <div id="search-bar">
+        <form action="/search" method="get">
+          <input type="hidden" name="type" value="product" />
+          <input type="text" name="q" id="q" class="search-field" placeholder="search..." />
+          <input type="image" src="{{ 'btn-search.png' | asset_url }}" class="search-button" name="search-button" id="seek" alt="Search Icon"/>
+        </form> 
+        </div>  
+      </div>
+      <div class="right"></div>
+    </div>
+
+  {% endif %}
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page("Search", {
+      num_results: {{ search.results_count }},
+      search: unescape("{{ search.terms | escape }}")
+    });
+  });
+  
+  // Color filter columns
+  var divs = $('.color-filter').find('.col ul li');
+	for(var i = 0; i < divs.length; i+=5) {
+	  divs.slice(i, i+5).wrapAll("<li class='new'><ul></ul></li>");
+	}  
+  
+</script>

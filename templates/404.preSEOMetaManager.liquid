@@ -1,0 +1,25 @@
+<div class="columns ten">
+	<div id="error-page" style="text-align:center">
+	  <div>
+	  <img src="{{ 'PageNotFoundBanner.jpg' | asset_url }}"alt="Whoops" >
+	 
+		<div class="wrapper">
+		  <h3><br>Hmm...it must be Monday morning because we just can't find the page you were looking for.</h3>
+		  <p> Please searching for what you are looking for here.</p>
+
+	    <form action="{{ shop.url }}/search" method="get" accept-charset="utf-8">
+	      <input type="text" name="q"  />
+	      <input type="submit" value="Search"/>
+	    </form>
+	  </div>
+	</div> 
+</div>
+
+
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  analytics.page("404");
+});
+</script>
+

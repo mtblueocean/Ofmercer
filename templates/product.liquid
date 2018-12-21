@@ -1,0 +1,5 @@
+{% if settings.product_template_layout == 'grid' %}
+	{% include 'product-grid-template' %}
+{% else %}
+	{% include 'product-slider-template' %}
+{% endif %}

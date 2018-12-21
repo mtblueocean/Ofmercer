@@ -1,0 +1,15 @@
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+
+<script>
+  var elements = document.getElementsByClassName("cis");
+  for(var x = 0; x < elements.length; x++)
+  {
+    if(elements[x].dataset.url) {
+      elements[x].addEventListener("click", function(){Calendly.showPopupWidget(this.dataset.url)}, false);
+    elements[x].addEventListener("click",function(e){
+      e.preventDefault();
+      e.stopPropagation();
+    }, false);
+    }
+  }
+</script>

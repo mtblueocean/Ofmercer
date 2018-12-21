@@ -1,0 +1,221 @@
+{% assign page_meta_info = ['page'].metafields.custom_fields %}
+{% if page_meta_info['page_tagline'].size > 0 %}
+	{% assign page_tagline = page_meta_info['page_tagline'] %}
+{% else %}
+	{% assign page_tagline = 'NYC Store' %}
+{% endif %}
+<div id="page-popup">
+<div class="hero">
+  <div class="left">
+  	<img src="{{ 'PopUpDCPopUpBanner.jpg' | asset_url }}"/>
+  </div>
+  <div class="right">
+    <h4>{{ page.title | escape }}</h4>
+    <h1>{{ page_tagline }}</h1> 
+     <p>{{ page.content }}</p>
+  </div>
+</div>
+<div class="wrapper"> 
+<div class="copy-block copy-block-narrow" style="padding-bottom:3rem">
+  <h3>Of Mercer Georgetown Popup Shop<br>May 1 - May 31, 2017</h3>
+
+  <p>For the month of May, we’re leaving NYC and taking up residence 
+    in the heart of Georgetown in our very own storefront.  We’ll 
+    be open seven days a week (no reservation required) so you’ll have plenty of 
+    chances to stop by and shop your favorite online styles IRL. 
+    Be sure to check out our calendar below for details on special events and 
+    shoot us your email to stay in the loop as new ones are added!</p>
+  </div>  </div>
+  
+	<div class="wrapper">
+      <div style="padding-top:10px"; class="copy-block-narrow">
+        <h3>Get on our DC list</h3>
+      	<p>Stay up-to-date on DC events and exclusive Of Mercer happenings.</p>      	
+      </div>
+      <form id="nyc-mailing-list" class="klaviyo_standard_embed_MsEtqM" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+      	<input type="hidden" name="g" value="MsEtqM">	
+        <input type="email" value="" name="email" id="k_id_email" placeholder="Your email" />
+        <button type="submit" class="klaviyo_submit_button btn">Subscribe</button>
+      </form>
+
+      <div class="klaviyo_messages" style="clear: both;">
+          <div class="success_message" style="display:none;"><br>Great! You’re now on the invite list for our DC store events. <br>Look out for future emails from Of Mercer DC.</div>
+          <div class="error_message" style="display:none;"></div>
+        </div>
+
+      	</div>
+  
+
+<div class="store-hrs">
+  <div class="left">
+    <div>
+    	<h5>Georgetown Popup Shop</h5>
+    	<p>3035 M Street NW<br/>
+      	Washington, DC 20007<br/>
+          <a href="mailto:dc@ofmercer.com">dc@ofmercer.com</a>  
+    	</p>
+    	<h5>HOURS</h5>
+    	<p>Mon-Sat: 11am-8pm<br/>
+      	Sun: 12pm-6pm<br/>
+    	</p>
+    </div>
+  </div>
+  <div class="right">
+    <img src="{{ 'PopUpDC-store-map-DGS.jpg' | asset_url }}"/>
+  </div>
+</div>
+
+
+<div class="events">
+	<div class="wrapper">
+      <div class="copy-block-narrow">
+    	<h5>Store Events</h5>
+      	<p>We’ve packed our DC calendar with private and special events while we’re visiting town, but we always have room for you!  If you’d like to host a night out for your company or organization in May, email <a href="mailto:katie@ofmercer.com">katie@ofmercer.com</a>.</p>      	
+      </div>
+      	</div>
+  </div>
+   <div class="events-table">
+	<div class="wrapper">   	
+       <div class="copy-block-narrow-table" id="calendarlink">
+         <h3>Upcoming Calendar of Public Events</h3>
+      <table>
+        <col width="100">
+        <col width="250">
+        <tr>
+          <td>Thursday, May 4th<br>6:00 – 8:00pm</td>
+          <td><strong>Opening Cocktails</strong><br>We’re new here.  Join  us for a welcome happy hour! We’ll have sips, snacks sponsored by our friends at Pie Sisters, and of course plenty of shopping! RSVP <a href="https://www.ofmercer.com/pages/store-event-rsvp" target="_blank">here</a>.
+          </td>
+        </tr>
+       
+        <tr>
+          <td>Friday, May 5th –<br>Sunday, May 6th</td>
+          <td> <img height="14" style="padding-right:4px"src="{{ 'PopUpSenreveLogo.jpg' | asset_url }}"/><strong> Pop-In</strong><br>
+            Our friends at <a href="https://www.senreve.com/" target="_blank" >Senreve</a> are 'popping-in' for Friday and Saturday with the chicest work bags we’ve ever seen.  From 11am on May 5th until close on May 6th, you can shop their styles alongside ours. 
+            Dare you to have a ‘case of the Mondays’ with a new bag on your arm!
+            
+          </td>
+        </tr>
+        <tr>
+          <td>Friday, May 5th –<br>5:00pm – 8:00pm</td>
+          <td><strong>Prosecco Happy Hour</strong><br>
+            Join us for welcome drinks celebrating Senreve's pop-in.
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>Saturday, May 13th<br>10:00am – 4:00pm</td>
+          <td><strong>Junior League Shop Around</strong><br>
+          Start the morning by picking up your Shopping Passport at Junior League HQ (right next door to us at 3039 M Street NW) and come shop with us!  We will offer 10% off for Shop Around participants all day long.  Don’t forget to show up at Junior League HQ to receive your passport before you start shopping! Details <a href="https://www.jlw.org/?nd=p_vms_registration_event_detail&registration_id=2594&return_jid=62891" target="_blank">here</a>.
+          </td>
+        </tr>
+        <tr>
+          <tr>
+          <td>Tuesday, May 16th<br>6:00pm – 8:00pm</td>
+          <td><strong>VIP Party</strong><br>
+            Cheers to our old and new DC friends!  Drinks and hors d’oeuvres will be served in the store as we reach our midway point in Georgetown, and we don’t want you to miss it!  Catering by <a href="http://www.thechickery.com/" target="_blank">The Chickery</a>. RSVP <a href="https://www.ofmercer.com/pages/store-event-rsvp"  target="_blank">here</a>.
+            </td>
+        </tr>
+        <tr>
+        <tr>
+          <td>Thursday, May 18th</td>
+          <td><strong>UWiB + Bossed Up Sip and Shop</strong><br>UWiB + Bossed Up are coming together to host a networking night for members and friends!  Sip, shop, and snack with us. RSVP <a href="http://bossedup.org/may-18-bossed-up-and-uwib-sip-shop-networking-event-at-of-mercer-in-washington-dc" target="_blank" >here</a>.</td>
+        </tr>
+        <tr>
+          <td>Friday, May 19th –<br>Sunday, May 21st</td>
+          <td><strong>Grad Weekend</strong><br>Attn Georgetown and GW grads!  Now that you’re going into the real world, it’s time to purge the hoodie drawer.  Stop by all weekend long with your student ID to enjoy <strong>15% off</strong> your new wardrobe.    </td>
+        </tr>
+        <tr>
+          <td>Tuesday, May 30th<br>6:00 – 8:00pm</td>
+          <td><strong>Ellevate Network Sip and Shop</strong><br> Join us for our last event before we pack up and head out!  Sip & Shop with Ellevate Network and learn some tips for dressing for your office.  Enjoy 15% off in store purchases! RSVP <a href="https://www.ellevatenetwork.com/events/6407-dressing-for-success-with-of-mercer" target="_blank">here</a>.</tr>
+        </table>
+      </div>
+     
+  	</div>
+</div>
+  
+  
+  
+  <div class="wrapper popup-aboutom">
+	<div class="left">
+      <img src="{{ 'PopupAboutOM.jpg' | asset_url }}"/>
+  	</div>
+  	<div class="right ">
+        	<div class="wrapper ">
+    	<h3>About Of Mercer</h3>
+      <p>Founded by two women tired of figuring out workwear
+        (and real talk: being late as a result), this is “workwear”
+        women want to wear. Our clothing is totally 
+        office-appropriate and more importantly, it’s designed to make you feel incredible. 
+        (Because a killer outfit makes all the difference.) While we personally haven’t nailed the work-life balance thing, our clothing definitely has. In office parlance: It’s a game-changer. </p>
+  	</div>	</div>
+</div>
+     
+
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+//         function crossDomainPost(url, params) {
+//         // Add the iframe with a unique name
+//         var iframe = document.createElement("iframe");
+//         var uniqueString = "cd-form-" + Math.round(Math.random() * 10000);
+//         document.body.appendChild(iframe);
+//         iframe.style.display = "none";
+//         iframe.contentWindow.name = uniqueString;
+
+//         // construct a form with hidden inputs, targeting the iframe
+//         var form = document.createElement("form");
+//         form.target = uniqueString;
+//         form.action = url;
+//         form.method = "POST";
+
+//         // repeat for each parameter
+//         for (var param_name in params) {
+//             var input = document.createElement("input");
+//             input.type = "hidden";
+//             input.name = param_name;
+//             input.value = params[param_name];
+//             form.appendChild(input);
+//         }
+
+//         document.body.appendChild(form);
+//         form.submit();
+//     }
+// 	jQuery( document ).ready(function($) {
+// 	$('#nyc-mailing-list .btn').click(function(e) {
+//       e.preventDefault();
+
+//         var email = $('input#user-email').val();
+//       	console.log(email);
+
+//         if (!email) {
+//             // parent.find('.email .form-error').removeClass('hidden');
+//         } else {
+//             $.cookie('joined_mailing_list', true, {expires: 36500, path: "/"});
+//             // submit to analytics
+//             analytics.alias(email);
+//             analytics.identify(email, {
+//                 email: email
+//             });
+
+//             analytics.track('Joined Mailing List', {
+//                 referring_page: document.title.split(' | ')[0]
+//             });
+
+//             // send to google docs
+
+//             crossDomainPost('https://docs.google.com/forms/d/14w08DL0TGgGbiFwEtNMyNyq-YxhtXjM0lFBoyGb_Edg/formResponse', {
+//                 'entry.659530670': email,
+//                 'entry.1989690552': document.title.split(' | ')[0]
+//             });
+
+//             parent.html("<center><span class=newsHeader></span><p class=popupthankyou>Thank you for joining us!</p></center>");
+//             $('#newsBox').height(160);
+//         }
+//     });
+//   });
+</script>

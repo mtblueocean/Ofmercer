@@ -1,0 +1,80 @@
+{% assign page_meta_info = ['page'].metafields.custom_fields %}
+{% if page_meta_info['page_tagline'].size > 0 %}
+	{% assign page_tagline = page_meta_info['page_tagline'] %}
+{% else %}
+	{% assign page_tagline = "We're here to help" %}
+{% endif %}
+<div id="faq-page">
+  <div class="fullside">
+      <img src="https://cdn.shopify.com/s/files/1/0186/9832/files/HolidayBonus-NarrowBanner1.jpg?17242805073061263003" alt="{{ collection.image.alt }}" >
+      <div class="msg-group">	
+          <h4>{{ page.title | escape }}</h4>
+          <h1>{{ page_tagline }}</h1> 
+              </div>
+  </div>
+  
+  
+  <div style=""class="contact-info">
+  	<div class="wrapper slimmer-wrapper">
+      <h3 style="margin-top:2rem!important" >The Event</h3>
+      <p>Friday, November 23 - Monday, November 26, earn a 
+        bonus e-gift card for spending online and in the Of Mercer NYC Store. Rules and restrictions below. 
+     <br> </p>
+      <h3 style="font-size:1.6rem!important"><br>Spend $250+, receive a $25 gift card<br>
+Spend $500+, receive a $75 gift card<br>
+Spend $750+, receive a $100 gift card<br>
+Spend $1,000+, receive a $200 gift card<br>
+</h3>
+    <p style="margin-bottom:15px!important"><br>Start earning your bonus!<br><br></p>
+    <a class="btn" href="https://www.ofmercer.com/collections/new-arrivals">Shop New Arrivals</a>
+    
+      
+    </div>
+  </div><!-- END contact info -->
+
+  
+
+  
+
+  
+  <div class="wrapper slimmer-wrapper">
+    <h3><br> Offer Details, Rules, and Restrictions</h3>
+     <p style="font-size:1.2rem!important; line-height:2.2rem!important">
+       Gift cards will be emailed within 24 hours of purchase to the email address associated with the order. Gift cards will issued in the form of a personalized coupon code that can be applied to future orders. The coupon code can be redeemed online by entering the code on the first page of checkout, or in our NYC store by presenting their discount code to a sales associate. Gift cards must be redeemed within 3 months of receipt date. 
+</p>
+ <p style="font-size:1.2rem!important; line-height:2.2rem!important">Gift Card amount will be awarded based on merchandise total only: sales tax, gift wrap, and delivery and processing charges will not count toward Gift Card amount. Returned merchandise will reduce the amount available on gift card. This offer cannot be applied to previous purchases and cannot be combined with any other discount offer. Not available on prior purchases.
+    </p>
+     
+  
+  </div><!-- END wrapper -->
+  
+
+  
+  
+</div><!-- END page -->
+
+
+
+
+<script type="text/javascript">
+  $(function(){
+    // analytics.page(unescape("{{ page.title | escape }}"));
+  });
+</script>
+
+<script>
+ $(document).ready(function() {
+ 
+    $('.faq_question').click(function() {
+      	var answerContainer = $(this).siblings('.faq_answer_container');
+      	if (answerContainer.css('display') == 'block') {
+        	$(this).children('span').html("+");
+        } else {
+            $(this).children('span').html("&ndash;");
+        }
+ 		answerContainer.slideToggle();
+
+    });
+ 
+});
+</script>

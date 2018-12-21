@@ -1,0 +1,181 @@
+{
+  "shopify": {
+    "checkout": {
+      "shipping": {
+        "shipping_method_notice": "In selecting your shipping method, please note that domestic orders typically ship within 1-2 business days and international orders typically ship within 3-4 business days.",
+        "estimated_delivery_date": {
+          "one": "1 business day"
+        }
+      },
+      "thank_you": {
+        "shipping_address_title": "Shipping Address"
+      }
+    }
+  },
+  "flits": {
+    "general": {
+      "greeting": "Hello",
+      "cart_page_msg": "You have {{ credit }} credit, want to use this credit?",
+      "applying_credit_msg": "Applying Credit Please wait"
+    },
+    "heading": {
+      "my_profile": "My Profile",
+      "my_orders": "My Orders",
+      "my_addresses": "My Addresses",
+      "my_credits": "My Credits",
+      "recently_viewed_products": "Recently viewed products",
+      "wishlisted_products": "My wishlist",
+      "change_password": "Change Password",
+      "top_ordered_products": "Top ordered products"
+    },
+    "navigation": {
+      "profile": "Profile",
+      "my_orders": "My Orders",
+      "delivery_address": "Delivery address",
+      "store_credit": "Store Credit",
+      "recently_viewed_products": "Recently Viewed Products",
+      "social_login": "Social login",
+      "wishlist": "Wishlist",
+      "change_password": "Change Password",
+      "log_out": "Log out",
+      "top_ordered_products": "Top ordered products"
+    },
+    "profile_page": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "contact_no": "Contact No",
+      "birthdate": "Birthdate",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "save_details": "Saving profile details...",
+      "saved_successfully": "Details Saved successfully...",
+      "something_went_wrong": "Something went wrong please try again..."
+    },
+    "order_page": {
+      "cost_breakup": "Cost Breakup",
+      "grand_total": "Grand Total",
+      "no_orders_view": "You haven't placed any orders yet.",
+      "marketing_line": "Grab it now, tomorrow, it might be gone forever.",
+      "total_items": "Total items",
+      "show_order_details": "Show order details",
+      "re_order": "RE-ORDER",
+      "cancel_order": "CANCEL-ORDER",
+      "shipping_address": "Shipping Address",
+      "billing_address": "Billing Address",
+      "subtotal": "subtotal",
+      "discount_code": "Discount Code",
+      "shipping_and_handling": "Shipping & Handling",
+      "items_added_to_cart": "All items added to cart",
+      "product_is_deleted_from_shop": "Product is Deleted from shop.",
+      "single_product_deleted": "1 Product is deleted. Moving to cart.",
+      "all_products_deleted": "All Products are Deleted from shop.",
+      "some_products_deleted": "Some products are deleted.Moving to cart",
+      "order_number": "Order",
+      "order_date": "Date",
+      "fulfillment_status": "Fulfillment status",
+      "payment_status": "Payment status",
+      "order_date_format": "%B %d, %Y",
+      "cancel_at": "Cancelled at",
+      "payment_type": "Payment Type"
+    },
+    "address_page": {
+      "add_a_new_address": "Add a New Address",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "address1": "Address1",
+      "address2": "Address2",
+      "company": "Company",
+      "zip": "Postal\/Zip Code",
+      "phone": "Phone",
+      "city": "City",
+      "country": "Country",
+      "province": "Province",
+      "set_as_default_address": "Set as default address",
+      "cancel": "Cancel",
+      "add_address": "Add Address",
+      "delete_confirm": "Are you sure you wish to delete this address?",
+      "default": "Default",
+      "edit": "Edit",
+      "updating_address": "Updating Address...",
+      "adding_new_address": "Adding New Address...",
+      "address_updated_successfully": "Address updated Successfully",
+      "address_added_successfully": "Address Added Successfully",
+      "delete_address": "Are you sure you wish to delete this address?",
+      "address_deleted_successfully": "Address deleted Successfully.",
+      "deleting_address": "Deleting Address...",
+      "edit_address": "Edit Address"
+    },
+    "credit_page": {
+      "earned_credits": "Earned Credits",
+      "spent_credits": "Spent Credits",
+      "current_credits": "Current Credits",
+      "credits": "Credits",
+      "credits_activity": "Credits Activity",
+      "reason_for_credits": "Reason For Credits",
+      "time": "Time",
+      "no_history_yet": "No History Yet",
+      "earned": "Earned",
+      "spent": "Spent",
+      "loyal_customer": "Loyal Customer",
+      "repeat_customer": "Repeat customer",
+      "fault_in_product": "Fault in product",
+      "canceled_order_first_time_by_customer": "Canceled order first time by customer",
+      "delay_in_delivery_time": "Delay in delivery time",
+      "registration_credit": "Registration Credit",
+      "subscribe_credit": "Subscribe Credit",
+      "first_order_credit": "First Order Credit",
+      "spent_in_order": "Spent in {{ order_number }} order",
+      "marketing_line": "Grab it now, tomorrow, it might be gone forever."
+    },
+    "cart_page": {
+      "applying_credit_message": "Applying Credit Please wait",
+      "adding_items_to_cart": "Adding items to cart...",
+      "credit_cart_percentage": "You can use {{ credits }} credits out of {{ total_credits }}.",
+      "free_shipping": "You can get free shipping",
+      "select_store_credit_option": "Select option to use store credit",
+      "store_credit_applied": "Store Credit Applied"
+    },
+    "recently_viewed_product_page": {
+      "no_products_view": "You haven't viewed any products yet.",
+      "marketing_line": "Grab it now, tomorrow, it might be gone forever."
+    },
+    "wishlisted_product_page": {
+      "no_wishlist_view": "You haven't wishlisted any products yet.",
+      "marketing_line": "Grab it now, tomorrow, it might be gone forever.",
+      "add_to_cart": "Add to cart"
+    },
+    "update_password_page": {
+      "new_password": "New Password",
+      "confirm_new_passowrd": "Confirm New Password",
+      "enter_new_password_here": "Enter new password here",
+      "confirm_your_password_here": "Confirm your password here",
+      "password_not_match": "Passwords Don't Match",
+      "updating_password": "Updating password...",
+      "password_updated_successfully": "Password updated successfully..."
+    },
+    "top_ordered_products_page": {
+      "filter": "Filter",
+      "none": "None",
+      "number_of_order_low_to_high": "Number of order (Low to High)",
+      "number_of_order_high_to_low": "Number of order (High to Low)",
+      "sort_by_price_low_to_high": "Sort by price (Low to High)",
+      "sort_by_price_high_to_low": "Sort by price (High to Low)",
+      "last_30_days": "Last 30 days",
+      "last_60_days": "Last 60 days",
+      "number_of_order": "Number of order: "
+    },
+    "buttons": {
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "save": "Save",
+      "show_order_details": "Show Order Details",
+      "reorder": "Re-order",
+      "shop_now": "Shop now",
+      "view_products": "View Products",
+      "update_password": "Update Password",
+      "back": "Back"
+    }
+  }
+}

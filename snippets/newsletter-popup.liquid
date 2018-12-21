@@ -1,0 +1,43 @@
+<div style='display:none' class="overlay">
+  <div id="newsBox3">
+    <div>
+      <div style="text-align: center;"> 
+        {% if settings.newsletter_popup_headline.size > 0 %}
+          <h5>{{ settings.newsletter_popup_headline }}</h5>
+        {% endif %}
+        {% if settings.newsletter_popup_copy.size > 0 %}
+          <p>{{ settings.newsletter_popup_copy }}</p>
+        {% endif%}
+      </div>
+    <div class="submit-msg" id="popup-newsletter-2">
+        <div>
+      <form class="popup_newsletter_klaviyo klaviyo_standard_embed_ztWyX7" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+          <input type="hidden" name="g" value="ztWyX7">
+        <div>
+          <input type="email" value="" placeholder="Your Email Address" id="k_id_emailsd" name="email" required>
+          <div class="clear">
+                      <!-- input type="submit" value="I'm in >" name="subscribe" class="btn" -->
+                      <button type="submit" class="klaviyo_submit_button btn">I'm In</button>
+                    </div>
+        </div>
+      </form>
+            <div class="klaviyo_messages">
+          <div class="success_message" style="display:none; text-align: center; margin-top: 10px;">Thank you for joining us!</div>
+          <div class="error_message" style="display:none;"></div>
+        </div>
+        </div>
+  </div>         
+    </div>
+  </div>
+</div> 
+
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+<script type="text/javascript">
+  KlaviyoSubscribe.attachToForms('.popup_newsletter_klaviyo', {
+    hide_form_on_success: true,
+    custom_success_message: true,
+     extra_properties: {
+            $source: 'Popup Signup'
+          }
+  });
+</script>

@@ -1,0 +1,503 @@
+{% assign page_meta_info = ['page'].metafields.custom_fields %}
+{% if page_meta_info['page_tagline'].size > 0 %}
+	{% assign page_tagline = page_meta_info['page_tagline'] %}
+{% else %}
+	{% assign page_tagline = "We're here to help" %}
+{% endif %}
+<div id="faq-page-new">
+  <div class="fullside">
+      <img src="{{ 'FAQBanner01.jpg' | asset_url }}" alt="{{ collection.image.alt }}" >
+      <div class="msg-group">	
+          <h4>{{ page.title | escape }}</h4>
+          <h1>{{ page_tagline }}</h1> 
+      </div>
+  </div>
+  <div class="contact-info">
+  	<div class="wrapper">
+      <h3>Get in Touch</h3>
+      <p>We're here. How can we help? Contact us anytime via <br/>email or call us from 10am - 6pm EST.</p>
+      <p><i class="fa fa-envelope" ></i>info@ofmercer.com <i class="fa fa-phone"></i>212.979.2229</p>
+    </div>
+  </div><!-- END contact info -->
+
+  
+
+  
+  <div class="wrapper">
+    
+    
+    <!-- div class="left" -->
+    <div class="faq-container"> 
+      <h2>Orders</h2>
+      
+      <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> I have a question about my order, what should I do?</div>
+        		<div class="faq_answer_container">
+                  <div class="faq_answer"><p>Get in touch! Send us an email at <a href="mailto:orders@ofmercer.com?Subject=Order%20Change" target="_top">orders@ofmercer.com</a>. We’ll try our best to get back to you within 24 hours, usually sooner! You can also give us a call at 212-979-2229. We’re here Monday-Friday from 10am-6pm EST. We’re happy to answer questions about Orders, Order Changes, Shipping, Returns, & Cancellations…and pretty much anything else you need!
+                    </p></div>
+        		</div>
+      		</div>
+    	</div>
+      
+      <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> Can I change or cancel my order?</div>
+        		<div class="faq_answer_container">
+                  <div class="faq_answer"><p>Absolutely. However, we can be pretty speedy with processing orders, so if you need to change anything, we recommend getting in touch ASAP! Please give us a call at 212-979-2229 or email at <a href="mailto:orders@ofmercer.com?Subject=Order%20Change" target="_top">orders@ofmercer.com</a>.
+                    </p></div>
+        		</div>
+      		</div>
+    	</div>
+      
+      <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> How can I track my order?</div>
+        		<div class="faq_answer_container">
+                  <div class="faq_answer"><p>Check your inbox for your shipping 
+                    confirmation (subject line: Your order has shipped!). 
+                    There you’ll find your tracking number and shipping details to track your order. 
+                    If you created an account, you can also track your order via our <a href="https://www.ofmercer.com/account/login">account login page</a>. 
+                    </p>
+                    </div>
+        		</div>
+      		</div>
+    	</div>
+        <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> What's a preorder?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer">
+                    	<p style="margin-bottom:15px!important">We offer some items for sale before they actually arrive at our warehouse from our factory. When you preorder these items, we’ll ship the rest of your order immediately. Any preordered items will ship in the time period noted on the product page.
+                      </p>
+                      <p>You can tell if you’re purchasing an item that is a preorder on both the product page and at checkout next to the item in your cart. Once you’ve placed your order, you can double-check our estimated restock date on the product page, and we’ll make sure to send you a shipping confirmation email once the item leaves our warehouse.
+                      </p>                  	
+                  </div>
+        		</div>
+      		</div>
+    	</div>
+        <div class="faq_container">
+        	<div class="faq">
+          		<div class="faq_question"><span>+</span> Do you do gift wrapping?</div>
+          		<div class="faq_answer_container">
+            		<div class="faq_answer"><p>
+                      Yes! Just check the box next to “This is a gift!” at the bottom of your shopping cart and for $5, we will do all the wrapping for you. You can also jot down a personal note to your special someone and we’ll deliver that, too.
+                      </p></div>
+          		</div>
+        	</div>
+      	</div>
+      
+      <div class="faq_container">
+        	<div class="faq">
+          		<div class="faq_question"><span>+</span> Do you offer gift cards?</div>
+          		<div class="faq_answer_container">
+            		<div class="faq_answer"><p>
+                      Yes, of course! We offer both e-gift cards and physical gift cards <a href="/products/gift-card">here</a>.
+                      </p></div>
+          		</div>
+        	</div>
+      	</div>
+      
+   
+        
+      
+    	<h2>Shipping</h2>
+    	<div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> Do you offer free shipping and returns?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer"><p>
+                      Yes! We offer free shipping and returns on all orders placed within the United States.  Return shipping is also free for all items returned within our 30-day return window. 
+                      </p></div>
+        		</div>
+      		</div>
+    	</div>
+      <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> When will my order ship?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer"><p>                     
+                      Domestic orders will typically ship out within 1-2 business days. Orders placed after 1pm will generally be processed the next business day.  International orders typically ship out within 3-4 business days (we need a little extra time for customs forms!).
+                      </p></div>
+        		</div>
+      		</div>
+    	</div>
+        <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> What are my shipping options and how long do they take?</div>
+        		<div class="faq_answer_container">
+                  <div class="faq_answer">
+                    <p style="margin-bottom:15px!important">
+                    If you choose our free shipping option, your order will arrive in 2-6 business days and will be delivered by either UPS or USPS, depending on your shipping address. We ship most all our orders from our warehouse in North Bergen, NJ. On occasion, we ship from our store in NYC. 
+                    </p>
+                    <p>
+                      For an additional $5, you can upgrade to UPS Ground with Signature Required. We recommend this if your package may be left unattended after delivered.
+                    </p>
+                    </div>
+        		
+              </div>
+      		</div>
+    	</div>
+        <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> I need my order sooner. Can I expedite shipping?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer">
+                      <p style="margin-bottom:15px!important">If you’d like your order expedited, we offer UPS Second Day Shipping for $25 and 
+                        UPS Next Day Shipping for $45. In selecting your expedited shipping service, please consider that orders typically ship the next business day.
+                        Also note that our default rush shipping options do NOT deliver on Saturdays. Please see the following question for more details.</p>
+                     
+                       <p>Depending on your location, ground shipping might arrive just as fast our expedited services! But please note, with ground shipping, we can’t 100% guarantee a certain delivery date.</p>
+                  </div>
+        		</div>
+      		</div>
+    	</div>
+      <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> What if I need my order for a big meeting on Monday? Can I get Saturday Delivery?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer">
+                      <p style="margin-bottom:15px!important"> Our default rush shipping options do not deliver on Saturdays; you'll need to upgrade to 
+                        Saturday Delivery for $10 more. In deciding whether you need to upgrade for Saturday delivery,
+                    please consider that orders typically ship the next business day. </p>
+                      <p>So for example, if you place your order on a Wednesday, you’ll need to either choose 
+                      UPS Second Day Shipping (Saturday Delivery) or UPS Next Day Shipping to guarantee delivery 
+                      before Monday. If you place your order on a Thursday, you’ll need to select UPS 
+                      Next Day Shipping (Saturday Delivery) to guarantee delivery before Monday. </p>
+                       <p>Depending on your location, ground shipping might arrive just as fast our expedited services! But please note, with ground shipping, we can’t 100% guarantee a certain delivery date.</p>
+                  </div>
+        		</div>
+      		</div>
+    	</div>
+      <div class="faq_container" >
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> What if I need it, like today? Do you do same-day delivery?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer">
+                      <p>
+                        If you are in NYC, it’s possible! We do carry stock of many of our styles in our Nolita Store. If you can’t make the trip down to 211 Elizabeth Street in person, please give us a call at 917-261-2648 and one of our lovely sales associates can tell you if we have your items available. If we have your items in stock, we can arrange for same-day delivery via a messenger service.
+</p>
+                      
+                  </div>
+        		</div>
+      		</div>
+    	</div>
+        
+              <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> Do you ship internationally?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer"><p>
+                      We do! All international orders are shipped via DHL. At checkout, you’ll be able to calculate your exact shipping cost and delivery time. 
+                      Shipping costs vary depending on your location and size of the order, but average around 
+                      $30. Please note that any additional customs or import duties are billed to the customer at the time of delivery. International orders ship out within 3-4 business days. Shipping times average around 2-4 business days. Please note that we do not offer free return shipping on our international orders. See our returns and exchange policy for more details.</p></div>
+        		</div>
+      		</div>
+    	</div>
+              <div class="faq_container" id="faqsignature">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> Do you ship to PO Boxes?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer"><p>
+                      Yes, we will ship your order via USPS if you are shipping to a PO Box.
+                      </p></div>
+        		</div>
+      		</div>
+    	</div>
+      <div class="faq_container" >
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> Do you require a signature for delivery? What if I don't have a doorman?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer"><p>
+                      We not require a signature so if you are not home at the time of delivery, your package will be left at your doorstep. If you would like a signature, you can upgrade to UPS Ground with Signature Required for $5. We recommend this option if your package will be left unattended. It is our policy that we are not responsible for lost or stolen packages once they've been confirmed as delivered by the mail carrier. 
+                      </p></div>
+        		</div>
+      		</div>
+    	</div>
+      
+    </div><!-- END left -->
+    
+    
+    
+    
+     
+    <!-- div class="right" -->
+    <div class="faq-container"> 
+      
+      <h2 id="returnsexchanges">Returns &amp; Exchanges</h2>
+      <div class="faq_container">
+     	<div class="faq" >
+        	<div class="faq_question"><span>+</span> What’s your return and exchange policy? 
+ </div>
+        	<div class="faq_answer_container">
+              <div class="faq_answer">
+                <p style="margin-bottom:15px!important"><i>Domestic Orders:</i> All non-sale clothing items* that are unworn with original tags attached can be exchanged or returned for a full refund within 30 days of delivery. 
+                </p>
+                <p>*Please note that all items purchased on sale can only be returned for store credit. All accessories and gift cards are final sale.</p>
+                 <p><i>International Orders:</i>
+                   Our return policy is the same for international orders; however, we regret that we do not offer free shipping for returns or exchanges on international orders. For information on how to make a return or exchange, please see the section "How do I return something? (International orders)".
+                </p>
+        
+          		
+              </div>
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="faq_container" >
+      	<div class="faq">
+        	<div class="faq_question" ><span>+</span> How do I return or exchange something? (Domestic Orders)</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+            		<p style="margin-bottom:15px!important">To start a return or exchange, just visit our 
+            		<a href="https://returns.ofmercer.com">Return & Exchange Center</a> and enter your email. We’ll send you an email that links to your order history — from there, you can select which items you’re sending back and print a prepaid USPS return label. Then just repackage your items with your packing slip included and drop them in the mail. 
+                  </p>
+                  <p><span style="font-style:Italic">Exchanges are instant, and super easy!</span><br>If would like to make an exchange for a different size, follow the return instructions above. When you get to your order page, simply choose “too small” or “too big” as the return reason, and you’ll be prompted to select a new size if it’s available.  
+                    <br><br>If you would like to make an exchange for a new style or color, just follow the instructions above. In the last step, you’ll be able to print your return label, and you’ll receive an Instant Refund code — a temporary gift card — that you can use to immediately purchase something new on the site.
+                  </p>
+       
+          		</div>
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="faq_container" >
+      	<div class="faq">
+        	<div class="faq_question" ><span>+</span> Can I return or exchange items in person?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+            		<p>We also gladly accept returns and exchanges of online purchases at our NYC store located at 211 Elizabeth Street. Please visit our <a href="https://www.ofmercer.com/pages/visit-us">store page</a> for directions and store hours.
+                  </p>
+          		</div>
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="faq_container" >
+      	<div class="faq">
+        	<div class="faq_question" ><span>+</span> I received my items in multiple boxes. Can I return everything together?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+            		<p>Yes, we’d prefer that!  Follow the same return instructions above and you can send back all of your items in one box.
+                  </p>
+          		</div>
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="faq_container" >
+      	<div class="faq">
+        	<div class="faq_question" ><span>+</span> Can I return items from different orders together?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+            		<p>Yes, we’d prefer that!  Follow the same return instructions above and you can send back all of your items in one box. Just be sure to include your packing slips from all orders.
+                  </p>
+          		</div>
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="faq_container" >
+      	<div class="faq">
+        	<div class="faq_question" ><span>+</span> I don’t have my packing slip. What should I do?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+            		<p>
+                  No problem. You can either email us at <a href="mailto:orders@ofmercer.com?Subject=Packing%20Slip" target="_top">orders@ofmercer.com</a> to request a new one, or else just include a note with your name, order number, and a list of the items you are returning or exchanging.  Your return can also be processed without one, but it will be processed faster with those extra bits of information!
+                  
+                  </p>
+          		</div>
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="faq_container" >
+      	<div class="faq">
+        	<div class="faq_question" ><span>+</span> How soon will I receive my refund?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+            		<p>When you create your pre-paid return label, you’ll also receive an instant store credit voucher for the amount of your items, which you can use to immediately purchase something new. If you choose not to use it, you’ll be issued a refund back to your original form of payment within 7-10 business days. You’ll receive an email confirming your refund as soon as it is issued.
+                  </p>
+          		</div>
+        	</div>
+      	</div>
+      </div>
+      
+      <div class="faq_container" >
+      	<div class="faq">
+        	<div class="faq_question" ><span>+</span> How long will it take to process my exchange?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+            		<p style="margin-bottom:15px!important">The exchange will be treated as a new order and processed immediately from the time you click “Confirm”. You’ll receive new order and shipping confirmation emails just like in your original order.</p>
+                  <p>Please note, some items may be available but on pre-order, meaning they may not ship out immediately. If you’ve requested an exchange for a size on pre-order, a member of our customer service team will reach out to you immediately to confirm the timing of the shipment. If you’d like to double check yourself whether the item is in stock, you can visit the item’s product page. If it’s on pre-order, a message with estimated timing will appear on the cart.</p>
+          		</div>
+        	</div>
+      	</div>
+      </div>
+    
+      
+      <div class="faq_container" id="international-returns"></div>
+      <div class="faq_container" >
+      	<div class="faq" >
+        	<div class="faq_question" ><span>+</span> How do I return something? (International Orders)</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+            		<p style="margin-bottom:10px">
+                      Unfortunately, we do not offer free return or exchange shipping on international orders. We also do not have the ability to create international return labels.  If you’d like return or exchange your items, you’ll need to send them back to the below address using the carrier of your choosing. </p>
+                   <p style="line-height:2.5rem;margin-bottom:15px;margin-left:30px">
+                     Of Mercer<br>
+C/O Bergen Logistics NJ<br>
+7300 Westside Ave<br>
+                     North Bergen, NJ 07047<br>
+                  (201) 854-1512</p>
+                  <p> If you would like to make an exchange, you'll need to purchase exchange shipping. Please <a href="mailto:orders@ofmercer.com?Subject=International%20Exchange" target="_top">email us</a> and we will send you a link to purchase international shipping for your exchange. If you are making a return or exchange, please fill out and include your packing slip in your return package.
+                  </p>
+          		</div>
+        	</div>
+      	</div>
+      </div>
+      <div class="faq_container">
+     	<div class="faq">
+        	<div class="faq_question"><span>+</span> How do I exchange something?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer"><p>Want to swap out a size or style? No problem! Just follow the same instructions to return something above. Fill out the bottom half of your packing slip with the items and sizes that you would like to exchange.</p>
+          		</div>
+        	</div>
+      	</div>
+      </div>
+      <div class="faq_container">
+     	<div class="faq">
+        	<div class="faq_question"><span>+</span> When will I receive my refund?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer"><p>All refunds will be processed within 3-6 business days of when we receive your return package.  You will receive an email as soon as we have issued you a refund; however, sometimes the refund may take up to a week to appear on your credit card.</p>
+                  
+              </div>
+        	</div>
+      	</div>
+      </div>
+      
+<h2>Product and Fit</h2>
+      
+      <div class="faq_container">
+      	<div class="faq">
+        	<div class="faq_question"><span>+</span> Where are your clothes made?</div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer"><p>We make all of our clothes in NYC, where we are headquartered. We have super close relationships with five factories in the Garment District and are there every day to check on the quality of craftsmanship.
+</p></div>
+            </div>
+          </div>
+      </div>
+      <div class="faq_container">
+      	<div class="faq">
+        	<div class="faq_question"><span>+</span> What sizes do you offer?</div>
+        	<div class="faq_answer_container">
+              <div class="faq_answer"><p>Our clothing comes in sizes 00-20W and XS-2X, depending on each product. Check out our <a href="https://www.ofmercer.com/pages/size-guide" alt="Of Mercer Size Guide">size guide</a> for more details on our sizing and fit.</p></div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="faq_container">
+      	<div class="faq">
+        	<div class="faq_question"><span>+</span> How does your sizing run? </div>
+        	<div class="faq_answer_container">
+          		<div class="faq_answer">
+                  <p style="margin-bottom:15px!important"> We fit all of our garments on a size 6 fit model (for sizes 00-14) and on a size 16W fit model (for sizes 14W-20W) to ensure that they run true to size. We typically recommend ordering one size up from what you normally wear in J.Crew and one size down from what you normally wear in contemporary brands at Saks.
+
+                  </p>
+                  <p>We have also made it as easy as possible to figure out which size is right for you in each style. We provide incredible detail on every style’s specific product measurements and fit notes. So you can compare the specs to similar pieces you already own. (See the size guide and fit section on each product page. You’re welcome.)
+                    Need a second opinion? We’ll give you ours. <a href="/pages/contact-us">Just ask</a>.
+                  </p>
+          		</div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="faq_container">
+      	<div class="faq">
+        	<div class="faq_question"><span>+</span> I need some extra help selecting a size!</div>
+        	<div class="faq_answer_container">
+              <div class="faq_answer"><p>
+                No problem! Our experienced team of stylists would be happy to help you out.  Just give us a call at 212-979-2229, Monday – Friday between 10am and 6pm. We’ll answer any questions you have about size, fit, dress codes…pretty much anything you need!  If you have a question after office hours, just shoot us an email at <a href="mailto:orders@ofmercer.com?Subject=Sizing%20Help" target="_top">info@ofmercer.com</a>. 
+                </p></div>
+            </div>
+          </div>
+      </div>
+      
+    
+      <div class="faq_container">
+      	<div class="faq">
+        	<div class="faq_question"><span>+</span> Do you have a store?</div>
+        	<div class="faq_answer_container">
+              <div class="faq_answer"><p>Yes, our NYC store is located in Nolita at 211 Elizabeth Street between Prince and Spring. Don’t forget to check our <a href="/pages/visit-us">store homepage</a> for hours and special events.</p></div>
+            </div>
+          </div>
+      </div>
+      <div class="faq_container">
+      	<div class="faq">
+        	<div class="faq_question"><span>+</span> Do you offer personal styling appointments?</div>
+        	<div class="faq_answer_container">
+              <div class="faq_answer">
+                <p>We sure do…and they come with bubbly.  Whether you are super busy and want one of our stylists to pull pieces ahead of time, need a little extra help finding the styles that suit you, or want to bring your work wife for some shopping, we’ve got you covered. Book your appointment 
+                  <a href="https://www.ofmercer.com/apps/book-an-appointment/appointments/new
+">here</a>.</p></div>
+            </div>
+          </div>
+      </div>
+      
+      		
+      <h2>Accounts and Other Stuff</h2>
+      
+      <div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> Do I need to set up an account to place an order?</div>
+        		<div class="faq_answer_container">
+          			<div class="faq_answer"><p>Nope, you can check out as a guest if you prefer. However, you’ll be able to enjoy more benefits if you do! With an account, you can track your orders, review past purchases, and save your address and payment details for faster shopping.</p></div>
+        		</div>
+      		</div>
+    	</div>
+      	<div class="faq_container">
+      		<div class="faq">
+        		<div class="faq_question"><span>+</span> What if I forgot my password?
+</div>
+        		<div class="faq_answer_container">
+                  <div class="faq_answer"><p>You can reset your account password on our <a href="/account/login">login page</a>.</p></div>
+        		</div>
+      		</div>
+    	</div>
+      
+      
+      
+      
+           
+    </div><!-- END right -->
+    
+    
+  
+  </div><!-- END wrapper -->
+</div><!-- END page -->
+
+
+
+
+<script type="text/javascript">
+  $(function(){
+    // analytics.page(unescape("{{ page.title | escape }}"));
+  });
+</script>
+
+<script>
+ $(document).ready(function() {
+ 
+    $('.faq_question').click(function() {
+      	var answerContainer = $(this).siblings('.faq_answer_container');
+      	if (answerContainer.css('display') == 'block') {
+        	$(this).children('span').html("+");
+        } else {
+            $(this).children('span').html("&ndash;");
+        }
+ 		answerContainer.slideToggle();
+
+    });
+ 
+});
+</script>

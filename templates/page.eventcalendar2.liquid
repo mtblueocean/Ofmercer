@@ -1,0 +1,103 @@
+<div id="page">
+  
+<!--googleoff: snippet--> <h2>{{ page.title }}</h2> <!--googleon: snippet-->
+{{ page.content }}
+  
+  <div class="columns six">
+ <p style="line-height:16px;padding-top:15px;text-align:center;font-style:italic;font-size:13px;">In collaboration with Stern SWIB and LuxRet Club
+Of Mercer Presents...</p>
+    <h3 style="padding-top:5px;text-align:center; font-size:30!important;font-weight:800">Dress to Impress</h3>
+    <p style="padding-top:8px;line-height:16px; text-align:center;;font-size:13px;">Join us for an evening of <br>light bites, drinks,
+mingling and shopping!<br><br>We will share tips and tricks for standing
+out in recruiting<br>followed by one-on-one time with our stylists.</p>
+    <p style="line-height:16px;padding-top:0px;text-align:center;font-style:italic;font-size:13px;">
+Exclusive discounts will be available!</p>
+    <hr style="height:1px; border:none; color:#000; background-color:#000; width:20%; text-align:center; margin: 0 auto;">
+    <p style="text-align:center;font-size:13px;margin-top:12px">Thursday, September 22nd<br>5:00-6:30pm<br>Of Mercer Store | 42 E. 21st St. NYC </p>
+
+    <iframe
+      id="JotFormIFrame-62575583578977"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      src="https://form.jotform.com/62575583578977"
+      frameborder="0"
+      style="width:100%;
+      height:539px;
+      border:none;"
+      scrolling="no">
+    </iframe>
+    <script type="text/javascript">
+      window.handleIFrameMessage = function(e) {
+        var args = e.data.split(":");
+        var iframe = false;
+        if (args.length > 2) { iframe = document.getElementById("JotFormIFrame-" + args[2]); } else { iframe = document.getElementById("JotFormIFrame"); }
+        if (!iframe)
+          return;
+        switch (args[0]) {
+          case "scrollIntoView":
+            iframe.scrollIntoView();
+            break;
+          case "setHeight":
+            iframe.style.height = args[1] + "px";
+            break;
+          case "collapseErrorPage":
+            if (iframe.clientHeight > window.innerHeight) {
+              iframe.style.height = window.innerHeight + "px";
+            }
+            break;
+          case "reloadPage":
+            window.location.reload();
+            break;
+        }
+        var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
+        if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
+          var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)};
+          iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*");
+        }
+      };
+      if (window.addEventListener) {
+        window.addEventListener("message", handleIFrameMessage, false);
+      } else if (window.attachEvent) {
+        window.attachEvent("onmessage", handleIFrameMessage);
+      }
+      if(window.location.href && window.location.href.indexOf("?") > -1) {
+        var ifr = false;
+        if (args.length > 2) { ifr = document.getElementById("JotFormIFrame-" + args[2]); } else { ifr = document.getElementById("JotFormIFrame"); }
+        var get = window.location.href.substr(window.location.href.indexOf("?") + 1);
+        if(ifr && get.length > 0) {
+          var src = ifr.src;
+          src = src.indexOf("?") > -1 ? src + "&" + get : src  + "?" + get;
+          ifr.src = src;
+        }
+      }
+      </script>
+  
+
+    <div title="Add to Calendar" class="addeventatc add-to-calendar" style="margin-bottom:15px">
+    Add to Calendar
+    <span class="start">09/22/2016 05:00 PM</span>
+    <span class="end">09/22/2016 6:30 PM</span>
+    <span class="timezone">America/New_York</span>
+    <span class="title">Dress For Success</span>
+    <span class="description"><br></span>
+    <span class="location"><br><br>Of Mercer Store 42 E. 21st Street</span>
+    <span class="organizer">Of Mercer</span>
+    <span class="organizer_email">info@ofmercer.com</span>  
+    <span class="all_day_event">false</span>
+    <span class="date_format">MM/DD/YYYY</span>
+    <span class="client">aphjYauMTzjhpEYRImGl17745</span>
+  <span class="alarm_reminder">60</span>
+  </div>
+</div>
+  <div class="columns six">
+  <img src="{{ 'NewDress1.jpg' | asset_url }}" class="" alt="You're Invited" >
+ 
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+</script>

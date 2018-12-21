@@ -1,0 +1,22 @@
+<div class="basic-page">
+<div id="page-lookbook-main">  
+ <div class="page-header">
+			<h2>{{ page.title }}</h2>
+		</div>	</div>
+  
+	{{ page.content }}
+  <div class="wrapper mid-wrapper ">
+   {% include 'lookbooks-app' %}
+  </div>
+<div class="clear"></div>
+  <div style="padding-top:30px; padding-bottom:30px;" class="copy-block-narrow">      
+      <a href="https://www.ofmercer.com/pages/brand-lookbooks" class="btn">Return to Lookbooks</a>
+  	</div>
+  
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+</script>

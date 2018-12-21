@@ -1,0 +1,25 @@
+<div class="basic-page">
+	
+	<div class="wrapper">
+		
+		<!--googleoff: snippet-->
+		<div class="page-header">
+			<h2>{{ page.title }}</h2>
+		</div>
+		<!--googleon: snippet-->
+		
+		<div class="rte wrapper slim-wrapper">
+			{{ page.content }}
+		</div>
+		
+<!-- 	  {% include 'lookbooks-app' %} -->
+	  
+	</div>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+</script>

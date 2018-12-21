@@ -1,0 +1,129 @@
+</div>
+{% layout 'alternateshop' %}
+<div class="collection-description columns fullside">
+  {% if collection.image %}
+  <img src="{{ collection.image.src | collection_img_url: 'master' }}" alt="{{ collection.image.alt }}">
+  {% endif %}
+</div>
+<div id="content" class="row">
+  <div id="collectionpage">
+    {% paginate collection.products by 33 %}
+    <div class="collection-description twelve columns">   
+      <div class="collection-category">
+        <!--googleoff: snippet--><h1>{{ collection.title }}</h1><!--googleon: snippet-->
+        <div class="collection-category">
+          {% if collection.description %}
+          <p> {{ collection.description }}</p>
+          {% endif %}
+        </div> 
+      </div> 
+      
+      
+      
+      
+      <ul id="collectionlist" class="block-grid {{ settings.collection-per-row }}-up mobile one-up"> 
+        {% for product in collection.products %}
+            <li>     
+                <div class="collection-image" id="collection-image-three">
+                
+                {% if product.available %}{% else %}<div class="gone"></div>{% endif %}
+                  {% if product.images.size > 1 %}      
+                    <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+                      <img class="img1 scale-with-grid" src="{{ product.images[0] | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" />
+                      <img class="img2 scale-with-grid" src="{{ product.images[1] | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /> 
+                    </a>       
+                  {% else %}       
+                    <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+                      <img class="img1 scale-with-grid" src="{{ product.images[0] | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" />
+                    </a>
+                  {% endif %}   
+                </div>
+               <div class="collection-products2">     
+                  <a href="{{ product.url | within: collection }}">
+                       <h3>{{ product.title | truncate: 70 }}</h3>
+                    <h4>{% include 'swatchesnosize2' %}
+                   {% if product.title == 'Of Mercer Gift Card' %}
+                    from {{ product.price_min | money }} - {{ product.price_max | money }} 
+                    {% else %}
+                    {{ product.price | money }} 
+                    {% endif %}
+                    {% if product.price < product.compare_at_price %} 
+                    was <span class="red">{{ product.compare_at_price | money }}</span>
+                    {% endif %}
+                 </h4>
+                  </a>
+              </div>
+            </li>
+        {% endfor %}
+        </ul>
+    <div id="bottom-paginate-bar" class="twelve columns">
+      {% if paginate.pages > 1 %}
+      <ul class="pagination">
+        {% if paginate.previous %}
+        <li class="arrow">{{ '&laquo;' | link_to: paginate.previous.url }}</li>
+        {% endif %}
+         {% for part in paginate.parts %}
+          {% if part.is_link %}
+        <li>{{ part.title | link_to: part.url }}</li>
+        {% elsif part.title == '&hellip;' %}
+        <li>{{ part.title }}</li>
+        {% else %}
+        <li class="current">{{ part.title | link_to: part.url }}</li>
+        {% endif %}
+        {% endfor %}
+        {% if paginate.next %}
+        <li class="arrow">{{ '&raquo;' | link_to: paginate.next.url }}</li>
+        {% endif %}
+        <li><a href="/collections/{{ collection.handle }}?view=all" style="margin-left: 10px">View All</a></li>
+      </ul>
+      {% endif %}  
+    </div>
+  </div>
+ </div>
+</div>
+{% endpaginate %}
+
+<script type="text/javascript">
+//<![CDATA[
+$(function() {
+  $('#linklists a').each(function() {
+    if ($(this).attr('href')  ===  window.location.pathname) {
+      $(this).addClass('current');
+    }
+  });
+});  
+//]]>
+</script>
+<script type="text/javascript">
+  $(function(){
+    // analytics.page(unescape("{{ collection.title | escape }} Collection"), "Index");
+    $('.collection-image .img2').addClass('hidden');
+    $('.collection-image').each(function(){
+      var img2 =  $(this).find('.img2');
+      if($(this).find('img').length > 1) {
+        $(this).find('.img2').hide().css('visibility', 'visible');
+        $(this).hover(function(){
+          $(this).find('.img2').show();
+          $(this).find('.img1').hide();
+        }, function(){
+          $(this).find('.img2').hide();
+          $(this).find('.img1').show();
+        });
+      }
+//       img2.hide().css('visibility', 'hidden');
+//       img2.css('display', 'none');
+//       if($(this).find('img').length > 1) {
+//         $(this).find('.img2').hide().css('visibility', 'visible');
+//         $(this).hover(function(){
+//           $(this).find('.img2').stop(true,true).fadeIn("1000");
+//           $(this).find('.img1').stop(true,true).fadeOut("1000");
+//         }, function(){
+//           $(this).find('.img2').stop(true,true).fadeOut("1000");
+//           $(this).find('.img1').stop(true,true).fadeIn("1000");
+//         });
+//       }
+    });                              
+
+  }); 
+</script>
+

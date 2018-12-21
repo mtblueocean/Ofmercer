@@ -1,0 +1,308 @@
+{% assign metafields = ['collection'].metafields.custom_fields %}
+
+<div id="collection-header">
+  {% if collection.image %}
+    <img src="{{ collection.image.src | collection_img_url: '2048x2048' | split:'?' | first }}" alt="{{ collection.image.alt }}">
+  {% endif %}
+  <div class="msg-group">
+    <h4>{{ collection.title }}</h4>
+    <h1>{{ metafields['collection_tagline'] }}</h1>
+    {% if collection.description %}
+      <p class="shortform">{{ collection.description }}</p>
+    {% endif %}
+  </div>
+  <div class="triangle right"></div>
+</div>
+
+<div class="wrapper" style="position: relative;">
+  
+  
+  <div class="product-meta-editorial">
+    <div class="col-1-3 editorial-image-1">
+      <img id="" src="{{ 'LoveYourWorkweek-Commute-4x5.jpg' | asset_url }}"/>
+    </div>
+    <div class="col-1-3 editorial-image-2">
+      <div style="">
+        <img id="" src="{{ 'LoveYourWorkweek-Commute-2x3.jpg' | asset_url }}"/>
+      </div>
+    </div>
+    <div class="col-1-3 editorial-text">
+      <div >
+        <h6>Monday</h6>
+        <h5>Love your <span>morning commute</span></h5>
+         <p>What train delays? Traffic who? Everything's fine when you've got the perfect power blazer to go with the perfect power dress.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+ 
+  
+  {% paginate collection.products by 99999 %}
+    <div id="collection-grid"> 
+      {% for product in collection.products %}                
+        {% if collection.all_products_count > 4 %}
+          {% if forloop.index == 5 %}            
+            <div class="collection-item-editorial ad new-cf">
+              <div class="collection-image">
+                <div class="product-meta-editorial">
+                  <div class="col-1-3 editorial-text">
+                    <div>
+                      <h6>Tuesday</h6>
+                      <h5>Love your <span>coffee break</span></h5>
+                      <p>Nothing perks you up quite like the sound of "Cute skirt." or "Where'd you get that top?"</p>
+                    </div>
+                  </div><!-- END col-1-3 -->
+
+                  <div class="col-1-3 editorial-image-2">
+                    <div style="">
+                      <img id="" src="{{ 'LoveYourWorkweek-Kitchen-4x5.jpg' | asset_url }}"/>
+                    </div>
+                  </div><!-- END col-1-3 -->
+
+                  <div class="col-1-3 editorial-image-1">
+                    <img id="" src="{{ 'LoveYourWorkweek-Kitchen-2x3.jpg' | asset_url }}"/>
+                  </div><!-- END col-1-3 -->
+
+                </div>
+              </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      
+        
+        {% if collection.all_products_count > 4 %}
+          {% if forloop.index == 9 %}            
+            <div class="collection-item-editorial ad new-cf">
+              <div class="collection-image">
+                <div class="product-meta-editorial">
+                  <div class="col-1-3 editorial-image-1">
+                    <img id="" src="{{ 'LoveYourWorkweek-LunchBench-4x5.jpg' | asset_url }}"/>
+                  </div>
+                  <div class="col-1-3 editorial-image-2">
+                    <div style="">
+                      <img id="" src="{{ 'LoveYourWorkweek-LunchBench-2x3.jpg' | asset_url }}"/></div>
+                  </div>
+                  <div class="col-1-3 editorial-text">
+                    <div >
+                      <h6>Wednesday</h6>
+                      <h5>Love your <span>lunchtime</span></h5>
+                      <p>Fact: salads just taste better when paired with a flattering tie-front blouse (and comfy stretch pants, too).</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      {% if collection.all_products_count > 4 %}
+          {% if forloop.index == 13 %}            
+            <div class="collection-item-editorial ad new-cf">
+              <div class="collection-image">
+                <div class="product-meta-editorial">
+                  <div class="col-1-3 editorial-text">
+                    <div>
+                      <h6>Thursday</h6>
+                      <h5>Love your <span>4pm slump	</span></h5>
+                      <p>Remembering how good you look in your new dress and cardi is the best kind of late afternoon pick-me-up.</p>
+                    </div>
+                  </div><!-- END col-1-3-->
+                  <div class="col-1-3 editorial-image-2">
+                    <div style="">
+                      <img id="" src="{{ 'LoveYourWorkweek-Desk-2x3.jpg' | asset_url }}"/>
+                      </div>
+                  </div><!-- END col-1-3-->
+                  <div class="col-1-3 editorial-image-1">
+                    <img id="" src="{{ 'LoveYourWorkweek-Desk-4x5.jpg' | asset_url }}"/>
+                  </div><!-- END col-1-3 -->
+                </div>
+              </div>
+      </div>
+      {% endif %}
+      {% endif %}
+
+      
+      {% if collection.all_products_count > 4 %}
+          {% if forloop.index == 17 %}            
+            <div class="collection-item-editorial ad new-cf">
+              <div class="collection-image">
+                <div class="product-meta-editorial">
+                  <div class="col-1-3 editorial-image-1">
+                    <img id="" src="{{ 'LoveYourWorkweek-LincolnWalking-4x5.jpg' | asset_url }}"/>
+                  </div>
+                  <div class="col-1-3 editorial-image-2">
+                    <div style="">
+                      <img id="" src="{{ 'LoveYourWorkweek-LincolnWalking-2x3.jpg' | asset_url }}"/></div>
+                  </div>
+                  <div class="col-1-3 editorial-text">
+                    <div >
+                      <h6>Friday</h6>
+                      <h5>Love your <span>walk home</span></h5>
+         <p>A bright drapey blazer that keeps you moving towards the weekend -- and some QT with your best fur friend?? Check and check. </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      
+      
+      
+      
+      
+      
+      
+      
+        <div class="collection-item-grid">
+          <div class="collection-image">
+            {% if product.images.size > 1 %}      
+              <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">                   
+                {% assign productImage1 = product.images[0] | img_url:'master' %}
+                {% assign productImage2 = product.images[2] | img_url:'master' %}
+                <img class="img1" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
+                  srcset="
+                  {% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,
+                  {% include 'imgix' src:productImage1 w:640 auto:'format' %} 640w,
+                  {% include 'imgix' src:productImage1 w:960 auto:'format' %} 960w,
+                  {% include 'imgix' src:productImage1 w:1280 auto:'format' %} 1280w,
+                  {% include 'imgix' src:productImage1 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+                <img class="img2" src="{% include 'imgix' src:productImage2 w:960 auto:'format' %}"
+                  srcset="
+                  {% include 'imgix' src:productImage2 w:320 auto:'format' %} 320w,
+                  {% include 'imgix' src:productImage2 w:640 auto:'format' %} 640w,
+                  {% include 'imgix' src:productImage2 w:960 auto:'format' %} 960w,
+                  {% include 'imgix' src:productImage2 w:1280 auto:'format' %} 1280w,
+                  {% include 'imgix' src:productImage2 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+             </a> 
+            {% else %}       
+              <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+                {% assign productImage1 = product.images[0] | img_url:'master' %}
+                <img class="img1 scale-with-grid" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
+                    srcset="
+                    {% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,
+                    {% include 'imgix' src:productImage1 w:640 auto:'format' %} 640w,
+                    {% include 'imgix' src:productImage1 w:960 auto:'format' %} 960w,
+                    {% include 'imgix' src:productImage1 w:1280 auto:'format' %} 1280w,
+                    {% include 'imgix' src:productImage1 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+              </a>
+            {% endif %}   
+          </div>
+          <div class="collection-item-detail">     
+            <a href="{{ product.url | within: collection }}">
+              <h6>{{ product.title | truncate: 70 }}
+                <span>{% include 'swatchesnosize2' %}</span> 
+                <span class="right" >
+                  {% if product.title == 'Of Mercer Gift Card' %}
+                    from {{ product.price_min | money }} - {{ product.price_max | money }} 
+                  {% else %}
+                    {{ product.price | money }} {% if product.price < product.compare_at_price %} was <span class="red">{{ product.compare_at_price | money }}</span>{% endif %}
+                  {% endif %}
+                  </span>
+                </h6>
+            </a>
+          </div>
+        </div>
+      {% endfor %}      
+    </div>
+  
+  
+  
+
+  
+  
+  
+  <div>
+  
+  <div id="product-description">
+		    <div class="wrapper narrow-wrapper">
+              <h3>Happy Weekend!</h3>
+              <p><i>Stay tuned for more from our summer campaign...<br>In the meantime, check out what's new at Of Mercer.</i></p>
+         <a href="https://www.ofmercer.com/collections/new-arrivals" class="btn">Shop New Arrivals</a>
+  
+		    </div>
+	    </div>
+  </div>
+  
+  
+  
+  
+    
+    <div id="bottom-paginate-bar" class="twelve columns">
+      {% if paginate.pages > 1 %}
+      <ul class="pagination">
+        {% if paginate.previous %}
+        <li class="arrow">{{ '&laquo;' | link_to: paginate.previous.url }}</li>
+        {% endif %}
+         {% for part in paginate.parts %}
+          {% if part.is_link %}
+        <li>{{ part.title | link_to: part.url }}</li>
+        {% elsif part.title == '&hellip;' %}
+        <li>{{ part.title }}</li>
+        {% else %}
+        <li class="current">{{ part.title | link_to: part.url }}</li>
+        {% endif %}
+        {% endfor %}
+        {% if paginate.next %}
+        <li class="arrow">{{ '&raquo;' | link_to: paginate.next.url }}</li>
+        {% endif %}
+        <li><a href="/collections/{{ collection.handle }}?view=all" style="margin-left: 10px">View All</a></li>
+      </ul>
+      {% endif %}  
+    </div>
+  {% endpaginate %}
+
+</div>
+
+<script type="text/javascript">
+
+$(function() {
+  
+  var $ad = $('#collection-grid .collection-item.ad'),
+      $c_header = $('#collection-header'),
+      $msg_group = $('.msg-group'),
+      msg_height;
+  
+  //<![CDATA[ 
+/*
+    $('#linklists a').each(function() {
+      if ($(this).attr('href')  ===  window.location.pathname) {
+        $(this).addClass('current');
+      }
+    });
+*/
+  //]]>
+
+  // analytics.page(unescape("{{ collection.title | escape }} Collection"), "Index");
+    
+  if($('#collection-grid .collection-item').hasClass('ad')){
+    $ad.eq(0).css({'margin-right': 0}).after('<div class="clear"></div>');
+    $ad.eq(1).next('.collection-item').css({'margin-right': 0}).nextAll('.collection-item').wrapAll('<div class="collection-gridy"></div>');
+  }
+  
+  // Color filter columns
+  var divs = $('.color-filter').find('.col ul li');
+  for(var i = 0; i < divs.length; i+=5) {
+    divs.slice(i, i+5).wrapAll("<li class='new'><ul></ul></li>");
+  }
+  
+  function collectionHeader(){
+    msg_height = $msg_group.height();
+    $c_header.css({
+      'min-height': msg_height
+    });
+  }
+  
+  collectionHeader();
+  
+  $(window).resize(function(){
+    collectionHeader();
+  });
+  
+}); 
+</script>

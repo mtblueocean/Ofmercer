@@ -1,0 +1,149 @@
+<header id="site-header">
+	
+	<div class="header-upper">
+			
+    <div class="trigger newsletter-trigger" data-popup="newsletter-popup"><a href="#wisepops"><i class="fa fa-envelope" aria-hidden="true"></i></a></div>
+      
+    <nav class="nav-left">
+      <ul>
+      {% for link in linklists.site-nav-left.links %}
+        {% capture child_list_handle %}{{ link.title | handleize }}{% endcapture %}
+
+	        {% if child_list_handle == 'shop' %}
+						<li class="{{ child_list_handle }}">
+							{{ link.title | link_to: link.url }}
+							<div class="sub-menu">
+								
+								<div class="product-list">
+									<span>/ Product</span>
+									{% for l in linklists.shop-by-product.links %}
+									{% assign pic = collections[l.handle].image %}
+									<a href="{{ l.url}}">{{ l.title }}{% if pic.size > 0 %}<img style="display:none;" src="{{ collections[l.handle].image | img_url: '410x' }}" />{% endif %}</a>
+									{% endfor %}
+								</div>
+								
+								<div class="collection-list">
+									<span>/ Collection</span>
+									{% for l in linklists.shop-by-collection.links %}
+									{% assign pic = collections[l.handle].image %}
+									<a href="{{ l.url}}">{{ l.title }}{% if pic.size > 0 %}<img style="display:none;" src="{{ collections[l.handle].image | img_url: '410x' }}" />{% endif %}</a>
+									{% endfor %}
+								</div>	
+								
+								<div class="sub-img">
+									<img src="" />
+								</div>								
+								
+							</div>
+						</li>
+					{% else %}
+						{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+							<li class="{{ child_list_handle }}">
+								{{ link.title | link_to: link.url }}
+								<div class="sub-menu">
+									{% for l in linklists[child_list_handle].links %}
+									<a href="{{ l.url }}">{{ l.title }}</a>
+									{% endfor %}
+								</div>
+							</li>
+						{% else %}
+						  <li class="{{ child_list_handle }}">{{ link.title | link_to: link.url }}</li>
+						{% endif %}
+					{% endif %}
+        
+      {% endfor %}
+      </ul>
+    </nav> 
+	    
+    <a class="logo" href="/" title="Of Mercer"></a>
+	    
+    <nav class="nav-right">
+      <ul>
+      {% for link in linklists.site-nav-right.links %}
+        {% capture child_list_handle %}{{ link.title | handleize }}{% endcapture %}
+
+	        {% if child_list_handle == 'shop' %}
+						<li class="{{ child_list_handle }}">
+							{{ link.title | link_to: link.url }}
+							<div class="sub-menu">
+								
+								<div class="product-list">
+									<span>/ Product</span>
+									{% for l in linklists.shop-by-product.links %}
+									{% assign pic = collections[l.handle].image %}
+									<a href="{{ l.url}}">{{ l.title }}{% if pic.size > 0 %}<img style="display:none;" src="{{ collections[l.handle].image | img_url: 'medium' }}" />{% endif %}</a>
+									{% endfor %}
+								</div>
+								
+								<div class="collection-list">
+									<span>/ Collection</span>
+									{% for l in linklists.shop-by-collection.links %}
+									{% assign pic = collections[l.handle].image %}
+									<a href="{{ l.url}}">{{ l.title }}{% if pic.size > 0 %}<img style="display:none;" src="{{ collections[l.handle].image | img_url: 'medium' }}" />{% endif %}</a>
+									{% endfor %}
+								</div>	
+								
+								<div class="sub-img">
+									<img src="" />
+								</div>								
+								
+							</div>
+						</li>
+					{% else %}
+						{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+							<li class="{{ child_list_handle }}">
+								{{ link.title | link_to: link.url }}
+								<div class="sub-menu">
+									{% for l in linklists[child_list_handle].links %}
+									<a href="{{ l.url }}">{{ l.title }}</a>
+									{% endfor %}
+								</div>
+							</li>
+						{% else %}
+						  <li class="{{ child_list_handle }}">{{ link.title | link_to: link.url }}</li>
+						{% endif %}
+					{% endif %}
+        
+      {% endfor %}
+      </ul>
+    </nav>   
+	    
+    <ul class="utility-links">
+      <li class="search-link">
+        <i class="fa fa-search" aria-hidden="true"></i>
+				<form class="search" action="/search">
+					<input type="hidden" name="type" value="product" />
+				  <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}"  />
+				  <!-- <input type="submit" value="Search" /> -->
+				</form>
+			</li>			
+      <li class="mini-cart-trigger">
+        <a href="/cart">
+		      <i class="fa fa-shopping-bag" aria-hidden="true">
+		        <span class="cart_count">{% if cart.item_count != 0 %}{{ cart.item_count }}{% endif %}</span>
+	        </i>
+        </a>
+      </li>
+    </ul>	      
+    
+    {% include 'mini-cart' %}
+
+	</div>
+	
+	{% if template == 'blog.alternate' %}
+		<div id="blog-tags">
+			<ul>
+			  {% for tag in blog.all_tags %}
+			  {% if tag contains 'post-' %}
+			  
+			  {% else %}
+			  <li>
+			    <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+			  </li>
+			  {% endif %}
+			  {% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+	
+</header>

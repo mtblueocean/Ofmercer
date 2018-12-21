@@ -1,0 +1,62 @@
+<style>
+  .img_caption a {
+  	background: none !Important;
+    color: #fff !important;
+  }
+  
+  .lookbook_info a img {
+   
+  }
+  .lookbook_info p {
+    color:white!important;
+    margin-bottom:15px!important;
+  line-height:2.2rem!important;}
+  .lookbook_info h4 {
+  padding-bottom:8px!important;
+  }
+  
+  
+  .lookbook_info {    
+    padding:15px!important;
+    border:none!important;
+    background-color:transparent!important; 
+    height:75px!important;
+  }
+  
+  .bx-wrapper .bx-next {
+
+    
+  }
+  
+  
+</style>
+
+
+{% if product.id %}
+    {% assign product_id = product.id %}
+{% else %}
+    {% assign product_id = 0 %}
+{% endif %}
+
+{% if page.id %}
+    {% assign page_id = page.id %}
+{% else %}
+    {% assign page_id = 0 %}
+{% endif %}
+
+{% if collection.id %}
+    {% assign collection_id = collection.id %}
+{% else %}
+    {% assign collection_id = 0 %}
+{% endif %}
+
+{% if article.id %}
+    {% assign article_id = article.id %}
+{% else %}
+    {% assign article_id = 0 %}
+{% endif %}
+
+<link href='//pressify.s3.amazonaws.com/assets/fancybox/source/jquery.fancybox.css' rel='stylesheet' type='text/css'>
+<link href='//pressify.s3.amazonaws.com/assets/bxslider/jquery.bxslider.css' rel='stylesheet' type='text/css'>
+<script src="//lookbooks-herokuapp-com.global.ssl.fastly.net/lookbook_js_001.js?v=0027"></script>
+<div class="lookbook_details" data-product-id="{{product_id}}" data-page-id="{{page_id}}" data-collection-id="{{collection_id}}" data-article-id="{{article_id}}" data-shop-url="{{shop.permanent_domain}}"></div>

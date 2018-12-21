@@ -1,0 +1,123 @@
+<div style="padding: 50px 0; margin-bottom: 10px; background-color: #fdf0e1;">
+<h2 style="text-align: center; padding-bottom: 0;">START A RETURN OR EXCHANGE</h2>
+</div>
+
+<div class="account-wrap">
+  
+  <div class="login-col vert-y-wrap">  
+    <div id="reset-success" style="display:none;">
+      recover password
+    </div>
+    <div class="unvert-y login-box" id="customer-login">
+      
+      {% form 'customer_login' %}
+
+        <div class="login-box-header">
+          <h3>Have an account? Login for a quicker return process.</h3>
+        </div>
+
+        {{ form.errors | default_errors }}
+
+        
+        <div class="field-wrap">
+          <input type="email" name="customer[email]" id="CustomerEmail" placeholder="email"{% if form.errors contains "email" %} class="error"{% endif %} autocorrect="off" autocapitalize="off" autofocus>
+        </div>
+
+        {% if form.password_needed %}
+          <div class="field-wrap no-marg">
+            <input type="password" value="" name="customer[password]" id="CustomerPassword" placeholder="password" {% if form.errors contains "password" %} class="error"{% endif %}>
+          </div>
+          
+          
+        {% endif %}
+        
+        <div class="field-wrap btn-wrap">
+          <input type="submit" class="btn" value="sign in">
+        </div>
+      <p class="forgot-password"><a href="#" onclick="showRecoverPasswordForm();return false;">I forgot my password</a></p>
+
+        <div class="login-social" >
+          <p>Or Login With</p>
+          <div class="oxi-social-login"></div>
+          
+         
+        </div>
+        
+      {% endform %}
+      
+    </div>
+    <div class="unvert-y login-box" id="recover-password" style="display: none;">
+
+      <div class="login-box-header">
+        <p>Forgot your password?</p>
+        <p>No problem. We'll send you an email to reset it.</p>
+      </div>
+
+      {% form 'recover_customer_password' %}
+
+        {{ form.errors | default_errors }}
+
+        {% if form.posted_successfully? %}
+          {% assign reset_success = true %}
+        {% endif %}
+        
+        <div class="field-wrap">
+          <input type="email" value="" name="email" id="RecoverEmail" placeholder="email" autocorrect="off" autocapitalize="off">
+        </div>
+
+        <div class="field-wrap btn-wrap">
+          <input type="submit" class="btn" value="submit">
+          <p class="account-note">
+            <a href="#" onclick="hideRecoverPasswordForm();return false;">cancel</a>
+          </p>
+        </div>
+        
+      {% endform %}
+
+    </div>
+  </div>
+  
+    
+  <div class="login-col vert-y-wrap">
+    <div class="unvert-y login-box" id="customer-create-account">
+      <div class="login-box-header">
+        <h3>Don't have an account? No Problem.</h3>
+      </div>
+          
+      <div style="text-align: center;">
+        <a href="https://returns.ofmercer.com" class="btn">CONTINUE TO RETURN CENTER</a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<script>
+  /*
+    Show/hide the recover password form when requested.
+  */
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'block';
+    document.getElementById('customer-login').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('customer-login').style.display = 'block';
+  }
+
+  // Allow deep linking to the recover password form
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+  // reset_success is only true when the reset form is
+  {% if reset_success %}
+    document.getElementById('reset-success').style.display = 'block';
+  {% endif %}
+  
+  (function($){
+    $(document).ready(function(){
+      // Move this function into your themes js file
+      $('.login-box').matchHeight();  
+    });
+  })(jQuery);
+</script>

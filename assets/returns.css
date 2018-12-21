@@ -1,0 +1,460 @@
+@font-face {
+    font-family: "neuzeit-grotesk";
+    src: url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_NeuzeitGroReg.woff?4614611615170532209) format("woff"), url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_NeuzeitGroReg.woff?4614611615170532209) format("truetype"), url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_NeuzeitGroReg.woff?4614611615170532209) format("svg")
+}
+@font-face {
+    font-family: "Neuzeit Grotesk Light";
+    src: url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_-_NeuzeitGro-Lig.woff?8456479593113782155) format("woff"), url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_-_NeuzeitGro-Lig.woff?8456479593113782155) format("truetype"), url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_-_NeuzeitGro-Lig.woff?8456479593113782155) format("svg")
+}
+
+@font-face {
+    font-family: "neuzeit-grotesk-extra-conden";
+    src: url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_-_NeuzeitGroExt-Bla.woff?5521720745815458214) format("woff"), url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_-_NeuzeitGroExt-Bla.woff?5521720745815458214) format("truetype"), url(https://cdn.shopify.com/s/files/1/0186/9832/files/URW_-_NeuzeitGroExt-Bla.woff?5521720745815458214) format("svg")
+}
+
+
+p > a {
+    color: #001a33;
+    text-decoration: underline;
+}
+
+p > a:hover {
+    text-decoration: none;
+    color: #001a33;
+}
+
+.powered-by {
+    display: none!important;
+}
+
+body {
+    background-color: #fdf0e1;
+    font-family: "neuzeit-grotesk";
+    color: #001a33!important;
+}
+
+
+
+.rc-brand {
+    padding: 21px 0;
+}
+.rc-brand img,
+.company-brand img,
+.header .logo a img,
+.store-logo img {
+    max-height: 18px;
+    height: 18px;
+}
+
+.rc-subtitle {
+    font-size: 16px!important;
+    color: #001a33!important;
+}
+
+.store-logo img {
+    margin: 21px 0 0;
+}
+
+.form-container,
+.returns-questions {
+    background-color: #fdf0e1;
+}
+
+select, .form-control, input[class~="form-control"], select[class~="form-control"] {
+  font-family: 'Neuzeit Grotesk Light'!important;
+  font-size:14px!important;
+  color: #001a33!important;
+  letter-spacing: .05em!important;
+}
+input[class~="form-control"], select[class~="form-control"] {
+  border:1px solid #001a33!important;
+}
+
+
+#gift-return a {color: #001a33!important; font-family: 'Neuzeit Grotesk Light'!important;letter-spacing: .05em!important;
+  }
+
+
+.help-text {
+    font-family: 'Neuzeit Grotesk Light'!important;
+    font-style: italic!important;
+  text-align:left!important;
+  margin-bottom:25px!important;
+}
+
+
+
+.start-return-form form {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.start-return-form input[type="email"], 
+.start-return-form input[type="text"],
+.start-return-form input[type="email"]::placeholder, 
+.start-return-form input[type="text"]::placeholder {
+    background: transparent;
+    border-top: 0;
+    border-left: 0;
+    border-radius: 0;
+    border-bottom-color: #001a33;
+    border-right: 0!important;
+    width: 49%;
+    margin-right: 1%;
+    text-align: center;
+    height: 50px;
+    font-family: "neuzeit-grotesk"!important;
+    font-size: 14px!important;
+    letter-spacing: .7px!important;
+    color: #001a33!important;
+}
+
+.btn.return-multiproduct-btn {
+    margin: 5px 0 0!important;
+}
+
+
+
+ 
+
+.start-return-btn, 
+.gift-return-btn,
+.btn.brand-btn, 
+a.btn.brand-btn,
+.btn.return-multiproduct-btn, 
+.return-multiproduct-btn,
+.voucher-content .use-instaref-btn {
+    background-color: #001a33!important;
+    border-radius: 0;
+    line-height: 55px!important;
+    height: 50px!important;
+    transition: color .2s;
+    font-family: "neuzeit-grotesk";
+    opacity: 1;
+    letter-spacing: 2.24px;
+    max-width: 100%!important;
+    display: inline-block;
+}
+
+.btn.brand-btn:hover, 
+.btn.brand-btn:focus, 
+a.btn.brand-btn:hover, 
+a.btn.brand-btn:focus {
+    background-color: #001a33!important;
+    
+}
+
+.start-return-btn, 
+.gift-return-btn {
+    width: 49%!important;
+    margin-left: 1%!important;
+}
+
+.product-wrapper.selected,
+.return-details-info,
+.refund-estimate {
+    border-color: #001a33!important;
+}
+
+.return-details-info {
+    padding-top: 10px;
+    border-bottom: 2px solid #001a33!important;
+}
+
+.selected-checkmark,
+.btn.return-multiproduct-btn:hover, 
+.btn.return-multiproduct-btn:focus, 
+.return-multiproduct-btn:hover, 
+.return-multiproduct-btn:focus,
+.front, 
+.back {
+    background-color: #001a33!important;
+
+}
+
+.label i.fa, 
+.cause label i.fa, 
+.size label i.fa, 
+.color label i.fa, 
+.receipt-card ul li label i.fa,
+.return-causes-container a, 
+.exchanges-container a,
+.e-buttons a,
+.receipt-card .item-specs {
+    color: #001a33!important;
+}
+
+@media screen and (max-width: 767px) {
+    .start-return-btn, 
+    .gift-return-btn,
+    .start-return-form input[type="email"], 
+    .start-return-form input[type="text"] {
+        width: 100%!important;
+        margin-left: 0!important;
+        margin-right: 0!important;
+        border-radius: 0!important;
+    }
+
+}
+
+.start-return-btn:hover, 
+.gift-return-btn:hover,
+.btn.brand-btn:hover, 
+a.btn.brand-btn:hover {
+    background-color: #001a33!important;
+    color: #eec09e;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "neuzeit-grotesk-extra-conden"!important;
+    color: #001a33!important;
+    letter-spacing: .84px;
+    opacity: 1!important;
+}
+
+h1.rc-title {
+    font-size: 28px;
+}
+
+.return-cause h5 {
+    font-size: 21px!important;
+}
+
+.product-title h4 {
+    text-transform: uppercase!important;
+    font-size: 16px!important;
+    letter-spacing: 1.28px!important;
+}
+
+.rounded .arrow,
+.instaref-working i,
+.message-img i {
+    color: #001a33;
+}
+
+.line-mask .line {
+    background-color: #001a33!important;
+}
+
+.rounded {
+    color: #001a33;
+    border-color: #001a33;
+}
+
+.card {
+    box-shadow: none;
+    background-color: #fdf0e1;
+    width: 100%!important;
+}
+
+.product-title .product-price {
+    background-color: white;
+    font-family: "neuzeit-grotesk-extra-conden"!important;
+    color: #001a33!important;
+    padding: 0;
+}
+
+.product-title .product-title-price {
+    margin-bottom: 20px;
+}
+
+.return-details p,
+.returns-questions p,
+.how-works p,
+.single-cause-text,
+.card-body p {
+    opacity: 1;
+    color: #001a33;
+    letter-spacing: .7px;
+    line-height: 28px;
+    text-transform: none!important;
+    font-size: 14px!important;
+    font-family: 'Neuzeit Grotesk Light';
+}
+
+.card-body {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.return-details p {
+    line-height: 1.4!important;
+}
+
+a.rc-link {
+    color: #001a33!important;
+    font-size: 14px!important;
+    letter-spacing: .7px;
+}
+
+.voucher-content.v-center.vertical h3, {
+  color: #000000!important; 
+}
+
+.card.guide-messages {
+    max-width: 100%!important;
+    padding: 0!important;
+    margin-top: 0!important;
+}
+
+header.company-brand {
+    background: white;
+    padding: 20px 0!important;
+}
+
+header.rf-header {
+    text-align: center;
+}
+
+header.rf-header .store-logo {
+    float: none!important;
+}
+
+.returns-flow-container {
+    padding-top: 60px!important;
+    z-index: 0;
+}
+
+.receipt-card .e-product-name .name {
+    font-size: 16px!important;
+    line-height: 22px!important;
+    letter-spacing: .8px!important;
+    font-family: "neuzeit-grotesk-extra-conden",sans-serif!important;
+    color: #001a33!important;
+}
+
+.receipt-card .item-specs span {
+    font-size: 14px!important;
+    line-height: 22px!important;
+    letter-spacing: .4px!important;
+    font-family: 'Neuzeit Grotesk Light'!important;
+    color: #001a33!important;
+}
+
+
+
+.refund-estimate .refund-totals span,
+.e-footer p, 
+.ir-section a,
+.instaref-working p {
+    letter-spacing: .4px!important;
+    font-family: 'Neuzeit Grotesk Light'!important;
+    color: #001a33!important;
+    font-weight: 300!important;
+}
+
+.refund-estimate .refund-totals .refund-estimate-total span {
+    text-transform: uppercase;
+     font-size: 16px!important;
+    line-height: 22px!important;
+    letter-spacing: .8px!important;
+    font-family: "neuzeit-grotesk-extra-conden",sans-serif!important;
+    color: #001a33!important;
+}
+
+.refund-estimate .refund-estimate-total p {
+    text-transform: uppercase;
+     font-size: 16px!important;
+    line-height: 22px!important;
+    letter-spacing: .8px!important;
+    font-family: "neuzeit-grotesk-extra-conden",sans-serif!important;
+    color: #001a33!important;
+}
+
+header.rf-header form {
+    display: inline-block;
+    float: right;
+}
+
+.voucher-content h3,
+.voucher-content h2,
+.ir-section p,
+.voucher-content.v-center .code-content p.code-title {
+    color: white!important;
+}
+
+.ir-section p.description {
+    color: #001a33!important;
+}
+
+header.header {
+    text-align: center;
+}
+
+.header .logo {
+    float: none!important;
+}
+
+.voucher-content.v-center .use-instaref-btn {
+    max-width: 250px!important;
+    color: white!important;
+}
+
+.loading-container p {
+    color: inherit;
+    font-size: 11px;
+    text-align: center;
+    text-transform: none;
+    letter-spacing:.03em!important;
+}
+
+#returning-instructions p {
+    margin-bottom: 20px;
+    color: #001a33!important;
+    opacity: 1!important;
+    font-family: 'Neuzeit Grotesk Light'!important;
+    letter-spacing: .4px!important;
+    max-width: 75%;
+}
+
+details i {
+    left: -260px!important;
+}
+
+details[open] i {
+    left: -200px!important;
+}
+
+@media (min-width: 960px) {
+    header.rf-header return-button {
+        margin-right: -235px;
+    }
+}
+
+@media (max-width: 480px) {
+    header.rf-header form,
+    .btn.return-multiproduct-btn {
+        width: 100%;
+        position: relative;
+        z-index: 9999;
+    }
+    .rf-header {
+        position: static!important;
+    }
+}
+.re-exchanges-section { 
+    max-width: 415px!important;
+}
+
+
+.re-exchanges-section .shopper-comments span {
+    display: block;
+    text-align: left!important;
+  color: #000000!important;
+}
+.receipt-card textarea {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 80px!important;
+    line-height: 1.41857;
+    color: #777777;
+    padding: 6px 10px;
+    margin: 0;
+    border-color: #001a33!important;
+    border-radius: 0px!important;
+    resize: none;
+    outline: none;
+  font-family: 'Neuzeit Grotesk Light'!important;
+  letter-spacing: .4px!important;
+}

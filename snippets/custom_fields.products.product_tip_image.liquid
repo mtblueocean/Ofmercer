@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/of-mercer.myshopify.com/products/edit-field/7523
+{% endcomment %}
+{% if product.metafields.custom_fields["product_tip_image"] != blank %}
+  <div class="custom-field custom-field__product-tip-image custom-field__type--image">
+    <h3 class="custom-field--title">Product Tip Image</h3>
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["product_tip_image"] }}
+    </div>
+  </div>
+{% endif %}

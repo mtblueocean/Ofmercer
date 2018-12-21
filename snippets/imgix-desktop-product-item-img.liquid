@@ -1,0 +1,45 @@
+{% comment %}
+Parameters:
+  - imageName
+  - alt
+  - tagType
+  - id (optional; for tagType != 'img')
+{% endcomment %}
+
+
+{% comment %}
+Note that the (min-width: 500px) case here is a bit of a hack, based on observations
+of all the image shrinks...
+{% endcomment %}
+
+
+{% if tagType == 'img' %}
+
+  <img src="{% include 'imgix' src:imageName w:960 auto:'format' %}"
+       srcset="{% include 'imgix' src:imageName w:320  auto:'format' %} 320w,
+               {% include 'imgix' src:imageName w:640  auto:'format' %} 640w,
+               {% include 'imgix' src:imageName w:960  auto:'format' %} 960w,
+               {% include 'imgix' src:imageName w:1280 auto:'format' %} 1280w,
+               {% include 'imgix' src:imageName w:1600 auto:'format' %} 1600w"
+       sizes="(min-width: 960px) 500px, (min-width: 768px) 285px, (min-width: 500px) 400px, 100vw"
+       alt="{{ alt }}">
+
+{% else %}
+
+  <div style="display:none;"
+       id="{{ id }}"
+       data-src="{% include 'imgix' src:imageName w:960 auto:'format' %}"
+       data-srcset="{% include 'imgix' src:imageName w:320  auto:'format' %} 320w,
+                    {% include 'imgix' src:imageName w:640  auto:'format' %} 640w,
+                    {% include 'imgix' src:imageName w:960  auto:'format' %} 960w,
+                    {% include 'imgix' src:imageName w:1280 auto:'format' %} 1280w,
+                    {% include 'imgix' src:imageName w:1600 auto:'format' %} 1600w"
+       data-sizes="(min-width: 960px) 500px, (min-width: 768px) 285px, (min-width: 500px) 400px, 100vw"
+       data-alt="{{ alt }}"
+       data-gallery-href="{% include 'imgix' src:imageName w:1024 auto:'format' %}">
+  </div>
+
+{% endif %}
+
+
+

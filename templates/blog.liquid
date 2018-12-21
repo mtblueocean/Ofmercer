@@ -1,0 +1,161 @@
+<div id="page">
+
+  <div class="twelve columns blog-title">
+    <h1>the om index</h1>
+    <hr style="margin: 20px 0 20px 0; width:100%;"> 
+  </div>
+  
+  {% assign show_title = true %}
+  {% assign blog_header = false %}
+  {% if settings.blog_banner_blog_1 == blog.handle and (settings.blog_banner_tag_1 == "" or current_tags contains settings.blog_banner_tag_1) %}
+	{% assign blog_header = 'blog_banner_1.jpg' %}
+	{% if settings.blog_banner_hide_1 %}{% assign show_title = false %}{% endif %}
+  {% elsif settings.blog_banner_blog_2 == blog.handle and (settings.blog_banner_tag_2 == "" or current_tags contains settings.blog_banner_tag_2) %}
+	{% assign blog_header = 'blog_banner_2.jpg' %}
+  	{% if settings.blog_banner_hide_2 %}{% assign show_title = false %}{% endif %}
+  {% elsif settings.blog_banner_blog_3 == blog.handle and (settings.blog_banner_tag_3 == "" or current_tags contains settings.blog_banner_tag_3) %}
+   	{% assign blog_header = 'blog_banner_3.jpg' %}
+  	{% if settings.blog_banner_hide_3 %}{% assign show_title = false %}{% endif %}
+  {% elsif settings.blog_banner_blog_4 == blog.handle and (settings.blog_banner_tag_4 == "" or current_tags contains settings.blog_banner_tag_4) %}
+  	{% assign blog_header = 'blog_banner_4.jpg' %}
+  	{% if settings.blog_banner_hide_4 %}{% assign show_title = false %}{% endif %}
+  {% endif %}
+  
+  {% if show_title %}
+  	<h1>{{blog.title}} {{ current_tags }}</h1>
+  {% endif %}
+  
+    <div class="clear"></div>
+  
+{% paginate blog.articles by 10 %}
+  
+
+  
+  <div class="three columns"> 
+    <div class="blog-side-panel">
+  <div class="article blog-labels"> 
+    <h4> Recent Posts </h4> 
+    <ul class="no-bullet recentposts">
+      {% for article in blog.articles limit: 5 %}
+      <li><a href="{{article.url}}">{{ article.title }}</a></li>
+      {% endfor %} 
+    </ul>
+  </div>
+<hr style="margin: 15px 0 15px 0; width:90%;"> 
+  <div class="article blog-labels">   
+    <h4> Categories </h4>  
+    <ul id="posts" class="no-bullet recentposts">
+      {% for tag in blog.all_tags %}
+      <li>
+        #<a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+ <hr style="margin: 15px 0 15px 0; width:90%;"> 
+  <div class="article blog-labels"  >
+   <h4> Connect with Us </h4>  
+    <div class="mailing-list-signup" id="">
+      <div class="email" id="mailing-list-signup-mobile">
+        <div style="display:block">
+          <input id='footer-newsletter' type="email" placeholder="Your Email Please" value=""   size="18" required/>
+          <button class="secondary button footer-newsletter-btn">Sign Up</button>     
+        </div>
+      </div>
+    </div>
+    <div  style="padding-top:10px!important"  id="social-footer-icons">
+      <a href="{{ settings.facebook_url }}" style="margin-left:0px;" class="social-fb" >
+        <img alt="Facebook icon" src="{{ 'Facebook-1.png' | asset_url }}">
+      </a>
+      <a href="http://www.twitter.com/{{ settings.twittername }}" class="social-twitter">
+        <img alt="Twitter Icon" src="{{ 'Twitter-1.png' | asset_url }}">
+      </a>
+      <a href="{{ settings.pinterest_url }}" class="social-pinterest">
+        <img alt="Pinterest icon" src="{{ 'Pinterest-1.png' | asset_url }}">
+      </a>
+      <a href="{{ settings.instagram_url }}" class="social-instagram">
+        <img alt="Instagram icon" src="{{ 'Instagram-1.png' | asset_url }}">
+      </a>
+      <a href='https://plus.google.com/+Ofmercerny' rel="publisher" class="social-google-plus">
+        <img alt="Googleplus icon" src="{{ 'GooglePlus-1.png' | asset_url }}">
+      </a>
+    </div>
+  </div>
+
+  
+
+    
+    
+      </div>
+     </div>
+  
+  
+  <div  class="nine columns" >
+    {% for article in blog.articles  %}
+    <div class="blog-titles">
+    <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+     
+    <p>{{ article.published_at | date: "%m.%d.%y"" }}<p>
+    <p>{{ article.tags | join: " | " }}</p>
+    <hr style="margin: 10px auto 15px auto; width: 450px; max-width: 45%;">
+     </div>
+    <div class="blog-articles-excerpt">          
+      {% if article.excerpt != blank %}
+      {{ article.excerpt }}
+            {% else %}    
+          {{ article.content | truncatewords: 25 | strip_html }}
+            {% endif %}
+            <p class="blog-articles-excerpt" style="font-style:italic;"><a href="{{ article.url }}">Read Full Article </a></p>
+    </div>
+    
+    <div class="article-headline blog-articles">
+      {% if blog.comments_enabled? %}
+      <small>
+        <i class=" icon-comments"></i>
+        <a href="{{ article.comment_post_url }}">
+          Comments: {{ article.comments_count }}
+        </a>
+      </small>
+      {% endif %}
+     
+    </div>
+    {% endfor %}
+  
+  </div>
+  
+    
+  
+  
+
+  
+  <div id="" class="twelve columns">
+        <div class="left">
+        </div>
+        <div class="right">
+            {% if paginate.pages > 1 %}
+                {% if paginate.previous %}  {{ 'Prev' | link_to: paginate.previous.url }} | {% endif %} Page {{ paginate.current_page }} of {{ paginate.pages }} {% if paginate.next %} | {{ 'Next' | link_to: paginate.next.url }}{% endif %}
+            {% endif %}
+        </div>
+    </div>
+  
+  
+  
+  {% endpaginate %}
+ 
+  
+</div>
+    
+
+
+
+
+
+
+<!-- Please call pinit.js only once per page -->
+<script type="text/javascript" async  data-pin-color="white" data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ blog.title | escape }}"), "Index");
+  }); 
+</script>

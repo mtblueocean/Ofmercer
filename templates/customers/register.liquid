@@ -1,0 +1,40 @@
+<div class="account-wrap">
+	
+	  <div class="login-col vert-y-wrap">
+		<div class="unvert-y login-box" id="customer-create-account">
+	    <div class="login-box-header">
+	      <h2>register</h2>
+	    </div>
+	    {% form 'create_customer' %}
+	      {{ form.errors | default_errors }}
+<div class='oxi-social-login'></div>
+				<div class="field-wrap">
+		      <input type="text" name="customer[first_name]" id="FirstName" placeholder="first name" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+				</div>
+				<div class="field-wrap">
+		      <input type="text" name="customer[last_name]" id="LastName" placeholder="last name" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+				</div>
+				<div class="field-wrap">
+		      <input type="email" name="customer[email]" id="Email" placeholder="email" {% if form.errors contains "email" %} class="error"{% elsif form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+				</div>
+				<div class="field-wrap no-marg">
+		      <input type="password" name="customer[password]" id="CreatePassword" placeholder="password" {% if form.errors contains "password" %} class="error"{% endif %}>
+				</div>
+				<p class="account-note">
+					<input type="checkbox" name="account-policy" id="account-policy" />
+					<label for="account-policy">I understand that my information will be used in accordance with the <a href="{{ shop.url }}/pages/privacy-policy">privacy policy</a></label>
+				</p>
+				<div class="field-wrap btn-wrap no-marg">
+	        <input type="submit" value="submit" class="btn">
+				</div>
+	    {% endform %}
+		</div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page("Register");
+  });
+</script>

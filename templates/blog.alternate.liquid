@@ -1,0 +1,77 @@
+<div class="page" id="blog">
+   
+	
+	{% paginate blog.articles by 10 %}
+	
+	<div class="wrapper">
+		
+		<div class="article-feed">
+         
+		
+			{% for article in blog.articles | limit: 10 %}
+				{% assign metafields = article.metafields.custom_fields %}
+				{% assign blog_tag = article.tags[0] %}
+				{% assign post_type = null %}
+				
+				{% for tag in article.tags %}
+				  {% if tag contains 'quote' %}
+					  {% assign post_type = 'quote' %}
+				  {% elsif tag contains 'instagram' %}
+					  {% assign post_type = 'instagram' %}
+					{% else %}
+						{% assign post_type = 'standard' %}
+				  {% endif %}
+				{% endfor %}
+				
+				{% if post_type == 'quote' %}
+					<article class="post-quote">
+						<h1>{{ article.title }}</h1>
+					</article>
+				{% elsif post_type == 'instagram' %}
+					<article class="post-instagram">
+						{% if article.image %}{{ article | img_url: 'grande' | img_tag }}{% endif %}
+						{{ article.content }}
+					</article>
+				{% else %}
+					<article class="standard">
+						<header>
+							{% if article.image.size > 0 %}
+								<a href="{{ article.url }}">
+									<div class="anim-img">
+										<img src="{{ article | img_url: '1024x1024' }}" />
+									</div>
+								</a>
+							{% endif %}
+							<div class="msg-group">
+								<h4>{{ blog_tag | replace: '-', ' ' }}</h4>
+               	<h1 class="blog-header"><a href="{{ article.url }}">{{ article.title }}</a></h1>
+								 {{ metafields['article_subhead'] }}
+								<a href="{{ article.url }}" class="btn">Read Story</a>
+							</div>
+						</header>
+					</article>
+				{% endif %}		
+			{% endfor %}
+						
+		</div>
+
+	{% if paginate.pages > 1 and paginate.next %}
+		<div class="load-more-wrap">
+			<div class="load-more-posts btn" data-maxpage="{{ paginate.pages }}">More Stories</div>
+		</div>
+  {% endif %}    			
+		
+	</div>
+	
+	{% endpaginate %}
+	
+</div>
+
+<!-- Please call pinit.js only once per page -->
+<script type="text/javascript" async  data-pin-color="white" data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ blog.title | escape }}"), "Index");
+  }); 
+</script>

@@ -1,0 +1,224 @@
+{% assign metafields = ['collection'].metafields.custom_fields %}
+<div id="collection-header">
+  {% if collection.image %}
+    {% if metafields['collection_mobile_image'] != blank %}
+      <div class="mobile-show">
+      {{ metafields["collection_mobile_image"] }}
+      </div>
+      <div class="mobile-hide">
+        <img src="{{ collection.image.src | collection_img_url: '2048x2048' | split:'?' | first }}" alt="{{ collection.image.alt }}">
+      </div>
+    {% else %}
+      <img src="{{ collection.image.src | collection_img_url: '2048x2048' | split:'?' | first }}" alt="{{ collection.image.alt }}">
+    {% endif %}
+  {% endif %}
+
+  <div class="msg-group">
+    <h4>{{ metafields['collection_tagline'] }}</h4>
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description %}
+      <p class="shortform">{{ collection.description }}</p>
+    {% endif %}
+  </div>
+  <div class="triangle right"></div>
+</div>
+
+<div class="wrapper" style="position: relative;">
+  
+  {% include 'sort-accordian' %}
+
+  {% paginate collection.products by 12 %}
+    <div id="collection-grid" class="AjaxinateLoop"> 
+      {% for product in collection.products %}
+         
+          
+        {% if collection.all_products_count > 3 %}
+          {% if forloop.index == 5 %}
+            
+            {% assign large_image = metafields['promo_1_image'] %}
+            {% assign image_list_hover = metafields['promo_1_image_hover'] %}
+            {% if large_image.size > 0 %}
+            <div class="collection-item ad new-cf">
+              <div class="collection-image">
+                {% if metafields['promo_1_link'] %}         
+                  <a href="{{ metafields['promo_1_link'] }}" >  
+                	{{ large_image }}
+
+                    {% if metafields['promo_1_text'] %}
+                      <h3>{{ metafields['promo_1_text'] }}</h3>
+                    {% endif %}
+                  </a>
+                {% else %}
+				  {{ large_image }}
+                  {% if metafields['promo_1_text'] %}
+                    <h2>{{ metafields['promo_1_text'] }}</h2>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+        
+        {% if collection.all_products_count > 10 %}
+          {% if forloop.index == 11 %}
+          {% assign large_image_2 = metafields['promo_2_image'] %}
+          {% assign image_list_hover = metafields['promo_2_image_hover'] %}
+            {% if large_image_2.size > 0 %}
+              <div class="collection-item ad">
+                <div class="collection-image">
+                  {% if metafields['promo_2_link'] %}             
+                    <a href="{{ metafields['promo_2_link'] }}" >
+                  	  {{ large_image_2 }}
+                      {% if metafields['promo_2_text'] %}
+                        <h3>{{ metafields['promo_2_text'] }}</h3>
+                      {% endif %}
+                    </a>
+                  {% else %}
+                    {{ large_image_2 }}
+                    {% if metafields['promo_2_text'] %}
+                      <h3>{{ metafields['promo_2_text'] }}</h3>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      
+        <div class="collection-item">
+          <div class="collection-image">
+            {% if product.images.size > 1 %}      
+              <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">                   
+                {% assign productImage1 = product.images[0] | img_url:'master' %}
+                {% assign productImage2 = product.images[2] | img_url:'master' %}
+                <img class="img1" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
+                  srcset="
+                  {% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,
+                  {% include 'imgix' src:productImage1 w:640 auto:'format' %} 640w,
+                  {% include 'imgix' src:productImage1 w:960 auto:'format' %} 960w,
+                  {% include 'imgix' src:productImage1 w:1280 auto:'format' %} 1280w,
+                  {% include 'imgix' src:productImage1 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+                <img class="img2" src="{% include 'imgix' src:productImage2 w:960 auto:'format' %}"
+                  srcset="
+                  {% include 'imgix' src:productImage2 w:320 auto:'format' %} 320w,
+                  {% include 'imgix' src:productImage2 w:640 auto:'format' %} 640w,
+                  {% include 'imgix' src:productImage2 w:960 auto:'format' %} 960w,
+                  {% include 'imgix' src:productImage2 w:1280 auto:'format' %} 1280w,
+                  {% include 'imgix' src:productImage2 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+             </a> 
+            {% else %}       
+              <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+                {% assign productImage1 = product.images[0] | img_url:'master' %}
+                <img class="img1 scale-with-grid" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
+                    srcset="
+                    {% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,
+                    {% include 'imgix' src:productImage1 w:640 auto:'format' %} 640w,
+                    {% include 'imgix' src:productImage1 w:960 auto:'format' %} 960w,
+                    {% include 'imgix' src:productImage1 w:1280 auto:'format' %} 1280w,
+                    {% include 'imgix' src:productImage1 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+              </a>
+            {% endif %}   
+          </div>
+          <div class="collection-item-detail">     
+            <a href="{{ product.url | within: collection }}">
+              <h6>{{ product.title | truncate: 70 }}
+                <span>{% include 'swatchesnosize2' %}</span> 
+                <span class="right" >
+                  {% if product.title == 'Of Mercer Gift Card' %}
+                    from {{ product.price_min | money }} - {{ product.price_max | money }} 
+                  {% else %}
+                    {{ product.price | money }} {% if product.price < product.compare_at_price %} was <span class="red">{{ product.compare_at_price | money }}</span>{% endif %}
+                  {% endif %}
+                  </span>
+                </h6>
+            </a>
+          </div>
+        </div>
+      {% endfor %}      
+    </div>
+  
+  <div id="bottom-paginate-bar" class="twelve columns">
+     <div class="AjaxinatePagination">
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}">Loading More</a>
+      {% endif %}
+    </div> 
+    
+<!--     <div id="bottom-paginate-bar" class="twelve columns">
+      {% if paginate.pages > 1 %}
+      <ul class="pagination">
+        {% if paginate.previous %}
+        <li class="arrow">{{ '&laquo;' | link_to: paginate.previous.url }}</li>
+        {% endif %}
+         {% for part in paginate.parts %}
+          {% if part.is_link %}
+        <li>{{ part.title | link_to: part.url }}</li>
+        {% elsif part.title == '&hellip;' %}
+        <li>{{ part.title }}</li>
+        {% else %}
+        <li class="current">{{ part.title | link_to: part.url }}</li>
+        {% endif %}
+        {% endfor %}
+        {% if paginate.next %}
+        <li class="arrow">{{ '&raquo;' | link_to: paginate.next.url }}</li>
+        {% endif %}
+        <li><a href="/collections/{{ collection.handle }}?view=all" style="margin-left: 10px">View All</a></li>
+      </ul>
+      {% endif %}  
+    </div> -->
+    
+  {% endpaginate %}
+
+</div>
+
+<script type="text/javascript">
+
+$(function() {
+  
+  var $ad = $('#collection-grid .collection-item.ad'),
+      $c_header = $('#collection-header'),
+      $msg_group = $('.msg-group'),
+      msg_height;
+  
+  //<![CDATA[ 
+/*
+    $('#linklists a').each(function() {
+      if ($(this).attr('href')  ===  window.location.pathname) {
+        $(this).addClass('current');
+      }
+    });
+*/
+  //]]>
+
+  // analytics.page(unescape("{{ collection.title | escape }} Collection"), "Index");
+    
+  if($('#collection-grid .collection-item').hasClass('ad')){
+    $ad.eq(0).css({'margin-right': 0}).after('<div class="clear"></div>');
+    $ad.eq(1).next('.collection-item').css({'margin-right': 0}).nextAll('.collection-item').wrapAll('<div class="collection-gridy"></div>');
+  }
+  
+  // Color filter columns
+  var divs = $('.color-filter').find('.col ul li');
+  for(var i = 0; i < divs.length; i+=5) {
+    divs.slice(i, i+5).wrapAll("<li class='new'><ul></ul></li>");
+  }
+  
+  function collectionHeader(){
+    msg_height = $msg_group.height();
+    $c_header.css({
+      'min-height': msg_height
+    });
+  }
+  
+  collectionHeader();
+  
+  $(window).resize(function(){
+    collectionHeader();
+  });
+  
+}); 
+</script>

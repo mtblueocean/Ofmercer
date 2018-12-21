@@ -1,0 +1,128 @@
+<div id="our-story" class="page">
+
+	<div class="hero-image" style="background-image:url({{ 'our_story_hero.jpg' | asset_url }});"></div>
+	
+	{% if settings.our_story_headline.size > 0 or settings.our_story_copy.size > 0 %}
+	<section class="copy-block about-intro">
+		<div class="wrapper slim-wrapper">
+			{% if settings.our_story_headline.size > 0 %}
+				<h3>{{ settings.our_story_headline }}</h3>
+			{% endif %}
+			{% if settings.our_story_copy.size > 0 %}
+				<p>{{ settings.our_story_copy }}</p>
+			{% endif %}
+		</div>
+	</section>
+	{% endif %}
+	
+	<div class="wrapper">
+		<section id="our-story-section">
+			{% assign myArray = "story_slide1|story_slide2|story_slide3|story_slide4" | split: "|" %}
+			<div class="slick" data-slick='{
+				"slidesToShow": 1,
+				"slidesToScroll": 1,
+				"dots": true,
+				"arrows": true,
+				"draggable": false,
+					"responsive": [
+					{
+						"breakpoint": 782,
+						"settings": {
+							"draggable": true,
+							"arrows": false
+						}
+					}
+				]				
+			}'>
+				{% for item in myArray %}
+				  {% assign enable = item | append: '_enable' %}
+				  {% assign pic = item | append: '.jpg' %}
+				  {% assign headline = item | append: '_headline' %}
+				  {% assign copy = item | append: '_copy' %}
+				  {% if settings[enable] %}
+					  <div class="story-slide">
+							<div class="story-pic story-col">
+								<img src="{{ pic | asset_url }}" alt="" />
+							</div>
+							<div class="story-detail story-col">
+								<div class="story-vert-y">
+									<h3>{{ settings[headline] }}</h3>
+									<p>{{ settings[copy] }}</p>
+								</div>
+							</div>
+					  </div>
+				  {% endif %}
+				{% endfor %}		
+			</div>	
+		</section>
+      </div>
+		
+		<section id="seen-in">
+            <div class="triangle right"></div>
+            <div class="triangle left"></div>
+          	<div class="wrapper">
+              <h3>As Seen In...</h3>
+              {% assign myArray = "seen1|seen2|seen3|seen4|seen5|seen6" | split: "|" %}
+              <div class="slick" data-slick='{
+                  "slidesToShow": 4,
+                  "slidesToScroll": 4,
+                  "dots": false,
+                  "arrows": true,
+                  "responsive": [
+                      {
+                          "breakpoint": 782,
+                          "settings": {
+                              "slidesToShow": 2,
+                              "slidesToScroll": 2,
+                              "arrows": true
+                          }
+                      }
+                  ]
+              }'>
+
+                  {% for item in myArray %}
+                    {% assign enabley = item | append: '_enable' %}
+                    {% assign picy = item | append: '.jpg' %}
+                    {% assign alty = item | append: '_alt' %}
+                    {% assign linky = item | append: '_link' %}
+                    {% if settings[enabley] %}
+                    <div>
+                        {% if settings[linky].size > 0 %}
+                            <a href="{{ settings[linky] }}" target="_blank">
+                                <img src="{{ picy | asset_url }}" alt="{{ settings[alty] }}" />
+                            </a>
+                        {% else %}
+                            <img src="{{ picy | asset_url }}" alt="{{ settings[alty] }}" />
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% endfor%}
+				</div>
+          	</div>
+		</section>
+	
+	<section id="story-img-banner" style="background-image:url({{ 'story_block.jpg' | asset_img_url: '2048x2048' }});">
+		<div class="wrapper narrow-wrapper">
+          	<div class="left">
+              {% if settings.story_message_headline.size > 0 %}
+                  <h3>{{ settings.story_message_headline }}</h3>
+              {% endif %}
+              {% if settings.story_message.size > 0 %}
+                  <p class="small">{{ settings.story_message }}</p>
+              {% else %}
+                  <p class="small">Your nine-to-five (and then some) wardrobe starts here.</p>
+              {% endif %}
+              {% if settings.story_message_link.size > 0%}
+                  <a class="btn" href="{{ settings.story_message_link }}">{{ settings.story_message_cta }}</a>
+              {% endif %}
+			</div>
+      	</div>
+	</section>	
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+</script>

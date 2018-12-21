@@ -1,0 +1,84 @@
+<footer id="footer">
+  <div class="footer-wrapper">
+	  
+	  {% if settings.footer_headline.size > 0 %}
+		  <h2>{{ settings.footer_headline }}</h2>
+	  {% endif %}
+	  
+	<div class="submit-msg" id="footer-newsletter-2">
+    	<div>
+			<form id="email_signup" class="klaviyo_standard_embed_ztWyX7" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+            	<input type="hidden" name="g" value="ztWyX7">
+			    <div id="">
+				    <div class="field-group">
+							<!-- input type="email" value="" name="EMAIL" class="" id="footer-user-email" placeholder="Your Email Address" required -->
+                      <input type="email" value="" name="email" id="k_id_email" placeholder="Your Email Address" required />
+				    </div>
+				    <div class="field-group">
+					    <!-- input type="submit" value="I'm in" name="subscribe" class="button btn secondary" -->
+                      <button type="submit" class="klaviyo_submit_button btn footer-newsletter-2-ga">I'm in</button>
+				    </div>
+			    </div>
+			</form>
+      </div>
+		<div class="klaviyo_messages">
+          <div class="footer_success_message" style="display:none;">Thank you for joining us!</div>
+          <div class="error_message" style="display:none;"></div>
+        </div>			  
+	  </div>
+      <script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+      <script type="text/javascript">
+        KlaviyoSubscribe.attachToForms('#email_signup', {
+          hide_form_on_success: true,
+          custom_success_message: true,
+          success: function ($form) {
+            $('.footer_success_message').css('display', 'block');
+          },
+          extra_properties: {
+   		  	$source: 'Footer Signup'
+    	  }
+        });
+      </script>
+	  
+		<ul class="social-links">
+		  {% if settings.show_twitter %}
+			  <li><a href="https://twitter.com/{{ settings.twittername }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+		  {% endif %}
+		  {% if settings.show_facebook %}
+			  <li><a href="{{ settings.facebook_url }}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+		  {% endif %}	
+		  {% if settings.show_pinterest %}
+			  <li><a href="{{ settings.pinterest_url }}"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+		  {% endif %}	
+		  {% if settings.show_tumblr %}
+			  <li><a href="{{ settings.tumblr_url }}"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+		  {% endif %}				  				  			  
+		  {% if settings.show_flickr %}
+			  <li><a href="{{ settings.flickr_url }}"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+		  {% endif %}				  				  			  
+		  {% if settings.show_youtube %}
+			  <li><a href="{{ settings.youtube_url }}"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+		  {% endif %}				  				  			  
+		  {% if settings.show_googleplus %}
+			  <li><a href="{{ settings.googleplus_url }}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+		  {% endif %}				  				  			  
+		  {% if settings.show_vimeo %}
+			  <li><a href="{{ settings.vimeo_url }}"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+		  {% endif %}	
+		  {% if settings.show_instagram %}
+			  <li><a href="{{ settings.instagram_url }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+		  {% endif %}				  				  			  
+    </ul>
+	    
+  </div>
+</footer>
+
+<div class="footer-menu">
+  <div class="wrapper">
+    <ul>
+    {% for link in linklists['footer'].links %}
+      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>

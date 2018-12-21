@@ -1,0 +1,133 @@
+<div id="mobile-menu" class="mobile-only panel">
+	<div class="mobile-menu-trigger">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<div class="mobile-inner">
+      <div class="mobile-menu-close">
+        <p>&#x2715</p>
+      </div>
+	<div class="customnav" id="shop-panel">
+			
+			 
+			
+			<div class="shop-list product-list">
+				<span>/ Product</span>
+				{% for l in linklists.shop-by-product.links %}
+				{% assign pic = collections[l.handle].image %}
+				<a href="{{ l.url}}">{{ l.title }}{% if pic.size > 0 %}<img style="display:none;" src="{{ collections[l.handle].image | img_url: 'medium' | split:'?' | first }}" />{% endif %}</a>
+				{% endfor %}
+			</div>
+			
+			<div class="shop-list collection-list">
+				<span>/ Collection</span>
+				{% for l in linklists.shop-by-collection.links %}
+				{% assign pic = collections[l.handle].image %}
+				<a href="{{ l.url}}">{{ l.title }}{% if pic.size > 0 %}<img style="display:none;" src="{{ collections[l.handle].image | img_url: 'medium' | split:'?' | first }}" />{% endif %}</a>
+				{% endfor %}
+			</div>
+		</div>
+      <div class="mobile-menu__divider"></div>
+		<ul> 
+		  {% for link in linklists.site-nav-left.links %}
+			  <li {% if link.handle == 'shop' %}style="display:none;"{% endif %}>
+				  <a href="{{ link.url }}" {% if link.handle == 'shop' %}style="display:none;"{% endif %}>{{ link.title }}</a>
+			  </li>
+		  {% endfor %}
+		  {% for link in linklists.site-nav-right.links %}
+			  <li>
+				  <a href="{{ link.url }}" {% if link.handle == 'shop' %}class="shop-trigger"{% endif %}>{{ link.title }}</a>
+				</li>	
+		  {% endfor %}
+		</ul>
+
+		<div class="mobile-menu__divider"></div>
+
+		<ul> 
+		  {% for link in linklists.footer.links %}
+			  <li>
+				  <a href="{{ link.url }}" {% if link.handle == 'shop' %}class="shop-trigger"{% endif %}>{{ link.title }}</a>
+			  </li>
+		  {% endfor %}
+
+		</ul>
+
+		
+		<div class="mobile-utilities">
+			<ul>
+				<li><a href="#wisepops"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+				{% if shop.customer_accounts_enabled %}
+	        {% if customer %}
+	          <li class="logout"><a href="{{ shop.url }}/account/logout"><i class="fa fa-user-times" aria-hidden="true"></i></li>
+	        {% else %}
+	          <li class="login"><a href="{{ shop.url }}/account/login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+	        {% endif %}
+	      {% endif %}				
+				<li>
+	        <i class="fa fa-search mobile-search-trigger" aria-hidden="true"></i>
+					<form class="search" action="/search">
+						<input type="hidden" name="type" value="product" />
+					  <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}"  />
+					  <i class="fa fa-search fake-submit" aria-hidden="true"></i>
+					  <input type="submit" value="" />
+					</form>	
+				</li>
+			</ul>
+		</div>
+		
+		<div class="panel menu-inner-panel" id="shop-panel">
+			
+			<div class="back-to-panel back-to-shop"><span></span> Shop</div>
+			
+			<div class="shop-list product-list">
+				<span>/ Product</span>
+				{% for l in linklists.shop-by-product.links %}
+				{% assign pic = collections[l.handle].image %}
+				<a href="{{ l.url}}">{{ l.title }}{% if pic.size > 0 %}<img style="display:none;" src="{{ collections[l.handle].image | img_url: 'medium' | split:'?' | first }}" />{% endif %}</a>
+				{% endfor %}
+			</div>
+			
+			<div class="shop-list collection-list">
+				<span>/ Collection</span>
+				{% for l in linklists.shop-by-collection.links %}
+				{% assign pic = collections[l.handle].image %}
+				<a href="{{ l.url}}">{{ l.title }}{% if pic.size > 0 %}<img style="display:none;" src="{{ collections[l.handle].image | img_url: 'medium' | split:'?' | first }}" />{% endif %}</a>
+				{% endfor %}
+			</div>
+		</div>
+		
+		<div class="panel menu-inner-panel" id="newsletter-panel">
+			
+			<div class="back-to-panel back-to-main"><span></span> <i class="fa fa-envelope mobile-newsletter-trigger" aria-hidden="true"></i></div>
+			
+      <div class="mailing-list-popup mlp-mobile"> 
+        {% if settings.newsletter_popup_headline.size > 0 %}
+          <h2>{{ settings.newsletter_popup_headline }}</h2>
+        {% endif %}
+        {% if settings.newsletter_popup_copy.size > 0 %}
+          <p>{{ settings.newsletter_popup_copy }}</p>
+        {% endif%}
+      </div>
+      
+        <div class="submit-msg" id="panel-newsletter-mobile">
+          <div>
+		        <form>
+		          <div class="email-mobile">
+		            <div style="display:block">
+		              <input id='signupbox-mobile' type="email" placeholder="Your Email Address" value=""size="20" required/>
+		              <input type="submit" class="btn secondary button ml-signup-btn" value="join" />
+		            </div>
+		          </div>
+		        </form>
+          </div>
+          <div>
+					  <div class="success"></div>
+				  </div>
+        </div>
+			
+		</div>
+	
+	</div>
+</div>
+

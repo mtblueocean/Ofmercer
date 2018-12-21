@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/of-mercer.myshopify.com/collections/edit-field/7653
+{% endcomment %}
+{% if collection.metafields.custom_fields["promo_2_link"] != blank %}
+  <div class="custom-field custom-field__promo-2-link custom-field__type--text">
+    <h3 class="custom-field--title">Promo 2 Link</h3>
+    <div class="custom-field--value">
+      {{ collection.metafields.custom_fields["promo_2_link"] }}
+    </div>
+  </div>
+{% endif %}

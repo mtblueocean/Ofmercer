@@ -1,0 +1,26 @@
+<div class="basic-page">
+	
+	<div class="wrapper slim-wrapper">
+		
+		<!--googleoff: snippet-->
+		<div class="page-header">
+			<h2>{{ page.title }}</h2>
+		</div>
+		<!--googleon: snippet-->
+		
+		<div class="rte">
+			{{ page.content }}
+         
+		</div>
+	
+ <img src="{{ 'Homepage-SmallBanner-Dresses-2.jpg' | asset_url }}"/>
+	  
+	</div>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+</script>

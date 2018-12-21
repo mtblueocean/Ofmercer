@@ -1,0 +1,640 @@
+<div id="richsnippet" style="display:none;visibility:hidden;">
+  <div itemscope itemtype="http://schema.org/Product">
+    <span itemprop="brand">{{ product.vendor }}</span>
+    <span itemprop="name">{{ product.title | escape }}</span>
+    <span itemprop="category" content="{{ product.type }}">{{ product.type }}</span>   
+  </div>
+</div>
+<!-- end richsnippet -->
+
+<script>
+fbq('track', 'ViewContent', {
+value: {{ product.price | money_without_currency }},
+currency: 'USD',
+content_type: 'product',
+content_ids: ['{{product.id}}']
+});
+</script>
+
+
+<div class="wrapper">
+	<div >
+       
+	  <div id="content-product">
+      <div id="product-main-photos">
+        {% assign featured_image = product.images[1] | default: product.featured_image | img_url: 'master' %}
+        {% assign second_image = product.images[2] | img_url: '1024x1024' %}
+        
+        <div class="gallery">
+	        <img id="zoomer" src="{{ product.images[1] | default: product.featured_image | img_url: 'master' }}" data-zoom-image="{{ product.images[1] | default: product.featured_image | img_url: 'master' }}"/>
+        </div>
+        
+        <div class="prod-vert-y">
+	        {% include 'imgix-desktop-product-item-img', tagType: 'img', imageName: second_image, alt: (image.alt | escape) %}
+        </div>
+      </div><!-- #product-photo-container -->		  
+	
+	    <div id="product-description">
+		    <div class="wrapper narrow-wrapper">
+        {% assign product_meta_info = ['product'].metafields.custom_fields %}
+			    <h3>{{product_meta_info['product_tagline']}}</h3>
+			    {% if product.description.size > 0 %}
+              		<p>{{ product.description }}</p>
+			    {% endif %}
+		    </div>
+	    </div>
+	    
+	    <div id="product-photos">
+        {% if product.tags contains 'product-image-6' %}      
+        {% for image in product.images | offset:3 | limit:2 %}  
+          <img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"/>
+        {% endfor %}
+          {% else %}
+          {% for image in product.images | offset:3 | limit:4 %}  
+          <img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"/>
+        {% endfor %}
+          {% endif %}
+	    </div>
+	  </div>
+	</div>
+
+	{% assign product_meta_info = ['product'].metafields.custom_fields %}
+    
+  	<div class="product-meta wrapper">
+      {% if product_meta_info['product_fit'].size > 0 %}
+      <div class="col-1-3 product-fit">
+        {% assign product_fit = product_meta_info['product_fit'] %}
+        <h6>The Fit</h6>
+        {{ product_fit }}
+        {% if product_meta_info['product_fit_image'].size > 0 %}
+        	{% assign product_fit_image = product_meta_info['product_fit_image'] %}
+        	{{ product_fit_image }}
+        {%endif %}
+        
+      </div>
+      {% endif %}
+
+      {% if product_meta_info['product_fabric'].size > 0 %}
+      <div class="col-1-3 product-fabric">
+        {% assign product_fabric = product_meta_info['product_fabric'] %}
+        <h6>Fabric &amp; Care</h6>
+        {{ product_fabric }}
+      </div>
+      {% endif %}
+
+      {% if product_meta_info['product_facts'].size > 0 %}
+      <div class="col-1-3 product-facts">
+        {% assign product_facts = product_meta_info['product_facts'] %}
+        <h6>Special Facts</h6>
+        {{ product_facts }}
+      </div>
+      {% endif %}
+  	</div>
+
+</div>
+
+	
+<div id="product-controls-wrap">
+	<div id="product-controls">
+		<div class="product-controls-wrap">
+			<div class="bar-row title-price">
+				<div>
+		       		<p style="margin-right:10px!important"class="small" itemprop="offers" itemscope itemtype="http://schema.org/Offer" id="product-price">
+						<span><meta itemprop="priceCurrency" content="USD" /></span>
+						<span itemprop="price" content=" {{ product.price }}"></span>
+                      {% if product.type == "Gift Card" %}
+                      $50+
+                       {% else %}
+                      {{ product.price | money }} {% if product.price < product.compare_at_price %} <span class="red" style="text-decoration: line-through">{{ product.compare_at_price | money }}</span>{% endif %}
+                         {% endif %}
+		        	</p>
+                  	<h5 itemprop="name">{{ product.title | escape }}</h5>
+		      	</div>
+		        <span id="size-guide-trigger-2" class="mobile-only">size guide</span>		      
+		    </div>
+		    <div class="bar-row product-form">
+		      {% include 'product-form2' %}
+		    </div>
+		</div>      
+	</div>	
+</div>
+
+
+
+
+
+<div class="wrapper product-extra-container">
+  
+	{% if product_meta_info['product_tip_image'] %}
+	<div class="product-extra wrapper" id="founders-tip">
+      
+      {% assign product_tip_image = product_meta_info['product_tip_image'] %}
+      {{ product_tip_image }}
+      
+		<div>
+        	{% assign product_tip_title = product_meta_info['product_tip_link'] %}
+      		<h3>{{ product_tip_title }} </h3>
+      {{product_meta_info['product_tip']}}
+		</div>		
+	</div>
+	{% endif %}
+  
+	{% if product_meta_info['product_seen_on_image'] %}
+	<div class="product-extra wrapper" id="may-have-seen">
+		
+      	{% assign product_seen_on_image = product_meta_info['product_seen_on_image'] %}
+      	{{ product_seen_on_image }}
+		
+		<div>
+        	<h3>{{ product_meta_info['product_seen_on_link'] }} </h3>
+			{{product_meta_info['product_seen_on']}}
+		</div>		
+	</div>
+	{% endif %}
+	
+</div>
+
+<div class="wrapper">	
+	<div id="recent">
+	  {% include 'directed-edge' %}
+	</div>
+</div>
+
+
+{% if settings.enable_sizeguide %}
+<div style='display:none'>
+	<div id="sizeguide">
+		{% assign product_meta_info = ['product'].metafields.custom_fields %}
+		{% if product_meta_info['size_guide'] %}
+      <h5>{{ product.title | escape }} Size Guide</h5>
+      <p> {{product_meta_info['size_guide_text']}}</p>
+      		{{product_meta_info['size_guide']}}
+       <p> {{product_meta_info['size_guide_text_2']}}</p>
+		{% else %}
+			<img src="{{ 'size_guide.jpg' | asset_url }}" />
+		{% endif %}
+	</div>
+</div>
+{% endif %}
+
+
+
+
+<!-- {% include 'preorder-me-widget'%} -->
+
+<!-- Please call pinit.js only once per page -->
+<script type="text/javascript" async  data-pin-color="white" data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
+
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<script>
+	
+	var $win = $(window),
+			state,winWidth;
+	
+	var isMobile = {
+	  Android: function() {
+	      return navigator.userAgent.match(/Android/i);
+	  },
+	  BlackBerry: function() {
+	      return navigator.userAgent.match(/BlackBerry/i);
+	  },
+	  iOS: function() {
+	      // return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+          return null;
+	  },
+	  Opera: function() {
+	      return navigator.userAgent.match(/Opera Mini/i);
+	  },
+	  Windows: function() {
+	      return navigator.userAgent.match(/IEMobile/i);
+	  },
+	  any: function() {
+	      return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+	  }
+	};		
+	
+	(function($){
+		
+	  {% assign look_for_image_match = false %}
+	  {% assign option_index = 0 %}
+	  {% for option in product.options %}
+	  {% assign downcased_option = option | downcase %}
+	  {% if downcased_option contains 'length' or downcased_option contains 'colour' or downcased_option contains 'style' %}
+	  {% assign look_for_image_match = true %}
+	  {% assign option_index = forloop.index0 %}
+	  {% endif %}
+	  {% endfor %}
+	  Shopify.doNotTriggerClickOnThumb = false;
+	  
+		function cartAjax() {
+			var $mc_footer = $('.mc-footer');
+			
+		  $('#add').bind('click', function(e) {
+		    e.preventDefault();
+		    $('.note.errors').remove();
+		    var $addToCartBtn = $(this),
+		        $addToCartForm = $(this).closest('form'),
+		        $addToCartBtnText = $(this).find('span');
+		    if ($addToCartForm.length) {
+		      $addToCartBtn
+		        .attr('data-add-to-cart', $addToCartBtnText.text())
+		        .prop('disabled', true)
+		        .addClass('disabled')
+		        .addClass('btn--loading');
+		      $.ajax({
+		        url: '/cart/add.js',
+		        dataType: 'json',
+		        type: 'post',
+		        data: $addToCartForm.serialize(),
+		        success: function(lineItem) {
+		          $.getJSON('/cart.js', function(cart) {
+		            total_qty = cart.item_count;
+		            $('.cart_count').html(total_qty);
+		            var pricer = lineItem.price.toString();
+		            var pricey = pricer.substring(0, pricer.length - 2);
+		            var cart_total = cart.total_price;
+		            var ct_string = cart_total.toString();
+		            ct_string = ct_string.slice(0, -2);
+		            $('.mc-body > span').remove();
+		            $mc_footer.find('.btn').remove()
+		            $('.mc-body').removeClass('no-items').prepend('<div class="mini-cart-item"><div class="mci-img"><a href="'+lineItem.url+'"><img src="'+lineItem.image+'"></a></div><div class="mci-deets"><a href="/cart/change?line=1&quantity=0" class="remove-item" rel="'+lineItem.id+'"></a><h3><a href="'+lineItem.url+'">'+lineItem.product_title+'</a></h3><span class="price">$'+pricey+'</span><ul><li>'+lineItem.variant_options[0]+'</li><li>'+lineItem.variant_options[1]+'</li><li>QTY '+lineItem.quantity+'</li></ul></div></div>');
+		            $mc_footer.empty().append('<div><span>subtotal</span>$'+ct_string+'</div><a class="btn" href="/cart">Checkout</a>');
+		            
+		            $addToCartBtn.val('added to bag');
+                    fbq('track', 'AddToCart', {
+                      value: pricey,
+                      currency: 'USD',
+                      content_type: 'product',
+                      content_ids: [' + lineItem.id + ']
+                    });
+		            setTimeout(function(){
+				          $('#mini-cart').fadeIn().delay(2200).fadeOut();  
+		            }, 200);
+		          });
+		        },
+		        error: function(XMLHttpRequest, textStatus) {
+		          var data = eval('(' + XMLHttpRequest.responseText + ')');
+		          var response = data.description;
+		          var status = XMLHttpRequest.status;
+		          $addToCartBtn.removeClass('btn--loading');
+		          if (status === 422 && $('#productSelect option').length === 1) {
+		            $addToCartBtnText.text("{{ 'products.product.sold_out' | t }}");
+		          }
+		          else {
+		            $addToCartBtn.prop('disabled', false).removeClass('disabled');
+		            $addToCartBtnText.text($addToCartBtn.attr('data-add-to-cart'));
+		          }
+		          $addToCartBtn.after('<p class="note errors">' + response + '</p>');
+		        }
+		      });
+		    }
+		  });
+		};	  
+				
+		var all_products = [],
+		    tags = [],
+		    $prod_variants = $('#productVariants');
+		
+		{% for tag in product.tags %}
+  		tags.push('{{tag}}');
+		{% endfor %}
+		
+    function get_related_products(){
+      var promises = [];
+      
+      // Grab the current product's related products based on their tags and push to all_products array
+      $.each(tags, function(i,o) {
+	      
+				if(~o.indexOf('related')){
+	        var defer = new $.Deferred();
+	        $.getJSON('/products/' + o.replace('related-','') + '.js', function(product) {
+	          all_products.push(product);
+	          defer.resolve(all_products);
+	        });
+	        promises.push(defer);
+        }
+      });
+      
+      // Grab the current product and push it to the front of all_products array
+      var defery = new $.Deferred();
+	    $.getJSON('/products/{{ product.handle }}.js', function(producty){
+			  all_products.unshift(producty);
+			  defery.resolve(all_products);
+	    });
+	    promises.push(defery);      
+      
+      $.when.apply($, promises).done(function(product){
+        got_related_products(product);
+      });
+      
+    };
+    
+    function init_related_products(){
+      get_related_products();
+    };
+    
+		function init_product_toggle(i){
+	    
+	    var prod = all_products[i],
+	        prod_images = prod.images,
+	        prod_variants = prod.variants,
+	        prod_title = prod.title,
+	        $main_photos = $('#product-main-photos'),
+	        $prod_photos = $('#product-photos');
+	    
+	    $prod_photos.empty();
+	    
+	    // image builder
+	    function build_images(){
+		    $main_photos.find('.gallery img').attr('srcset', prod_images[1]);
+		    $main_photos.find('.gallery img').attr('data-zoom-image', prod_images[1]);
+		    $main_photos.find('.prod-vert-y img').attr('srcset', prod_images[2]);
+		    $('.zoomWindowContainer div').css({'background-image': 'url("'+prod_images[1]+'")'})
+		    
+		    $.each(prod_images, function(i,el){
+			    if(i > 2){
+				    $prod_photos.append('<img src="'+el+'"/>')
+			    }
+		    });
+		    
+		    setTimeout(function(){
+			    $('#content-product').animate({'opacity': 1}, function(){
+				    unstickProductBar();
+			    });
+		    }, 500);
+		        
+	    }
+	    
+	    build_images();
+	    	    
+	    var prevSelectionVal = $prod_variants.find('option:selected').attr('data-option1');	    
+	    	    
+	    // Options builder
+	    $prod_variants.empty();
+	    $.each(prod_variants, function(i,el){
+		    me = el;
+				me_title = me.title;
+				me_price = me.price;
+				me_tp = me.title + ' - ' + me_price;
+				me_option3 = me.option3;
+				if(me_option3 != undefined){
+					$prod_variants.append('<option data-sku="'+me.sku+'" value="'+me.id+'" data-option1="'+me.option2+'" data-option2="'+me_option3+'" data-available="'+me.available+'" data-qty="'+me.inventory_quantity+'">'+me.option2 + '-' + me_option3 + '</option>');
+				} else {
+					$prod_variants.append('<option data-sku="'+me.sku+'" value="'+me.id+'" data-option1="'+me.option2+'" data-available="'+me.available+'" data-qty="'+me.inventory_quantity+'">'+me.option2+'</option>');	
+				}
+				
+	    });
+	    
+		  var newSelectVal = $prod_variants.find('option[data-option1="'+prevSelectionVal+'"]').val();
+		  if(newSelectVal){
+				$('#productVariants').val(newSelectVal).trigger('change');			  
+		  }
+		  	    
+	    colorSelector();
+	    
+	    // start with first size on each color variant change
+	    //$('.dummy-select').find('li.available').first().click();
+	    
+	    $('#add').removeClass('disabled').prop('disabled', false).val('add to bag');
+	    
+    };    
+    
+		function got_related_products(all_products){
+			
+			var $swatch = $('.swatch'),
+			    $s_container = $swatch.find('.swatch-container'),
+			    first_title = all_products[0].handle,
+			    new_first = first_title.substr(0, first_title.indexOf('-')),
+			    first_option_name = all_products[0].options[0].values[0];
+	    
+	    // Loop through array of all products related by color and
+	    // and get data off of them each item to attach to the outputted DOM element
+      $.each(all_products, function(i,el){
+	      str = el.handle;
+	      color = str.substr(0, str.indexOf('-'));
+	      color_option_name = el.options[0].values[0];
+	      
+	      // Add the actual swatches to the dom with data attached with the first one getting the active class
+	      if(i == 0){
+		      $s_container.append('<span class="swatch-element color-'+color+' active" data-color-option="'+el.title+'" data-color-index="'+i+'" data-prod-id="'+el.id+'" data-color-name="'+color_option_name+'"><label></label></span>');
+	      } else {
+		      $s_container.append('<span class="swatch-element color-'+color+'" data-color-option="'+el.title+'" data-color-index="'+i+'" data-prod-id="'+el.id+'" data-color-name="'+color_option_name+'"><label></label></span>');
+	      }
+	      
+      });
+      
+      // Set the swatch label to the color title of the first item in all_products array
+      $swatch.find('.swatch-title').html(first_option_name);
+      
+      if(all_products.length > 1){
+	      $swatch.show();
+      }
+      
+    };
+    
+    function colorToggle(){
+      $('body').on('click', '.swatch-element', function(){
+	      $swatch_el = $(this);
+	      swatch_index = $swatch_el.data('color-index');	      
+	      $swatch_el.addClass('active').siblings('.swatch-element').removeClass('active');
+	      color_name = $swatch_el.data('color-name');	      
+	      
+				$('#content-product').animate({'opacity': 0}, function(){
+					init_product_toggle(swatch_index);	
+				});
+	      
+	      // Update product color name
+	      $('.swatch-title').text(color_name);
+	      
+	      $('.label', '#swatch-trigger').text(color_name.substr(0, 3));
+	      
+      });	    
+	    
+    };
+    
+		var lastVariantSelection;    
+		
+		function colorSelector(){
+			
+			var $selectWrap = $('.color-selector-wrapper'), 
+					$label = $selectWrap.find('label'),
+			    $options = $prod_variants.find('option'),
+			    $dummy = $('<ul class="dummy-select"></ul>'),
+			    $add = $('#add')
+			
+			var currentSelection = $('.dummy-select').find('.active').attr('data-option1');
+
+			// wipe clean the selector on each color change
+			$selectWrap.find('ul').remove();
+						
+			// build options in dummy select dropdown with data-attributes derived from real select
+			console.log('rebuild');
+		  $options.each(function(i, el){
+		    $el = $(el);
+		    option2 = $el.data('option2');
+		    avail = $el.data('available');
+		    avail_qty = $el.data('qty');
+		    if(avail){
+			    if(avail_qty <= 0){
+				    if(option2 == undefined){
+					    $dummy.append('<li class="available" data-barcode="'+$el.data('barcode')+'" data-preorder="true" data-sku="'+$el.data('sku')+'" data-val="'+$el.val()+'" data-option1="'+$el.data('option1')+'" data-available="'+$el.data('available')+'" data-qty="'+$el.data('qty')+'">'+$el.data('option1')+'</li>');
+				    } else {
+						  $dummy.append('<li class="available" data-barcode="'+$el.data('barcode')+'" data-preorder="true" data-sku="'+$el.data('sku')+'" data-val="'+$el.val()+'" data-option1="'+$el.data('option1')+'" data-option2="'+$el.data('option2')+'" data-available="'+$el.data('available')+'" data-qty="'+$el.data('qty')+'">'+$el.data('option1') + '-' + option2+'</li>');
+				    }
+			    } else {
+				    if(option2 == undefined){
+					    $dummy.append('<li class="available" data-barcode="false" data-sku="'+$el.data('sku')+'" data-val="'+$el.val()+'" data-option1="'+$el.data('option1')+'" data-available="'+$el.data('available')+'" data-qty="'+$el.data('qty')+'">'+$el.data('option1')+'</li>');
+					  } else {
+						  $dummy.append('<li class="available" data-barcode="false" data-sku="'+$el.data('sku')+'" data-val="'+$el.val()+'" data-option1="'+$el.data('option1')+'" data-option2="'+$el.data('option2')+'" data-available="'+$el.data('available')+'" data-qty="'+$el.data('qty')+'">'+$el.data('option1') + '-' + option2+'</li>');
+					  }				    
+			    }
+		    } else {
+			    if(option2 == undefined){
+				    $dummy.append('<li class="unavailable" data-sku="'+$el.data('sku')+'" data-val="'+$el.val()+'" data-option1="'+$el.data('option1')+'" data-available="'+$el.data('available')+'" data-qty="'+$el.data('qty')+'">'+$el.data('option1')+'</li>');
+				  } else {
+					  $dummy.append('<li class="unavailable" data-sku="'+$el.data('sku')+'" data-val="'+$el.val()+'" data-option1="'+$el.data('option1')+'" data-option2="'+$el.data('option2')+'" data-available="'+$el.data('available')+'" data-qty="'+$el.data('qty')+'">'+$el.data('option1')+ '-' + option2+'</li>');
+				  }
+		    }
+		  });
+		  $selectWrap.find('.pf-vert-y').prepend($dummy);
+		  $label.add($prod_variants).hide();
+		  		  
+		  
+		  // click evens on variant select
+		  var clicked = false;
+		  $('body').on('click', '.dummy-select li', function(){
+			  $me = $(this);
+		    value = $me.data('val');
+		    text = $me.text();
+		    $me.addClass('active').siblings('li').removeClass('active');
+		    $prod_variants.val(value).trigger('change');
+		    $('#add-button').find('span').hide();
+		    if($me.hasClass('available')){
+			    $add.removeClass('disabled').prop('disabled', false).val('add to bag');
+			    if($me.data('preorder') == true && $me.data('qty') <= 0){
+				    $('#add-button').find('span').show();
+			    }
+		    } else {
+			    $add.addClass('disabled').prop('disabled', true).val('sold out');
+		    }
+		    
+		    if(clicked){
+			    $('#size-trigger').text(text);
+			    $me.parents('.color-selector-wrapper').removeClass('show');			    
+		    }
+		    
+		    clicked = true;
+		    
+		  });
+			
+		};	
+		
+		function unstickProductBar(){			    
+
+			var $prod_controls = $('#product-controls'),
+				$prod_controls_wrap = $('#product-controls-wrap'),
+			    $pp = $('#product-photos');
+			
+          	var $founders_height = $('#founders-tip').outerHeight(),
+          		$may_have_seen_height = $('#may-have-seen').outerHeight();
+          
+          	console.log($founders_height);
+          
+			$(window).on('scroll', function(){
+				var pw_pos = $prod_controls_wrap.offset().top + ($prod_controls_wrap.height() - $(window).height());
+
+			
+				if($(window).scrollTop() >= pw_pos){
+					$prod_controls.addClass('unfix');
+				} else {
+					$prod_controls.removeClass('unfix');
+				}
+			});
+
+		};	
+		
+		function resize() {
+	  	winWidth = $win.width();
+	  	$('#product-controls-wrap').css('height', $('#product-controls').outerHeight(true));
+			if(winWidth > 767){
+				if (state != 'desktop') {
+					state = 'desktop';
+					changedstate(state);
+				};
+			} else {
+				if (state != 'mobile') {
+					state = 'mobile';
+					changedstate(state);
+				};
+			}
+		}
+	    
+	  function changedstate(mystate){
+	    if(mystate == 'desktop'){
+				unstickProductBar();
+				if( isMobile.any()){
+	    
+			  } else {
+					$("#zoomer").elevateZoom({
+					  zoomType: "inner",
+					  cursor: "crosshair"
+					});  
+			  }
+	    } else if(mystate == 'mobile'){
+		    unstickProductBar();
+	    }
+	  }			
+	  
+	  function customSizing(){
+
+			var $numSwatches = $('.swatch-container .swatch-element').length;
+			$('.swatch-container').parents('.sw-col').css('width', ($numSwatches * 36));
+			
+			var $titleWidth = $('.product-title', '#product-controls').outerWidth(true);
+			$('.title-price', '#product-controls').css('width', ( $titleWidth + 50 ) );
+
+			var $swatchTitle = $('.swatch-title', '#product-controls'),
+					$SWParent = $swatchTitle.parents('.sw-col');
+				
+				$SWParent.addClass('temp');	
+				$SWParent.css('width', ( $swatchTitle.outerWidth() + 45 ) );
+				$SWParent.removeClass('temp');
+	  }	
+		
+		colorSelector();
+		colorToggle();
+		init_related_products();
+		unstickProductBar();
+		cartAjax();
+		resize();
+				
+		analytics.page("Product", unescape("{{ product.title | escape }}"));
+		
+		$(window).on({
+			load: function(){
+				if($('.dummy-select').find('li').hasClass('available')){
+					$('.dummy-select').find('li.available').first().click();	
+				} else {
+					$('.dummy-select').find('li').first().click();
+					$('#add').addClass('disabled').prop('disabled', true).val('sold out');
+				}
+				
+				customSizing();
+				resize();
+			},
+			resize: function(){
+				resize();
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+				
+	})(jQuery);	
+  
+</script>

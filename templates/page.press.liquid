@@ -1,0 +1,120 @@
+<div id="page">
+    <!--googleoff: snippet--> <h2>{{ page.title }}</h2> <!--googleon: snippet-->
+ <div class="row">
+  
+    
+
+      <div id="press-logos">
+        <h2 class="as-seen-in-header"><span>as seen in...</span></h2>
+<p id="img_cont">
+  <a href="#"><img src="{{ 'Fortune-finallogo1.png' | asset_url }}" /></a>
+  <a href="#"><img src="{{ 'Refinery29Logo1.png' | asset_url }}" /></a>
+  <a href="#"><img src="{{ 'WWD-Logo1.png' | asset_url }}" /></a>
+  <a href="#"><img src="{{ 'ForbesLogo1.png' | asset_url }}" /></a>
+  <a href="#"><img src="{{ 'INC-Logo2.jpg' | asset_url }}" /></a>
+  <a href="#"><img style="width:90%" src="{{ 'NYTimesLogo.png' | asset_url }}" /></a>
+</p>
+ </div>
+           </div>
+  
+
+    {{ page.content }}
+    <div id="press-articles">
+      {% assign nums = settings.press_order | split : "," %}
+      {% for i in nums %}
+          {% assign press_tag = "press_" | append : i  %}
+          {% assign title_tag =  press_tag | append : "_title" %}
+          {% assign title_len = settings[title_tag] | size %}
+          {% if title_len > 0 %}
+      <!-- {% increment press_index %} -->
+              {% assign date_tag = press_tag | append : "_date" %}
+              {% assign link_tag = press_tag | append : "_link" %}
+              {% assign img_name = press_tag | append : ".jpg" %}
+              {% assign use_popup = press_tag | append : "_use_popup" %}
+              {% assign popup_img_name = press_tag | append : "_popup.jpg" %}
+              {% assign mod_four = press_index | modulo : 4 %}
+              {% assign mod_two = press_index | modulo : 2 %}
+      		  {% if mod_four == 1 %}
+      		  	<div class="outer-press-wrapper">
+                  {% assign outer_closed = false %}
+              {% endif %}
+              {% if mod_two == 1 %}
+              	<div class="inner-press-wrapper">
+                  	{% assign inner_closed = false %}
+              {% endif %}
+              
+                            
+              <div class="press-article">
+                  {% assign link_length = settings[link_tag] | size %}
+                
+                  {% if link_length > 0 %}
+                      <a href="{{ settings[link_tag] }}" target="_blank">
+                  {% elsif settings[use_popup]  %}
+                  		<!-- Preload image-->
+                      <img src="{{ popup_img_name | asset_url }}" style="visibility: hidden; display: none;">
+                      <a href="#" class="press-colorbox" data-image="{{ popup_img_name | asset_url }}">
+                       
+                  {% endif %}
+
+                    <img src="{{ img_name | asset_url }}">
+                    <h3>{{ settings[title_tag] }}</h3>
+                    <h4>{{ settings[date_tag] }}</h4>
+
+                  </a>
+              </div>
+             {% if mod_two == 0 %}
+              </div> <!-- inner-press-wrapper -->
+                  {% assign inner_closed = true %}
+             {% endif %}
+             {% if mod_four == 0 %}
+              	</div> <!-- outer-press-wrapper -->
+      			{% assign outer_closed = true %}
+             {% endif %}
+          {% endif %}
+      {% endfor %}
+      {% if inner_closed == false %}
+        </div> <!-- inner-press-wrapper -->
+      {% endif %}
+      {% if outer_closed == false %}
+      	</div> <!-- outer-press-wrapper -->
+      {% endif %}
+
+    </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+  
+  $("a.press-colorbox").colorbox({
+    html: function(){
+      var $div = $('<div>').addClass("press-colorbox-wrapper").html($(this).html());
+      $div.children("img").attr("src", $(this).attr("data-image"));
+      return $div[0].outerHTML;
+    }
+  });
+</script>
+
+    <script src="jquery.js"></script>
+    <script>
+ 
+    
+      
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() { 
+  $('#slideshow > div:first')
+    .fadeOut(500)
+    .next()
+    .fadeIn(500)
+    .end()
+    .appendTo('#slideshow');
+},  10000);
+      
+      
+      
+ 
+    </script>
+  
+  

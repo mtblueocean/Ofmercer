@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/of-mercer.myshopify.com/products/edit-field/7526
+{% endcomment %}
+{% if product.metafields.custom_fields["product_seen_on_link"] != blank %}
+  <div class="custom-field custom-field__product-seen-on-link custom-field__type--text">
+    <h3 class="custom-field--title">Product Seen On Link</h3>
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["product_seen_on_link"] }}
+    </div>
+  </div>
+{% endif %}

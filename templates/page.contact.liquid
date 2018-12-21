@@ -1,0 +1,60 @@
+<div class="page" id="contact">
+
+	<div class="contact-col-wrap">
+	
+		<div class="contact-col rte" id="contact-info">
+			{{ page.content }}
+		</div>
+		
+		<div class="contact-col" id="contact-form">
+			
+			<h2>{{ page.title }}</h2>
+          	<p>We check our email 24/7, too.</p>
+			
+			{% form 'contact' %}
+			
+			{% if form.posted_successfully? %}
+			<div class="successForm feedback">
+			  <p>Thanks for contacting us! We'll get back to you as soon as possible.</p>
+			</div>
+			{% endif %}
+			
+			{% if form.errors %}
+			<div class="errorForm feedback">
+			  <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+			  <p>Oops, sorry. We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and submit again:</p>
+			  {% for field in form.errors %}
+			    <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+			  {% endfor %}
+			</div>
+			{% endif %}
+			 
+			<div id="contactFormWrapper">
+		    <input type="text" id="contactFormName" name="contact[name]" placeholder="Name" />
+		    <input type="email" id="contactFormEmail" name="contact[email]" placeholder="Email" />
+		    <input type="text" id="contactFormTelephone" name="contact[phone]" placeholder="Phone Number" />
+		    <select id="contactFormQuestionType" name="contact[subject]">
+		      <option>Order Inquiries</option>
+		      <option>Return or Exchange</option>
+		      <option>Product Questions and Availability</option>
+		      <option>Styling Help</option>
+		      <option>Press</option>
+		      <option>Just To Say Hi</option>
+		    </select>
+		    <textarea rows="10" cols="75" id="contactFormMessage" name="contact[body]" placeholder="Your Message"></textarea>
+		    <input type="submit" id="contactFormSubmit" class="secondary button btn" value="SEND" />
+<!-- 			  <p>Or email us directly at <a href="mailto:info@ofmercer.com">info@ofmercer.com</a></p> -->
+	    </div><!-- contactWrapper -->
+			
+			{% endform %}		
+		</div>
+	
+	</div>
+  
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page("Contact");
+  });
+</script>

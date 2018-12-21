@@ -1,0 +1,36 @@
+{% for option in product.options %}
+
+  {% assign option_handle = option | handle %}
+  {% assign option_index = forloop.index0 %}
+
+  {% assign is_color = false %}
+  {% capture downcased_option %}{{ option | downcase }}{% endcapture %}
+  {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+    {% assign is_color = true %}
+  {% endif %}
+
+  <div class="color-text">
+
+    <ul data-option-type="{{ option_handle }}" class="{{ option_handle }} options">
+    {% assign values = '' %}
+    {% for variant in product.variants %}
+      {% assign value = variant.options[option_index] %}
+      {% capture wrapped_value %},{{ value }},{% endcapture %}
+      {% unless values contains wrapped_value %}
+          {% if is_color %}
+      <div data-option-title="{{ value | escape }}" class="{% if is_color %}color {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
+        {% if is_color %}
+        {{ value }}
+        {% else %}
+        
+        {% endif %}
+        
+      </div>
+      {% capture values %}{{ values }}{{ wrapped_value }}{% endcapture %}
+           {% endif %}
+      {% endunless %}
+    {% endfor %}
+    </ul>
+  </div><!-- .swatch -->
+
+{% endfor %}

@@ -1,0 +1,163 @@
+<div class="account-wrap">
+	
+  <div class="login-col vert-y-wrap">  
+    <div id="reset-success" style="display:none;">
+      recover password
+    </div>
+    <div class="unvert-y login-box" id="customer-login">
+      
+      {% form 'customer_login' %}
+
+        <div class="login-box-header">
+          <h3>I've been here before</h3>
+        </div>
+
+        {{ form.errors | default_errors }}
+
+				
+				<div class="field-wrap">
+	        <input type="email" name="customer[email]" id="CustomerEmail" placeholder="email"{% if form.errors contains "email" %} class="error"{% endif %} autocorrect="off" autocapitalize="off" autofocus>
+				</div>
+
+        {% if form.password_needed %}
+					<div class="field-wrap no-marg">
+	          <input type="password" value="" name="customer[password]" id="CustomerPassword" placeholder="password" {% if form.errors contains "password" %} class="error"{% endif %}>
+					</div>
+					
+          
+        {% endif %}
+				
+				<div class="field-wrap btn-wrap">
+	        <input type="submit" class="btn" value="sign in">
+				</div>
+      <p class="forgot-password"><a href="#" onclick="showRecoverPasswordForm();return false;">I forgot my password</a></p>
+
+        <div class="login-social" >
+          <p>Or Login With</p>
+          <div class="oxi-social-login"></div>
+          
+         
+        </div>
+        
+      {% endform %}
+      
+    </div>
+    <div class="unvert-y login-box" id="recover-password" style="display: none;">
+
+      <div class="login-box-header">
+        <p>Forgot your password?</p>
+        <p>No problem. We'll send you an email to reset it.</p>
+      </div>
+
+      {% form 'recover_customer_password' %}
+
+        {{ form.errors | default_errors }}
+
+        {% if form.posted_successfully? %}
+          {% assign reset_success = true %}
+        {% endif %}
+				
+				<div class="field-wrap">
+	        <input type="email" value="" name="email" id="RecoverEmail" placeholder="email" autocorrect="off" autocapitalize="off">
+				</div>
+
+        <div class="field-wrap btn-wrap">
+          <input type="submit" class="btn" value="submit">
+	        <p class="account-note">
+		        <a href="#" onclick="hideRecoverPasswordForm();return false;">cancel</a>
+	        </p>
+        </div>
+        
+      {% endform %}
+
+    </div>
+  </div>
+  
+    
+  <div class="login-col vert-y-wrap">
+		<div class="unvert-y login-box" id="customer-create-account">
+	    <div class="login-box-header">
+	      <h3>I'm new here</h3>
+	    </div>
+          
+	    {% form 'create_customer' %}
+	      {{ form.errors | default_errors }}
+
+				<div class="field-wrap">
+		      <input type="email" name="customer[email]" id="Email" placeholder="email" {% if form.errors contains "email" %} class="error"{% elsif form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+				</div>
+				<div class="field-wrap no-marg">
+		      <input type="password" name="customer[password]" id="CreatePassword" placeholder="password" {% if form.errors contains "password" %} class="error"{% endif %}>
+				</div>
+				<p class="account-note">
+					<input type="checkbox" name="account-policy" id="account-policy" />
+					<label for="account-policy">I understand that my information will be used in accordance with the <a href="{{ shop.url }}/pages/privacy-policy">privacy policy</a></label>
+				</p>
+				<div class="field-wrap btn-wrap no-marg">
+	        <input type="submit" value="submit" class="btn">
+				</div>
+        <div class="login-social">
+          <p>Or Signup With</p>
+          <div class="oxi-social-login"></div>
+         
+        </div>
+	    {% endform %}
+		</div>
+  </div>
+  
+<!--
+	<div class="login-col vert-y-wrap"> 
+		<div class="unvert-y login-box" id="guest-checkout">
+			<div class="login-box-header">
+		    <h2>guest login</h2>
+			</div>
+			<div class="login-box-body">
+				<p>Don't have an account yet?<br><br>Don't worry, you can set one up after you purchase and have quick access to previous orders and saved addresses for faster shopping next time around.</p>
+			</div>
+	    {% form 'guest_login' %}
+	    <div class="field-wrap btn-wrap">
+	      <a href="/cart" class="btn">continue as guest</a>
+	    </div>
+	    {% endform %}
+		</div>
+	</div>
+-->
+  
+</div>
+
+<script>
+	/*
+    Show/hide the recover password form when requested.
+  */
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'block';
+    document.getElementById('customer-login').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('customer-login').style.display = 'block';
+  }
+
+  // Allow deep linking to the recover password form
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+  // reset_success is only true when the reset form is
+  {% if reset_success %}
+    document.getElementById('reset-success').style.display = 'block';
+  {% endif %}
+  
+	(function($){
+		$(document).ready(function(){
+			// Move this function into your themes js file
+			$('.login-box').matchHeight();	
+		});
+	})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page("Login");
+  });
+</script>

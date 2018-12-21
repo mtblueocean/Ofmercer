@@ -1,0 +1,64 @@
+<div class="sorter">
+	<div class="col col-sort">
+		<h6 class="filter-collapse-heading">Sort by</h6>
+		<ul class="collapse-filter-items">
+			<li data-val="best-selling">Best Seller</li>
+			<li data-val="created-descending">New</li>
+			<li data-val="price-ascending">Price ($-$$$)</li>
+			<li data-val="price-descending">Price ($$$-$)</li>
+		</ul>
+	</div>
+</div>
+	
+<div class="form-horizontal" style="display:none;">
+  <label for="SortBy">title</label>
+  <select name="SortBy" id="SortBy">
+    <option value="best-selling">best_selling</option>
+    <option value="created-descending">new</option>
+    <option value="price-ascending">price_ascending</option>
+    <option value="price-descending">price_descending</option>
+  </select>
+</div>
+
+<script>
+  /*============================================================================
+    Inline JS because collection liquid object is only available
+    on collection pages, and not external JS files
+  ==============================================================================*/
+  Shopify.queryParams = {};
+  if (location.search.length) {
+    for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+      aKeyValue = aCouples[i].split('=');
+      if (aKeyValue.length > 1) {
+        Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+      }
+    }
+  }
+
+  $(function() {
+    console.log(Shopify.queryParams);
+    $('#SortBy')
+      .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+      .bind('change', function() {
+        Shopify.queryParams.sort_by = jQuery(this).val();
+        location.search = jQuery.param(Shopify.queryParams);		       
+      }
+    );
+    
+    var me_val;
+		
+		$('.col-sort').find('li').click(function(){
+			me_val = $(this).data('val');
+			if(me_val == 'sale'){
+				{% if collection.handle %}
+					window.location.href = '/collections/{{ collection.handle }}/sale';
+				{% endif %}
+			} else {
+				$('#SortBy').val(me_val).change();	
+			}
+			
+		});
+    
+    
+  });
+</script>

@@ -1,0 +1,61 @@
+
+
+
+{% capture IMGIX %}
+  {% comment %}
+    <!--
+    Convert a Shopify CDN path into an imgix path, with parameters.
+
+    * Check out imgix's Shopify integration guide to learn more: https://docs.imgix.com/guides/shopify-integration
+    * Refer to the imgix documentation to learn about all the available parameters: https://docs.imgix.com/apis/url
+    -->
+  {% endcomment %}
+  {% if settings.enableImgix %}
+    {% for i in (1..1) %}
+      {% comment %}
+        <!-- Check to make sure the src exists, and that imgix url theme settings is not blank. If blank, stop! -->
+      {% endcomment %}
+      {% unless src or settings.imgixUrl != blank %}
+        {{ src }}
+        {% break %}
+      {% endunless %}
+
+      {% comment %}
+        <!-- Check to make sure the src has the Shopify CDN url in it. If it doesn't this does not need to run any further -->
+      {% endcomment %}
+      {% assign cdnUrl = settings.imgixShopifyUrl | strip %}
+      {% unless src contains cdnUrl %}
+        {{ src }}
+        {% break %}
+      {% endunless %}
+
+      {% assign imgixUrl = settings.imgixUrl | strip %}
+
+      {% comment %}
+        <!-- Create a list of all the imgix filters we want to use -->
+      {% endcomment %}
+      {% assign filters = 'bri,con,cs,exp,gam,high,hue,invert,sat,shad,sharp,usm,usmrad,vib,auto,bg,blend,bm,ba,balph,bp,bw,bh,bf,bc,bs,bx,by,border,pad,faceindex,facepad,faces,ch,chromasub,colorquant,dl,dpi,fm,lossless,q,mask,nr,nrs,colors,palette,prefix,dpr,flip,or,rot,crop,fit,h,rect,w,blur,htn,mono,px,sepia,txt,txtalign,txtclip,txtclr,txtfit,txtfont,txtline,txtlineclr,txtpad,txtshad,txtsize,txtwidth,trim,trimcolor,trimmd,trimsd,trimtol,mark,markalign,markalpha,markbase,markfit,markh,markpad,markscale,markw,markx,marky' | split:',' %}
+
+      {% comment %}
+        <!-- Build up the list of filters to add to the url -->
+      {% endcomment %}
+      {% assign imgWithQuerystring = "?" %}
+
+      {% if src contains '?' %}
+        {% assign imgWithQuerystring = '&' %}
+      {% endif %}
+
+      {% for _filter in filters %}
+        {% if [_filter] %}
+          {% assign imgWithQuerystring = imgWithQuerystring | append:_filter | append:'=' | append:[_filter] | append:'&' %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign newSrc = src | strip | replace:cdnUrl,imgixUrl | append:imgWithQuerystring %}
+    {% endfor %}
+
+    {{ newSrc | default:src }}
+  {% else %}
+    {{ src }}
+  {% endif %}
+{% endcapture %}{{ IMGIX | strip | replace:'  ' | strip_newlines }}

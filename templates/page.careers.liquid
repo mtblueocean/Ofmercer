@@ -1,0 +1,31 @@
+{% assign page_meta_info = ['page'].metafields.custom_fields %}
+{% if page_meta_info['page_tagline'].size > 0 %}
+	{% assign page_tagline = page_meta_info['page_tagline'] %}
+{% else %}
+	{% assign page_tagline = 'Careers' %}
+{% endif %}
+<div class="basic-page">
+	
+	<div class="wrapper">
+		
+		<!--googleoff: snippet-->
+		<div class="page-header">
+          <h4>{{ page.title | escape }}</h4>
+          <h1>{{ page_tagline }}</h1>		
+		</div>
+		<!--googleon: snippet-->
+		
+		<div class="rte">
+			{{ page.content }}
+		</div>
+		
+	  
+	</div>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+</script>

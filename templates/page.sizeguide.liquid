@@ -1,0 +1,134 @@
+{% assign page_meta_info = ['page'].metafields.custom_fields %}
+{% if page_meta_info['page_tagline'].size > 0 %}
+	{% assign page_tagline = page_meta_info['page_tagline'] %}
+{% else %}
+	{% assign page_tagline = 'NYC Store' %}
+{% endif %}
+<div id="page-size-guide">
+  <div class="page-header">
+          <h4>{{ page.title | escape }}</h4>
+          <h1>{{ page_tagline }}</h1>		
+		</div>
+
+<div class="copy-block wrapper slimmer-wrapper">
+  <p>We obsess over fit.  With every piece we make, we do multiple rounds of fittings on the same fit model to ensure that the fit is perfect and consistent across styles. Sizes 00-14 are fit to a size 6 and sizes 14W-20W are fit to a size 16W.</p>
+ <p>We recommend buying true to your size using the below size chart as a guide.  However, some styles are purposefully cut differently to accommodate a range of body shapes and sizes.  To make selecting a size easier, we’ve included detailed fit notes and individual size chart on each of our product pages. 
+  </p>
+  <p>  If you have any questions about fit or need help selecting your size, please don’t hesitate to call us at (212) 979-2229 or email us at <a href="mailto:info@ofmercer.com?Subject=Help%20with%20sizing" target="_top">info@ofmercer.com</a>.</p>
+  </div>
+  
+  <div class="wrapper slimmer-wrapper size-guide">
+    <h3>Size Chart (in inches)</h3>
+   {% include 'SizeGuideChart' %}
+  </div>
+  
+<div class="wrapper slimmer-wrapper">
+  <h3>How to Measure</h3>
+
+  </div>
+
+<div class="wrapper vip1">
+<div class="left">
+
+        <img src="{{ 'MeasurementGuide-Company-Wide.jpg' | asset_url }}"/>
+  	</div>
+  	<div class="right">
+     <h6><br>BUST</h6>
+      <p>Measure around the fullest part of your chest</p>
+      <h6>WAIST</h6>
+      <p>Measure around the smallest part of your torso</p>
+      <h6>HIPS</h6>
+      <p>Measure around the fullest part of your hip</p>
+       <h6>LENGTH</h6>
+      <p>Measure from the high point of the shoulder to the hem</p>
+  	</div>
+	
+</div>
+  
+  
+<div class="copy-block wrapper slimmer-wrapper plus">
+      	<h3>How do your straight and plus sizes differ?</h3>
+      	<p> For sizes 00 - 14 we fit on a size 6 fit model and grade the pattern proportionally smaller and larger. However, a size 6 can only be scaled so much without becoming disproportionate. As demand for more sizes grew we knew we needed to create new patterns so as not to lose the fit integrity that we, and our customers, value. </p> 
+  <p>For sizes 14W - 20W we fit on a size 16W fit model. In addition to hiring a dedicated fit model, we adjusted seams, proportions, and hemlines to offer the same superior fit and contemporary style of our existing collection, tailored to sizes 14W-20W.</p>
+  </div> 
+  <div class="wrapper mid-wrapper">   
+
+       <img src="{{ 'PlusvsStaightNew2.jpg' | asset_url }}"/>
+      	
+  	</div>
+  
+  
+  <div class="contact-info">
+  	<div class="wrapper">
+      <h3><br>Get in Touch</h3>
+      <p>We're here. How can we help?<br/>Contact us anytime via email or call us from 10am - 6pm EST.</p>
+      <p><i class="fa fa-envelope" ></i> info@ofmercer.com  <i class="fa fa-phone"></i> 212.979.2229<br></p>
+    </div>
+  </div>
+ 
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    analytics.page(unescape("{{ page.title | escape }}"));
+  });
+//         function crossDomainPost(url, params) {
+//         // Add the iframe with a unique name
+//         var iframe = document.createElement("iframe");
+//         var uniqueString = "cd-form-" + Math.round(Math.random() * 10000);
+//         document.body.appendChild(iframe);
+//         iframe.style.display = "none";
+//         iframe.contentWindow.name = uniqueString;
+
+//         // construct a form with hidden inputs, targeting the iframe
+//         var form = document.createElement("form");
+//         form.target = uniqueString;
+//         form.action = url;
+//         form.method = "POST";
+
+//         // repeat for each parameter
+//         for (var param_name in params) {
+//             var input = document.createElement("input");
+//             input.type = "hidden";
+//             input.name = param_name;
+//             input.value = params[param_name];
+//             form.appendChild(input);
+//         }
+
+//         document.body.appendChild(form);
+//         form.submit();
+//     }
+// 	jQuery( document ).ready(function($) {
+// 	$('#nyc-mailing-list .btn').click(function(e) {
+//       e.preventDefault();
+
+//         var email = $('input#user-email').val();
+//       	console.log(email);
+
+//         if (!email) {
+//             // parent.find('.email .form-error').removeClass('hidden');
+//         } else {
+//             $.cookie('joined_mailing_list', true, {expires: 36500, path: "/"});
+//             // submit to analytics
+//             analytics.alias(email);
+//             analytics.identify(email, {
+//                 email: email
+//             });
+
+//             analytics.track('Joined Mailing List', {
+//                 referring_page: document.title.split(' | ')[0]
+//             });
+
+//             // send to google docs
+
+//             crossDomainPost('https://docs.google.com/forms/d/14w08DL0TGgGbiFwEtNMyNyq-YxhtXjM0lFBoyGb_Edg/formResponse', {
+//                 'entry.659530670': email,
+//                 'entry.1989690552': document.title.split(' | ')[0]
+//             });
+
+//             parent.html("<center><span class=newsHeader></span><p class=popupthankyou>Thank you for joining us!</p></center>");
+//             $('#newsBox').height(160);
+//         }
+//     });
+//   });
+</script>

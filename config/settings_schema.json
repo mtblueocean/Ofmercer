@@ -1,0 +1,1472 @@
+[
+  {
+    "name": "Global Site Options",
+    "settings": [
+      {
+        "type": "image",
+        "id": "favicon.png",
+        "label": "Upload a Favicon"
+      },
+      {
+        "type": "text",
+        "id": "keywords",
+        "label": "Homepage Title Text",
+        "default": "What do you Sell"
+      },
+      {
+        "type": "header",
+        "content": "Newsetter Popup"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_headline",
+        "label": "Newsletter popup headline"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_copy",
+        "label": "Newsletter popup copy"
+      },
+      {
+        "type": "text",
+        "id": "pdp_preorder_message",
+        "label": "Product page preorder message"
+      },
+      {
+        "type": "text",
+        "id": "cart_preorder_message",
+        "label": "Preorder checkbox message"
+      },
+      {
+        "type": "text",
+        "id": "preorder_message",
+        "label": "Preorder alert message"
+      },
+      {
+        "type": "header",
+        "content": "Menu Dropdown"
+      },
+      {
+        "type": "collection",
+        "id": "menu_featured_collection",
+        "label": "Featured Collection",
+        "info": "this collection's image and description are diplayed in the shop menu dropdown"
+      }
+    ]
+  },
+  {
+    "name": "Homepage",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slide 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "slider1_enable",
+        "label": "Enable Slide 1?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "slider1.jpg",
+        "label": "Slide 1 Image"
+      },
+      {
+        "type": "text",
+        "id": "slider1_alt",
+        "label": "Slide 1 Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "slider1_type",
+        "label": "Slide 1 Content type"
+      },
+      {
+        "type": "text",
+        "id": "slider1_headline",
+        "label": "Slide 1 headline"
+      },
+      {
+        "type": "textarea",
+        "id": "slider1_copy",
+        "label": "Slide 1 Copy"
+      },
+      {
+        "type": "select",
+        "id": "slider1_color",
+        "label": "Slide 1 Text Color",
+        "options": [
+          {
+            "value": "dark",
+            "label": "Dark"
+          },
+          {
+            "value": "light",
+            "label": "Light"
+          }
+        ],
+        "default": "light"
+      },
+      {
+        "type": "text",
+        "id": "slider1_cta",
+        "label": "Slide 1 Call to Action"
+      },
+      {
+        "type": "text",
+        "id": "slider1_link",
+        "label": "Slide 1 Link",
+        "info": "Paste full URL (http:\/\/google.com)"
+      },
+      {
+        "type": "select",
+        "id": "slider1_align",
+        "label": "Align text",
+        "options": [
+          {
+            "value": "left",
+            "label": "Align Left"
+          },
+          {
+            "value": "right",
+            "label": "Align right"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "slider1_mobile_placement",
+        "label": "Mobile Position",
+        "info": "This sets the image's offset from the left side on mobile. 0% will align the image to the left edge, while 100% will align it to the right.",
+        "options": [
+          {
+            "group": "value",
+            "value": "0",
+            "label": "0%"
+          },
+          {
+            "group": "value",
+            "value": "10",
+            "label": "10%"
+          },
+          {
+            "group": "value",
+            "value": "20",
+            "label": "20%"
+          },
+          {
+            "group": "value",
+            "value": "30",
+            "label": "30%"
+          },
+          {
+            "group": "value",
+            "value": "40",
+            "label": "40%"
+          },
+          {
+            "group": "value",
+            "value": "50",
+            "label": "50%"
+          },
+          {
+            "group": "value",
+            "value": "60",
+            "label": "60%"
+          },
+          {
+            "group": "value",
+            "value": "70",
+            "label": "70%"
+          },
+          {
+            "group": "value",
+            "value": "80",
+            "label": "80%"
+          },
+          {
+            "group": "value",
+            "value": "90",
+            "label": "90%"
+          },
+          {
+            "group": "value",
+            "value": "100",
+            "label": "100%"
+          }
+        ],
+        "default": "50"
+      },
+      {
+        "type": "header",
+        "content": "Slide 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "slider2_enable",
+        "label": "Enable Slide 2?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "slider2.jpg",
+        "label": "Slide 2 Image"
+      },
+      {
+        "type": "text",
+        "id": "slider2_alt",
+        "label": "Slide 2 Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "slider2_type",
+        "label": "Slide 2 Content type"
+      },
+      {
+        "type": "text",
+        "id": "slider2_headline",
+        "label": "Slide 2 headline"
+      },
+      {
+        "type": "textarea",
+        "id": "slider2_copy",
+        "label": "Slide 2 Copy"
+      },
+      {
+        "type": "select",
+        "id": "slider2_color",
+        "label": "Slide 2 Text Color",
+        "options": [
+          {
+            "value": "dark",
+            "label": "Dark"
+          },
+          {
+            "value": "light",
+            "label": "Light"
+          }
+        ],
+        "default": "light"
+      },
+      {
+        "type": "text",
+        "id": "slider2_cta",
+        "label": "Slide 2 Call to Action"
+      },
+      {
+        "type": "text",
+        "id": "slider2_link",
+        "label": "Slide 2 Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "select",
+        "id": "slider2_align",
+        "label": "Align text",
+        "options": [
+          {
+            "value": "left",
+            "label": "Align Left"
+          },
+          {
+            "value": "right",
+            "label": "Align right"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "slider2_mobile_placement",
+        "label": "Mobile Position",
+        "info": "This sets the image's offset from the left side on mobile. 0% will align the image to the left edge, while 100% will align it to the right.",
+        "options": [
+          {
+            "group": "value",
+            "value": "0",
+            "label": "0%"
+          },
+          {
+            "group": "value",
+            "value": "10",
+            "label": "10%"
+          },
+          {
+            "group": "value",
+            "value": "20",
+            "label": "20%"
+          },
+          {
+            "group": "value",
+            "value": "30",
+            "label": "30%"
+          },
+          {
+            "group": "value",
+            "value": "40",
+            "label": "40%"
+          },
+          {
+            "group": "value",
+            "value": "50",
+            "label": "50%"
+          },
+          {
+            "group": "value",
+            "value": "60",
+            "label": "60%"
+          },
+          {
+            "group": "value",
+            "value": "70",
+            "label": "70%"
+          },
+          {
+            "group": "value",
+            "value": "80",
+            "label": "80%"
+          },
+          {
+            "group": "value",
+            "value": "90",
+            "label": "90%"
+          },
+          {
+            "group": "value",
+            "value": "100",
+            "label": "100%"
+          }
+        ],
+        "default": "50"
+      },
+      {
+        "type": "header",
+        "content": "Slide 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "slider3_enable",
+        "label": "Enable Slide 3?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "slider3.jpg",
+        "label": "Slide 3 Image"
+      },
+      {
+        "type": "text",
+        "id": "slider3_alt",
+        "label": "Slide 3 Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "slider3_type",
+        "label": "Slide 3 Content type"
+      },
+      {
+        "type": "text",
+        "id": "slider3_headline",
+        "label": "Slide 3 headline"
+      },
+      {
+        "type": "textarea",
+        "id": "slider3_copy",
+        "label": "Slide 3 Copy"
+      },
+      {
+        "type": "select",
+        "id": "slider3_color",
+        "label": "Slide 3 Text Color",
+        "options": [
+          {
+            "value": "dark",
+            "label": "Dark"
+          },
+          {
+            "value": "light",
+            "label": "Light"
+          }
+        ],
+        "default": "light"
+      },
+      {
+        "type": "text",
+        "id": "slider3_cta",
+        "label": "Slide 3 Call to Action"
+      },
+      {
+        "type": "text",
+        "id": "slider3_link",
+        "label": "Slide 3 Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "select",
+        "id": "slider3_align",
+        "label": "Align text",
+        "options": [
+          {
+            "value": "left",
+            "label": "Align Left"
+          },
+          {
+            "value": "right",
+            "label": "Align right"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "slider3_mobile_placement",
+        "label": "Mobile Position",
+        "info": "This sets the image's offset from the left side on mobile. 0% will align the image to the left edge, while 100% will align it to the right.",
+        "options": [
+          {
+            "group": "value",
+            "value": "0",
+            "label": "0%"
+          },
+          {
+            "group": "value",
+            "value": "10",
+            "label": "10%"
+          },
+          {
+            "group": "value",
+            "value": "20",
+            "label": "20%"
+          },
+          {
+            "group": "value",
+            "value": "30",
+            "label": "30%"
+          },
+          {
+            "group": "value",
+            "value": "40",
+            "label": "40%"
+          },
+          {
+            "group": "value",
+            "value": "50",
+            "label": "50%"
+          },
+          {
+            "group": "value",
+            "value": "60",
+            "label": "60%"
+          },
+          {
+            "group": "value",
+            "value": "70",
+            "label": "70%"
+          },
+          {
+            "group": "value",
+            "value": "80",
+            "label": "80%"
+          },
+          {
+            "group": "value",
+            "value": "90",
+            "label": "90%"
+          },
+          {
+            "group": "value",
+            "value": "100",
+            "label": "100%"
+          }
+        ],
+        "default": "50"
+      },
+      {
+        "type": "header",
+        "content": "Site Intro"
+      },
+      {
+        "type": "text",
+        "id": "home_intro_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "textarea",
+        "id": "home_intro_copy",
+        "label": "Copy"
+      },
+      {
+        "type": "header",
+        "content": "Featured Content Block 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_featured_block_1",
+        "label": "Enable First Featured Block?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "featured_collection_image.jpg",
+        "label": "Featured Block Image"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_1_alt",
+        "label": "Alt text"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_1_prehead",
+        "label": "Featured Block pre header"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_1_headline",
+        "label": "Featured Block Headline"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_1_tagline",
+        "label": "Featured Block Tagline"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_1_cta",
+        "label": "Featured Block Button Text"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_1_link",
+        "label": "Featured Block Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "header",
+        "content": "Featured Content Block 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_featured_block_2",
+        "label": "Enable Second Featured Block?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "featured_product_image.jpg",
+        "label": "Featured Block Image"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_2_alt",
+        "label": "Alt text"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_2_prehead",
+        "label": "Featured Block pre header"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_2_headline",
+        "label": "Featured Block Headline"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_2_tagline",
+        "label": "Featured Block Tagline"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_2_cta",
+        "label": "Featured Block Button Text"
+      },
+      {
+        "type": "text",
+        "id": "featured_block_2_link",
+        "label": "Featured Block Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "header",
+        "content": "Statement Block"
+      },
+      {
+        "type": "image",
+        "id": "statement_image.jpg",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "statement_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "textarea",
+        "id": "statement_copy",
+        "label": "Statement Copy"
+      },
+      {
+        "type": "page",
+        "id": "statement_link",
+        "label": "link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "header",
+        "content": "Mosaic Section"
+      },
+      {
+        "type": "text",
+        "id": "mosaic_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "image",
+        "id": "mosaic1.jpg",
+        "label": "Image 1"
+      },
+      {
+        "type": "text",
+        "id": "mosaic1_alt",
+        "label": "Alt text"
+      },
+      {
+        "type": "text",
+        "id": "mosaic1_link",
+        "label": "Link URL",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "image",
+        "id": "mosaic2.jpg",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "mosaic2_alt",
+        "label": "Alt text"
+      },
+      {
+        "type": "text",
+        "id": "mosaic2_link",
+        "label": "Link URL",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "image",
+        "id": "mosaic3.jpg",
+        "label": "Image 3"
+      },
+      {
+        "type": "text",
+        "id": "mosaic3_alt",
+        "label": "Alt text"
+      },
+      {
+        "type": "text",
+        "id": "mosaic3_link",
+        "label": "Link URL",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "image",
+        "id": "mosaic4.jpg",
+        "label": "Image 4"
+      },
+      {
+        "type": "text",
+        "id": "mosaic4_alt",
+        "label": "Alt text"
+      },
+      {
+        "type": "text",
+        "id": "mosaic4_link",
+        "label": "Link URL",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "image",
+        "id": "mosaic5.jpg",
+        "label": "Image 5"
+      },
+      {
+        "type": "text",
+        "id": "mosaic5_alt",
+        "label": "Alt text"
+      },
+      {
+        "type": "text",
+        "id": "mosaic5_link",
+        "label": "Link URL",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "text",
+        "id": "mosaic_shop_text",
+        "label": "Shop mosaic text"
+      },
+      {
+        "type": "text",
+        "id": "mosaic_shop_link",
+        "label": "Shop mosaic Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      }
+    ]
+  },
+  {
+    "name": "Our Story",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image",
+        "id": "our_story_hero.jpg",
+        "label": "Hero Image"
+      },
+      {
+        "type": "header",
+        "content": "Our Story Intro"
+      },
+      {
+        "type": "text",
+        "id": "our_story_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "textarea",
+        "id": "our_story_copy",
+        "label": "Copy"
+      },
+      {
+        "type": "header",
+        "content": "Story Slideshow Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "story_slide1_enable",
+        "label": "Enable Slide 1?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "story_slide1.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "story_slide1_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "textarea",
+        "id": "story_slide1_copy",
+        "label": "Copy"
+      },
+      {
+        "type": "checkbox",
+        "id": "story_slide2_enable",
+        "label": "Enable Slide 2?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "story_slide2.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "story_slide2_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "textarea",
+        "id": "story_slide2_copy",
+        "label": "Copy"
+      },
+      {
+        "type": "checkbox",
+        "id": "story_slide3_enable",
+        "label": "Enable Slide 3?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "story_slide3.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "story_slide3_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "textarea",
+        "id": "story_slide3_copy",
+        "label": "Copy"
+      },
+      {
+        "type": "checkbox",
+        "id": "story_slide4_enable",
+        "label": "Enable Slide 4?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "story_slide4.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "story_slide4_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "textarea",
+        "id": "story_slide4_copy",
+        "label": "Copy"
+      },
+      {
+        "type": "header",
+        "content": "Seen In"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen1_enable",
+        "label": "Enable Logo 1?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen1.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen1_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen1_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen2_enable",
+        "label": "Enable Logo 2?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen2.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen2_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen2_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen3_enable",
+        "label": "Enable Logo 3?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen3.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen3_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen3_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen4_enable",
+        "label": "Enable Logo 4?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen4.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen4_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen4_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen5_enable",
+        "label": "Enable Logo 5?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen5.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen5_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen5_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen6_enable",
+        "label": "Enable Logo 6?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen6.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen6_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen6_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen7_enable",
+        "label": "Enable Logo 7?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen7.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen7_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen7_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen8_enable",
+        "label": "Enable Logo 8?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen8.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen8_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen8_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen9_enable",
+        "label": "Enable Logo 9?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen9.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen9_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen9_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen10_enable",
+        "label": "Enable Logo 10?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen10.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen10_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen10_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen11_enable",
+        "label": "Enable Logo 11?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen11.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen11_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen11_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen12_enable",
+        "label": "Enable Logo 12?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen12.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen12_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen12_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen13_enable",
+        "label": "Enable Logo 13?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen13.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen13_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen13_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen14_enable",
+        "label": "Enable Logo 14?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen14.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen14_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen14_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen15_enable",
+        "label": "Enable Logo 15?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen15.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen15_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen15_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "checkbox",
+        "id": "seen16_enable",
+        "label": "Enable Logo 16?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "seen16.jpg",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "seen16_alt",
+        "label": "Alt Text"
+      },
+      {
+        "type": "text",
+        "id": "seen16_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      },
+      {
+        "type": "header",
+        "content": "Message Block"
+      },
+      {
+        "type": "image",
+        "id": "story_block.jpg",
+        "label": "Background Image"
+      },
+      {
+        "type": "textarea",
+        "id": "story_message_headline",
+        "label": "Headline"
+      },
+      {
+        "type": "text",
+        "id": "story_message_cta",
+        "label": "Call to Action"
+      },
+      {
+        "type": "text",
+        "id": "story_message_link",
+        "label": "Link",
+        "info": "Paste full URL ex:(http:\/\/google.com)"
+      }
+    ]
+  },
+  {
+    "name": "Collection Page",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "These options rely on your use of Product Tags.... You can enter anything in these areas providing that it exists as a product tag. To work effectively the tags must match case and spelling and all must be comma separated"
+      },
+      {
+        "type": "checkbox",
+        "id": "sort-dropdown-a-check",
+        "label": "Show Sort by Color?",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "sort_by_color",
+        "label": "Colors to sort by"
+      },
+      {
+        "type": "checkbox",
+        "id": "sort-dropdown-sf-check",
+        "label": "Show Sort by Special Feature?",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "sort_by_special_feature",
+        "label": "Special Features to sort by"
+      },
+      {
+        "type": "checkbox",
+        "id": "sort-dropdown-d-check",
+        "label": "Show Sort by Feature?",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "sort_by_feature",
+        "label": "Features to sort by"
+      },
+      {
+        "type": "checkbox",
+        "id": "sort-dropdown-b-check",
+        "label": "Show Sort by Size?",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "sort_by_size",
+        "label": "Sizes to sort by (letter sizes)"
+      },
+      {
+        "type": "textarea",
+        "id": "sort_by_size_number",
+        "label": "Sizes to sort by (number sizes column 1)"
+      },
+      {
+        "type": "textarea",
+        "id": "sort_by_size_number_2",
+        "label": "Sizes to sort by (number sizes column 2)"
+      }
+    ]
+  },
+  {
+    "name": "Product Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Size Guide"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sizeguide",
+        "label": "Enable size guide?",
+        "default": false
+      },
+      {
+        "type": "image",
+        "id": "size_guide.jpg",
+        "label": "Size Guide Image",
+        "info": "Default global size guide. Overridden by size guide uploaded to product."
+      },
+      {
+        "type": "textarea",
+        "id": "color_swatches",
+        "label": "Color swatch names and hex codes",
+        "info": "Enter swatches as such red:990000 with each swatch color on a new line"
+      },
+      {
+        "type": "select",
+        "id": "product_template_layout",
+        "label": "Product Template Layout",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid Template"
+          },
+          {
+            "value": "slider",
+            "label": "Slider Template"
+          }
+        ],
+        "default": "slider"
+      }
+    ]
+  },
+  {
+    "name": "Social Media Icons",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_twitter",
+        "label": "Show Twitter?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "twittername",
+        "label": "Your Twitter Handle",
+        "default": "Enter Twitter Name"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_facebook",
+        "label": "Show facebook?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "facebook_url",
+        "label": "Your facebook url",
+        "default": "enter url"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pinterest",
+        "label": "Show Pinterest?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "pinterest_url",
+        "label": "Your Pinterest url",
+        "default": "enter url"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tumblr",
+        "label": "Show Tumblr?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tumblr_url",
+        "label": "Your Tumblr url",
+        "default": "enter url"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_flickr",
+        "label": "Show Flickr?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "flickr_url",
+        "label": "Your Flickr url",
+        "default": "enter url"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_youtube",
+        "label": "Show YouTube?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "youtube_url",
+        "label": "Your YouTube url",
+        "default": "enter url"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_googleplus",
+        "label": "Show Google+?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "googleplus_url",
+        "label": "Your Goolge+ url",
+        "default": "enter url"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vimeo",
+        "label": "Show Vimeo",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "vimeo_url",
+        "label": "Your Vimeo url",
+        "default": "enter url"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_instagram",
+        "label": "Show Instagram",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "instagram_url",
+        "label": "Your Instagram",
+        "default": "enter url"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "footer_headline",
+        "label": "Footer Header"
+      }
+    ]
+  },
+  {
+    "name": "imgix",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Check out imgix's [Shopify integration guide](https:\/\/docs.imgix.com\/guides\/shopify-integration) to learn more about these options."
+      },
+      {
+        "type": "checkbox",
+        "id": "enableImgix",
+        "label": "Enable imgix"
+      },
+      {
+        "type": "text",
+        "id": "imgixUrl",
+        "label": "imgix subdomain",
+        "info": "The subdomain you set within imgix. Example: `https:\/\/mysite-shopify.imgix.net`."
+      },
+      {
+        "type": "text",
+        "id": "imgixShopifyUrl",
+        "label": "Shopify CDN domain",
+        "default": "\/\/cdn.shopify.com",
+        "info": "Don't change this unless you have a proxy in place. Not sure? Leave it as is."
+      }
+    ]
+  }
+]

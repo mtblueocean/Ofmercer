@@ -1,0 +1,90 @@
+<div id="richsnippet" style="display:none;visibility:hidden;">
+  <div itemscope itemtype="http://schema.org/Product">
+    <span itemprop="brand">{{ product.vendor }}</span>
+    <span itemprop="name">{{ product.title | escape }}</span>
+    <span itemprop="category" content="{{ product.type }}">{{ product.type }}</span>   
+  </div>
+</div>
+<!-- end richsnippet -->
+
+<script>
+fbq('track', 'ViewContent', {
+value: {{ product.price | money_without_currency }},
+currency: 'USD',
+content_type: 'product',
+content_ids: ['{{product.id}}']
+});
+</script>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.min.js"></script>
+<script src="{{'sticktoparent.js' | asset_url}}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.min.css" type="text/css" media="screen" />
+
+{% assign product_meta_info = ['product'].metafields.custom_fields %}
+<div style="display: none;">{{ product_meta_info['featured_image'] }}</div>
+<div class="wrapper-max-width">
+  <div class="wrapper product-info" data-sticky_parent>
+      <div class="container">
+
+      <div class="col-1">
+      </div><!-- END col-1 -->
+
+      <div class="col-2 main">
+        <div id="content-product">
+          <div id="product-photos">
+            {% for image in product.images %}  
+              <div class="gallery">
+                <a href="{{ image.src | default: product.featured_image | img_url: 'master' }}" class="mg_trigger">
+                  <img class="" src="{{ image.src | default: product.featured_image | img_url: 'master' }}" />
+                </a>
+            </div>
+            {% endfor %}
+          </div><!-- END product main photos -->
+          <div class="mobile flexslider">
+            <ul class="slides">
+            {% for image in product.images %}
+              <li><img src="{{ image.src | default: product.featured_image | img_url: 'master' }}" /></li>
+            {% endfor %}
+            </ul>
+          </div><!-- END mobile flexslider -->
+        </div><!-- END content product -->
+      </div><!-- END col-2 -->
+
+      <div class="col-3" data-sticky_column>
+        <h5>{{product.title | escape}}<span>{{product.price | money}}</span></h5>
+        <div class="product-description">
+          <h3>{{ product_meta_info['product_tagline'] }}</h3>
+          {% if product.description.size > 0 %}
+            {{ product.description }}
+          {% endif %}
+        </div><!-- END product-description -->
+        <div class="product-form-wrapper">
+          {% include 'product-form-new' %}
+        </div><!-- END product meta -->
+        <div class="product-meta-wrapper">
+          {% include 'product-meta-new-reorder' %}
+          <div style="clear: both;"></div>
+        </div><!-- END product meta wrapper -->
+      </div><!-- END col-3 -->
+
+    </div><!-- END container -->
+    <div style="clear: both;"></div>
+  </div><!-- END wrapper -->
+
+  <div class="wrapper"> 
+    <div id="recent">
+      {% include 'directed-edge' %}
+    </div>
+  </div>
+</div>
+
+<div id="addedCartMobileModal" class="modal added-cart-confirm-modal mobile">
+  <div class="modal-content">
+    <a href="#" class="remove-item"></a>
+    <p>Added to your bag.</p>
+    <a class="btn" href="/collections/all">Keep Shopping</a>
+    <a class="btn btn-black" href="/checkout">Checkout</a>
+  </div>
+</div>
+
+{% include 'product-js' %}

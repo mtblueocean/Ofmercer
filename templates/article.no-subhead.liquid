@@ -1,0 +1,84 @@
+{% assign metafields = ['article'].metafields.custom_fields %}
+
+<div class="page test" id="article">
+	<div class="wrapper mid-wrapper">
+		<article>
+			{% assign blog_tag = article.tags[0] %}
+			{% assign blog_handle = blog.handle %}
+			
+			<header>
+				<h4>{{ blog_tag | replace: '-', ' ' }}</h4>
+				<h1 class="blog-header">{{ article.title }}</h1>
+				
+			</header>
+			<div class="rte">
+				{{ article.content }}
+			</div>
+		</article>
+		
+		<ul class="social-share">
+			<li><a href="//www.facebook.com/sharer/sharer.php?u={{shop.url}}{{article.url}}" title="Share on Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			<li><a href="//twitter.com/intent/tweet?text={{ article.title | url_escape }}: {{shop.url}}{{article.url}}" title="Share on Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			<li class="pin-btn"><a data-pin-do="buttonBookmark" href="//pinterest.com/pin/create/button/" title="Share on Pinterst" target="_blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+			<li><a href="mailto:{{ article.title | url_escape }}?subject= title &amp;body=Check out this article on ofmercer.com. {{shop.url}}{{article.url}}" title="Share via email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+		</ul>
+	</div>
+	
+  {% assign related_posts = "" %}
+  {% assign test_count = 0 %}
+  {% for r_article in blogs[blog_handle].articles %}
+    {% if r_article.tags contains blog_tag and r_article.handle != article.handle %}
+      {% if r_article.image.size > 0 %}
+        {% capture post %}
+          <div class="related-article">
+            <a href="{{ r_article.url }}" title="{{ r_article.title }}"> 
+              <img src="{{ r_article | img_url: 'grande' }}" alt="Of mercer" />
+            </a>
+            <div>
+              <h6><a href="{{ r_article.url }}" title="{{ r_article.title }}">  {{ r_article.title }}</a></h6>
+            </div> 
+          </div>
+        {% endcapture %}
+      {% endif %}
+      {% assign related_posts = related_posts | append:post %}
+      
+      {% assign test_count = test_count | plus: 1 %}
+
+      {% if test_count == 3 %}
+        {% break %}
+      {% endif %}
+      
+      {% assign post = null %}
+    {% endif %}
+  {% endfor %}
+	
+	{% if related_posts.size > 0 %}
+	<div id="related-articles">
+		<div class="wrapper">
+			<h2>Related Stories</h2>
+			<div class="rp-wrap">
+			  {{ related_posts }}
+			</div>
+		</div>
+	</div>
+	{% endif %}	
+	
+</div>  
+
+<script type="text/javascript" charset="utf-8">
+//<![CDATA[
+$(function() {
+  analytics.page(unescape("{{ blog.title | escape }}"), unescape("{{ article.title | escape }}"));
+  $('ul#posts li a').each(function() {
+    if ($(this).attr('href')  ===  window.location.pathname) {
+      $(this).addClass('current');
+    }
+  });
+  
+  $('.pin-btn').append('<i class="fa fa-pinterest-p" aria-hidden="true"></i>');
+  
+  $('#related-articles').find('.related-article:gt(2)').remove();
+  
+});  
+//]]>
+</script>

@@ -1,0 +1,9 @@
+<script>
+    var MRParams = {
+        "id" : "930cb5fd1adea19b0d1dafec2f253a05",
+        "apiScript" : "{{ 'api.jquery.js' | shopify_asset_url }}",
+        "total_price" : "{{ cart.total_price }}",
+        "total_quantity" : "{{ cart.item_count }}",
+        "product" : {{ product | json }}
+    }
+</script>
