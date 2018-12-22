@@ -2082,7 +2082,6 @@ img {
 	background: $brand-light;
 	text-align: center;
 	padding: 60px 0;
-  margin-top:80px;
   clear: both;
   	@include breakpoint(phone){
     	padding: 60px 0;
@@ -4171,7 +4170,7 @@ form .colors {
 					width: 30px;
 					height: 30px;
 					margin-top: -16px;
-					margin-left: -16px;					
+					margin-left: -16px;
 				}
 			}
 		}
@@ -4527,9 +4526,6 @@ form .colors {
 	    transform: none !important;
 	    top: 13px !important;
     }	    
-    .dummy-select {
-
-    }
 	}	
 }
 
@@ -4603,6 +4599,12 @@ form .colors {
       }
       &.unavailable:hover {
         background: white;
+      }
+
+      @media screen and (max-width: 484px) {
+        min-width: 40px;
+        height: 40px;
+        line-height: 40px;
       }
     }
   }
@@ -8516,6 +8518,11 @@ img {
             height: 36px;
             margin-top: -19px;
             margin-left: -19px;
+          }
+
+          @media screen and (max-width: 484px) {
+            width: 40px;
+            height: 40px;
           }
         }
       }
