@@ -989,7 +989,7 @@
         "settings": {
           "message": true,
           "header_padding": 30,
-          "message_text": "Free shipping and returns on all U.S. orders.",
+          "message_text": "<b>There's still time!<\/b> Order by 2pm EST on 12\/20 and select UPS 2-Day for delivery before Christmas.",
           "free_shipping_countdown": false,
           "free_shipping_threshold": 35,
           "free_shipping_notqualified": "Add just [price] to your cart to receive free shipping!",
