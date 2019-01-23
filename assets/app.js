@@ -615,13 +615,7 @@
     	$(this).parent('form').removeClass('expanded');
     });
   
-    // Filter/Sort Menu Items Effect
-    $('.sort-controls .col').on('click', function() {
-      $('.filter-collapse-heading').removeClass('active');
-      $('.collapse-filter-items').addClass('active');
-      $(this).find('.filter-collapse-heading').toggleClass('active');
-    });
-
+    
     $('#footer-newsletter-2asdf form, #popup-newsletter-2asdf form').submit(function(e) {
         e.preventDefault();
         var email = $(this).find('input[type="email"]').val();

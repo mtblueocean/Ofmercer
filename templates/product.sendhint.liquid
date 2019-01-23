@@ -22,7 +22,7 @@ content_ids: ['{{product.id}}']
 
 {% assign product_meta_info = ['product'].metafields.custom_fields %}
 <div style="display: none;">{{ product_meta_info['featured_image'] }}</div>
-
+<div class="wrapper-max-width">
 <div class="wrapper product-info" data-sticky_parent>
 	<div class="container">
     
@@ -76,6 +76,9 @@ content_ids: ['{{product.id}}']
     {% include 'directed-edge' %}
   </div>
 </div>
+
+</div>
+
 
 <div id="addedCartMobileModal" class="modal added-cart-confirm-modal mobile">
   <div class="modal-content">

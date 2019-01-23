@@ -1,0 +1,70 @@
+{% assign product_meta_info = ['product'].metafields.custom_fields %}
+
+{% assign product_meta_info = ['product'].metafields.custom_fields %}
+<form class="product-form" action="/cart/add" method="post" style="margin-bottom: 0;" data-product-title="{{ product.title | escape}}" data-product-price="{{ product.price }}">
+  <div class="middle">
+    
+    <div class="swatch">
+      <div class="sw-col">
+        {% if product.type == "Gift Card" %}
+
+        {% else %}
+          <p class="size-title swatch-title"></p>
+        {% endif %}
+      </div>
+      
+    </div><!-- END swatch -->
+
+    <div class="color-selector-wrapper selector-wrapper">
+      <p class="small size-title">Select Amount:</p>
+      {% if settings.enable_sizeguide %}
+        {% if product.type == "Gift Card" or product.type == "Accessory" %}
+        
+        {% else %}
+          <span id="size-guide-trigger">size guide</span>
+        {% endif %}
+      {% endif %}      
+      <div class="pf-vert-y">
+        <span class="size-msg">Please select an amount</span>
+          <label>Size</label>
+          <select name="id" id="productVariants">
+            {% for variant in product.variants %}
+              {% assign variantTitle = variant.option2 %}           
+              <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-barcode="{{ variant.barcode}}" data-sku="{{ variant.sku }}" value="{{ variant.id }}" data-option1={{ variant.option2 }} {% if variant.option3.size > 0 %}data-option2="{{ variant.option3 }}"{% endif %} data-available={{ variant.available }} data-qty={{ variant.inventory_quantity }}>{{ variantTitle }}</option>
+            {% endfor %}                  
+          </select>
+          
+        </div>
+      </div>
+            
+    </div>
+    
+    <div id="add-button" class="add-button">
+      <div class="pf-vert-y">       
+        <input type="submit" name="button" id="add" class="button btn-add-to-cart" value="Add to Bag" />
+        
+        {% if product_meta_info['preorder_message'].size > 0 %}
+          <span class="preorder-msg">{{ product_meta_info['preorder_message'] }}</span>
+        {% endif %}
+        
+      </div>
+    </div>
+ 
+<span style="text-align:center; display:block; "  class="drophint-link"></span>   
+  </form>
+
+{% if settings.enable_sizeguide %}
+<div style='display:none'>
+  <div id="sizeguide">
+    {% assign product_meta_info = ['product'].metafields.custom_fields %}
+    {% if product_meta_info['size_guide'] %}
+      <h5>{{ product.title | escape }} Size Guide</h5>
+      <p> {{product_meta_info['size_guide_text']}}</p>
+          {{product_meta_info['size_guide']}}
+       <p> {{product_meta_info['size_guide_text_2']}}</p>
+    {% else %}
+      <img src="{{ 'size_guide.jpg' | asset_url }}" />
+    {% endif %}
+  </div>
+</div>
+{% endif %}

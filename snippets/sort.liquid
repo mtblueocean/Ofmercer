@@ -36,43 +36,36 @@
 		    </select>
 		    
 		    <div class="col">
-			    <h6 class="filter-collapse-heading">Size</h6>
-			    <ul class="collapse-filter-items">
-			    	<li class="new">
-			    		<ul>
-					      {% for tag in tags %}
-					        {% if current_tags contains tag %}
-					          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
-					        {% elsif collection.all_tags contains tag %}
-					          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
-					        {% endif %}
-					      {% endfor %}
-			    		</ul>
-			    	</li>
-			    	<li class="new">
-			    		<ul>
-					      {% for tag in tags_numbers %}
-					        {% if current_tags contains tag %}
-					          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
-					        {% elsif collection.all_tags contains tag %}
-					          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
-					        {% endif %}
-					      {% endfor %}
-			    		</ul>
-			    	</li>
-			    	<li class="new">
-			    		<ul>
-					      {% for tag in tags_numbers_2 %}
-					        {% if current_tags contains tag %}
-					          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
-					        {% elsif collection.all_tags contains tag %}
-					          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
-					        {% endif %}
-					      {% endfor %}
-			    		</ul>
-			    	</li>
+			    <h6>Size</h6>
+			    <ul>        
+			      {% for tag in tags %}
+			        {% if current_tags contains tag %}
+			          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+			        {% elsif collection.all_tags contains tag %}
+			          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+			        {% endif %}
+			      {% endfor %}
 			    </ul>
+			    <ul>
+			      {% for tag in tags_numbers %}
+			        {% if current_tags contains tag %}
+			          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+			        {% elsif collection.all_tags contains tag %}
+			          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+			        {% endif %}
+			      {% endfor %}				    		    
+			    </ul>
+			    <ul>
+			      {% for tag in tags_numbers_2 %}
+			        {% if current_tags contains tag %}
+			          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+			        {% elsif collection.all_tags contains tag %}
+			          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+			        {% endif %}
+			      {% endfor %}				    		    
+			    </ul>			    
 		    </div>
+		    
 		  </li>
 		{% endif %}			
 		
@@ -91,8 +84,8 @@
 		    </select>
 		    
 		    <div class="col">
-			    <h6 class="filter-collapse-heading">Color</h6>
-			    <ul class="collapse-filter-items">
+			    <h6>Color</h6>
+			    <ul>
 			    {% for tag in color_tags %}
 		        {% if current_tags contains tag %}
 		          <li data-value="{{ tag | handle }}">{{ tag | remove: 'Color_' }}</li>
@@ -121,8 +114,8 @@
 		    </select>
 		    
 		    <div class="col">
-			    <h6 class="filter-collapse-heading">Special Feature</h6>
-			    <ul class="collapse-filter-items">
+			    <h6>Special Feature</h6>
+			    <ul>
 			    {% for tag in special_feature_tags %}
 		        {% if current_tags contains tag %}
 		          <li data-value="{{ tag | handle }}">{{ tag | remove: 'Feature_' | replace: '-', ' ' }}</li>
@@ -151,8 +144,8 @@
 		    </select>
 		    
 		    <div class="col">
-			    <h6 class="filter-collapse-heading">Body Type</h6>
-			    <ul class="collapse-filter-items">
+			    <h6>Body Type</h6>
+			    <ul>
 			    {% for tag in feature_tags %}
 		        {% if current_tags contains tag %}
 		          <li data-value="{{ tag | handle }}">{{ tag | remove: 'Feature_' | replace: '-', ' ' }}</li>

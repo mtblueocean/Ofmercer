@@ -105,8 +105,6 @@ src="https://www.facebook.com/tr?id=1654728768137867&ev=PageView&noscript=1"
   ================================================== -->
   <link href="{{ 'jquery.fancybox.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />
   <link href="{{ 'magnific-popup.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />
-  
-  <link href="{{ 'perfect-scrollbar.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />
 
   <!-- Custom Css
   ================================================== -->
@@ -134,8 +132,6 @@ src="https://www.facebook.com/tr?id=1654728768137867&ev=PageView&noscript=1"
   <script src="{{ 'jquery.matchHeight.min.js' | asset_url }}"></script>
   <script src="{{'sticktoparent.js' | asset_url }}"></script>
    {{'jquery.magnific-popup.min.js' | asset_url | script_tag}}
-  
-  {{'perfect-scrollbar.min.js' | asset_url | script_tag}}
 
 
 
@@ -202,7 +198,6 @@ src="https://www.facebook.com/tr?id=1654728768137867&ev=PageView&noscript=1"
 
 {% if template contains 'product' %} {% for image in product.images limit:3 %} <meta property="product-image" content="http:{{ image.src | product_img_url: 'grande' }}"> {% endfor %} {% endif %}
 
-<!-- Arthur Page Tracking Snippet --> <script type="text/javascript"> "use strict";(function(){var a=window.arthur=window.arthur||{};return a.invoked?void(window.console&&console.error&&console.error("Arthur snippet included twice.")):void(a.invoked=!0,a.queue=[],a.listeners={},a.setEmployeeWindow=function(b){a.eW=b},a.emit=function(b,c){a.queue.push([b,c])},a.on=function(b,c){a.listeners[b]=a.listeners[b]||[],a.listeners[b].push(c)},a.load=function(b,c){var d=document.createElement("script");d.type="text/javascript",d.async=!0,d.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.arthur.cloud/track/v1.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(d,e),a._loadOptions=c,a.writeKey=b},a.snippetVersion="1.0.0",a.setEmployeeWindow(30),a.load("nHXEVu5e3e_d7bTMj7O7Sbq7"))})(); arthur.emit("page"); </script> <!-- End Arthur Page Tracking Snippet -->
 
 </head>
 
@@ -211,13 +206,12 @@ src="https://www.facebook.com/tr?id=1654728768137867&ev=PageView&noscript=1"
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NN9TNC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   
-  <div class="max-container">
   {% include 'mobile-menu' %}
   {% section 'announcement-bar' %}
   
   {% include 'newsletter-popup' %}
   
-  {% include 'custom-header' %}
+  {% include 'custom-header3' %}
   
   {% if template == 'blog.alternate' %}
     <div id="content" class="row {% if template == 'blog.alternate' %}more-space{% endif %}">
@@ -239,9 +233,8 @@ src="https://www.facebook.com/tr?id=1654728768137867&ev=PageView&noscript=1"
     </div>
   {% endif %}
           
- 
-  </div>
-   {% include 'footer' %}
+  {% include 'footer' %}
+
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
 
 <script async type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
@@ -350,9 +343,7 @@ src="https://www.facebook.com/tr?id=1654728768137867&ev=PageView&noscript=1"
     
     // Code for magnific popup ends
     
-    $('#mini-cart .mc-body').perfectScrollbar({
-    suppressScrollX:true,
-  });
+    
   </script>
 
 </body>

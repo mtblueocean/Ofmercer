@@ -1,0 +1,292 @@
+{% assign metafields = ['collection'].metafields.custom_fields %}
+<div id="collection-header" style="margin-bottom: 0;">
+  {% if collection.image %}
+    <img src="{{ collection.image.src | collection_img_url: '2048x2048' }}" alt="{{ collection.image.alt }}">
+  {% endif %}
+  <div class="msg-group">
+     <h4>{{ metafields['collection_tagline'] }}</h4>
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description %}
+      <p class="shortform">{{ collection.description }}</p>
+    {% endif %}
+  </div>
+  <div class="triangle right"></div>
+</div>
+
+{% include 'lbd-menu' %}
+
+<div class="wrapper" style="position: relative;">
+
+  {% paginate collection.products by 99999 %}
+    <div id="collection-grid" class=""> 
+      {% for product in collection.products %}
+          
+          
+        {% if collection.all_products_count > 3 %}
+          
+          {% if forloop.index == 1 %}
+            {% assign metafields = ['collection'].metafields.custom_fields %}
+            {% assign large_image = metafields['promo_1_image'] %}
+            {% assign image_list_hover = metafields['promo_1_image_hover'] %}
+  
+            <div class="collection-item new-cf">
+              <div class="collection-image">
+              <div class="col-1-3 editorial-text product-meta-editorial">
+                    <div>
+                      <h6><a id="Sheath" style="text-decoration:none!important">The</a></h6>
+                      <h5><span>Sheath</span></h5>
+                      <p>Trim, polished, and totally professional—great for 
+                        showing off curves and hard-earned muscles alike.</p>
+                    </div>
+                  </div> 
+              
+              </div>
+            </div>
+          {% endif %}
+
+          {% if forloop.index == 9 %}
+            {% assign metafields = ['collection'].metafields.custom_fields %}
+            {% assign large_image = metafields['promo_1_image'] %}
+            {% assign image_list_hover = metafields['promo_1_image_hover'] %}
+  
+            <div class="collection-item new-cf clear">
+              <div class="collection-image">
+                <div class="col-1-3 editorial-text product-meta-editorial">
+                    <div>
+                      <h6><a id="Aline" style="text-decoration:none!important">The</a></h6>
+                      <h5><span>A-Line</span></h5>
+                      <p>A perennial classic for a reason: 
+                        Swingy, flirty, and the ultimate figure-flatterer.</p>
+                    </div>
+                  </div>
+                
+             
+              </div>
+            </div>
+          {% endif %}
+
+          {% if forloop.index == 17 %}
+            {% assign metafields = ['collection'].metafields.custom_fields %}
+            {% assign large_image = metafields['promo_1_image'] %}
+            {% assign image_list_hover = metafields['promo_1_image_hover'] %}
+  
+            <div class="collection-item new-cf">
+              <div class="collection-image">
+                 <div class="col-1-3 editorial-text product-meta-editorial">
+                    <div>
+                      <h6><a id="Waist" style="text-decoration:none!important">The</a></h6>
+                      <h5><span>Waist-Definer</span></h5>
+                      <p>Whether you’re an hourglass shape or are 
+                        looking to create one, these waist-defining styles do it all.</p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          {% endif %}
+      
+      {% if forloop.index == 22 %}
+            {% assign metafields = ['collection'].metafields.custom_fields %}
+            {% assign large_image = metafields['promo_1_image'] %}
+            {% assign image_list_hover = metafields['promo_1_image_hover'] %}
+  
+            <div class="collection-item new-cf">
+              <div class="collection-image">
+               <div class="col-1-3 editorial-text product-meta-editorial">
+                    <div>
+                      <h6><a id="Sleeves" style="text-decoration:none!important">The</a></h6>
+                      <h5><span>Long-Sleeve</span></h5>
+                      <p>Elegant and meticulously tailored to hit at the 
+                        perfect spot, these styles provide a little extra coverage and polish.</p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          {% endif %}
+          
+          
+      
+
+
+        {% endif %}
+
+      
+        <div class="collection-item" data-price="{{ product.price | money_without_currency }}">
+          <div class="collection-image">
+            {% if product.images.size > 1 %}      
+              <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">                   
+                {% assign productImage1 = product.images[0] | img_url:'master' %}
+                {% assign productImage2 = product.images[1] | img_url:'master' %}
+                <img class="img1" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
+                  srcset="
+                  {% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,
+                  {% include 'imgix' src:productImage1 w:640 auto:'format' %} 640w,
+                  {% include 'imgix' src:productImage1 w:960 auto:'format' %} 960w,
+                  {% include 'imgix' src:productImage1 w:1280 auto:'format' %} 1280w,
+                  {% include 'imgix' src:productImage1 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+                <img class="img2" src="{% include 'imgix' src:productImage2 w:960 auto:'format' %}"
+                  srcset="
+                  {% include 'imgix' src:productImage2 w:320 auto:'format' %} 320w,
+                  {% include 'imgix' src:productImage2 w:640 auto:'format' %} 640w,
+                  {% include 'imgix' src:productImage2 w:960 auto:'format' %} 960w,
+                  {% include 'imgix' src:productImage2 w:1280 auto:'format' %} 1280w,
+                  {% include 'imgix' src:productImage2 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+             </a> 
+            {% else %}       
+              <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+                {% assign productImage1 = product.images[0] | img_url:'master' %}
+                <img class="img1 scale-with-grid" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
+                    srcset="
+                    {% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,
+                    {% include 'imgix' src:productImage1 w:640 auto:'format' %} 640w,
+                    {% include 'imgix' src:productImage1 w:960 auto:'format' %} 960w,
+                    {% include 'imgix' src:productImage1 w:1280 auto:'format' %} 1280w,
+                    {% include 'imgix' src:productImage1 w:1600 auto:'format' %} 1600w " sizes="(min-width: 375px) 50vw, 100vw" alt="{{ product.title | escape }}"
+                >
+              </a>
+            {% endif %}   
+          </div>
+          <div class="collection-item-detail" data-price="{{ product.price | money_without_currency }}">     
+            <a href="{{ product.url | within: collection }}">
+              <h6>{{ product.title | truncate: 70 }}
+                <span>{% include 'swatchesnosize2' %}</span> 
+                <span class="right">
+                  {% if product.title == 'Of Mercer Gift Card' %}
+                    from {{ product.price_min | money }} - {{ product.price_max | money }} 
+                  {% else %}
+                    {{ product.price | money }} {% if product.price < product.compare_at_price %} was <span class="red">{{ product.compare_at_price | money }}</span>{% endif %}
+                  {% endif %}
+                  </span>
+                </h6>
+            </a>
+          </div>
+        </div>
+      {% endfor %}      
+    </div>
+    
+    <div id="bottom-paginate-bar" class="twelve columns">
+      {% if paginate.pages > 1 %}
+      <ul class="pagination">
+        {% if paginate.previous %}
+        <li class="arrow">{{ '&laquo;' | link_to: paginate.previous.url }}</li>
+        {% endif %}
+         {% for part in paginate.parts %}
+          {% if part.is_link %}
+        <li>{{ part.title | link_to: part.url }}</li>
+        {% elsif part.title == '&hellip;' %}
+        <li>{{ part.title }}</li>
+        {% else %}
+        <li class="current">{{ part.title | link_to: part.url }}</li>
+        {% endif %}
+        {% endfor %}
+        {% if paginate.next %}
+        <li class="arrow">{{ '&raquo;' | link_to: paginate.next.url }}</li>
+        {% endif %}
+        <li><a href="/collections/{{ collection.handle }}?view=all" style="margin-left: 10px">View All</a></li>
+      </ul>
+      {% endif %}  
+    </div>
+  {% endpaginate %}
+
+</div>
+
+<script type="text/javascript">
+
+$(function() {
+  
+  var $ad = $('#collection-grid .collection-item.ad'),
+      $c_header = $('#collection-header'),
+      $msg_group = $('.msg-group'),
+      msg_height;
+  
+  //<![CDATA[ 
+/*
+    $('#linklists a').each(function() {
+      if ($(this).attr('href')  ===  window.location.pathname) {
+        $(this).addClass('current');
+      }
+    });
+*/
+  //]]>
+
+  analytics.page(unescape("{{ collection.title | escape }} Collection"), "Index");
+    
+  if($('#collection-grid .collection-item').hasClass('ad')){
+    $ad.eq(0).css({'margin-right': 0}).after('<div class="clear"></div>');
+    $ad.eq(1).next('.collection-item').css({'margin-right': 0}).nextAll('.collection-item').wrapAll('<div class="collection-gridy"></div>');
+  }
+  
+  // Color filter columns
+  var divs = $('.color-filter').find('.col ul li');
+  for(var i = 0; i < divs.length; i+=5) {
+    divs.slice(i, i+5).wrapAll("<li class='new'><ul></ul></li>");
+  }
+  
+  function collectionHeader(){
+    msg_height = $msg_group.height();
+    $c_header.css({
+      'min-height': msg_height
+    });
+  }
+  
+  collectionHeader();
+  
+  $(window).resize(function(){
+    collectionHeader();
+  });
+
+  function stickSecondaryNav(){         
+
+    var $prod_controls = $('.giftguide-menu');
+
+    var pw_pos = $prod_controls.offset().top;
+          
+    $(window).on('scroll', function(){
+      
+      if($(window).scrollTop() >= pw_pos){
+        $prod_controls.addClass('stick');
+      } else {
+        $prod_controls.removeClass('stick');
+      }
+    });
+
+  };
+
+  stickSecondaryNav();
+
+  $('.giftguide-menu li > a').click(function(e){
+    $('#collection-grid').removeClass('filtered');
+    $('.collection-item').each(function(){
+      $(this).show();
+      $(this).removeClass('filtered');
+      $(this).css('margin-right', '');
+    });
+  });
+
+  $('#gifts-under-temp > a').click(function(e){
+    e.preventDefault();
+    var x = 0;
+    $('.collection-item').each(function(i, v){
+      if( !$(this).data('price') || $(this).data('price') > 150 ) {
+        $(this).hide();
+      } else {
+        $(this).addClass('filtered');
+        x++;
+        if(x % 3 == 0) {
+          $(this).css('margin-right', '0');
+        } else {
+          $(this).css('margin-right', '9%');
+        }
+      }
+    });
+    $('html, body').animate({
+        scrollTop: $("#collection-grid").offset().top
+    }, 2000);
+  });
+
+  $('#gifts-under-temp > a').text('Gifts Under $150');
+    
+  
+}); 
+</script>
