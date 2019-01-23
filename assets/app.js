@@ -227,10 +227,10 @@
 	  	
 	}	
 	
-	function slickInit(){
+	function slickInit() {
 		var $slick = $('.slick');
-		
-		if($slick.length > 0){
+
+		if($slick.length > 0) {
 			$('.slick').slick();
 		}
 	};
@@ -515,30 +515,30 @@
       open_mailing_list_popup = true;
     }
     
-  //   $('.mail-trigger a').click(function(e){
-  //       $('body').removeClass('sizeguide-open');
-  //     	e.preventDefault();
+    /*$('.mail-trigger a').click(function(e){
+        $('body').removeClass('sizeguide-open');
+      	e.preventDefault();
 
-	 //    $.fancybox.open([{
-		// 	width: 700,
-		// 	height: 700,
-		// 	href: '#newsBox3'
-		// }], {
-		// 	padding: 50
-		// });
-  //   });
+	    $.fancybox.open([{
+  			width: 700,
+  			height: 700,
+  			href: '#newsBox3'
+  		}], {
+  			padding: 50
+  		});
+    });
     
-   //  if(open_mailing_list_popup){
-	  //   setTimeout(function(){		
-		 //    $.fancybox.open([{
-			//     width: 700,
-			//     height: 700,
-			//     href: '#newsBox3'
-		 //    }], {
-			//     padding: 50
-		 //    });
-		 //  }, 500);
-	  // }
+    if(open_mailing_list_popup){
+	    setTimeout(function(){		
+		    $.fancybox.open([{
+			    width: 700,
+			    height: 700,
+			    href: '#newsBox3'
+		    }], {
+			    padding: 50
+		    });
+		  }, 500);
+	  }*/
     
     // init functions
     showPage();
@@ -570,20 +570,20 @@
   });
   
   $(document).ready(function(){
-    $('form#create_customer').submit(function(){
-		fbq('track', 'CompleteRegistration');
+    $('form#create_customer').submit(function() {
+		  fbq('track', 'CompleteRegistration');
     });
     
-    $('#footer-newsletter-2 form').submit(function(){
-		fbq('track', 'Lead', {
-        	source: 'footer'
-        });
+    $('#footer-newsletter-2 form').submit(function() {
+		  fbq('track', 'Lead', {
+      	source: 'footer'
+      });
     });
     
-    $('#popup-newsletter-2 form').submit(function(){
-		fbq('track', 'Lead', {
-        	source: 'popup'
-        });
+    $('#popup-newsletter-2 form').submit(function() {
+		  fbq('track', 'Lead', {
+      	source: 'popup'
+      });
     });
     
     var imageHeight = $('#home-featured #featured-collection-1 img').height();
@@ -608,10 +608,10 @@
     $('#collection-header .triangle.right').css('border-bottom-width', collectionImageHeight);
     
    	 //New Edits From Nicole
-    $('form.search').find('input[type=text]').focus(function(){ 
+    $('form.search').find('input[type=text]').focus(function() { 
     	$(this).parent('form').addClass('expanded');
     });
-    $('form.search').find('input[type=text]').blur(function(){ 
+    $('form.search').find('input[type=text]').blur(function() { 
     	$(this).parent('form').removeClass('expanded');
     });
   

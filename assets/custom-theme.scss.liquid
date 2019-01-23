@@ -1342,9 +1342,10 @@ img {
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 2;
-    max-height: 60px;
-  	background: white;
+	z-index: 12;
+  max-height: 60px;
+	background: white;
+
 	&.trans {
 		.header-upper {
 			background: rgba(255,255,255,0);
@@ -2264,6 +2265,19 @@ img {
     display: none;
   }
 	padding-top: 6rem;
+  .slick {
+    opacity: 0;
+    transition: opacity .3s linear;
+
+    @include breakpoint(ml) {
+      height: 100vh;
+      min-height: 50rem;
+    }
+
+    &.slick-initialized {
+      opacity: 1;
+    }
+  }
 	.slick-slide {
 		position: relative;	
 		background-position: center center;
@@ -2310,7 +2324,7 @@ img {
       	text-align: center;
       	top: 55%;
   		transform: translateY(-50%);
-      	@include breakpoint(phone){
+      	@include breakpoint(phone) {
           h1 {
             padding-left:5px; 
             padding-right:5px;
@@ -2391,7 +2405,7 @@ img {
 			}
 		}
 	}
-	@include breakpoint(ml){
+	@include breakpoint(ml) {
 		padding-top: 0;
 		.slick-slide {
 			height: 100vh;

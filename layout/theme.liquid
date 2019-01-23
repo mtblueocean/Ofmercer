@@ -318,33 +318,29 @@ src="https://www.facebook.com/tr?id=1654728768137867&ev=PageView&noscript=1"
     </script>
 {% endif %}
   
+{% if template contains 'product' %}
   <script>
   	 $(document).ready(function(){
-       
-     var productInfo = $('.product-info .col-3');
-  	 productInfo.stick_in_parent({
-       parent: ".wrapper.product-info",
-       offset_top: 40
-     });
-      
-  });
+       var productInfo = $('.product-info .col-3');
+    	 productInfo.stick_in_parent({
+         parent: ".wrapper.product-info",
+         offset_top: 40
+       });
+    });
     
     // Code for magnific popup
     
-      $('.mg_trigger').magnificPopup({
-          type: 'image',
-          closeOnContentClick: true,
-          mainClass: 'mfp-img-mobile',
-          image: {
-            verticalFit: false
-          }
-          
-        });
-    
+    $('.mg_trigger').magnificPopup({
+      type: 'image',
+      closeOnContentClick: true,
+      mainClass: 'mfp-img-mobile',
+      image: {
+        verticalFit: false
+      }
+    });
     // Code for magnific popup ends
-    
-    
   </script>
+{% endif %}
 
 </body>
 </html>

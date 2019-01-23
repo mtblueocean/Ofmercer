@@ -4,8 +4,7 @@
 		"slidesToShow": 1,
 		"slidesToScroll": 1,
 		"dots": true,
-		"arrows": false
-	}'>
+		"arrows": false}'>
 		{% assign mySlides = "slider1|slider2|slider3" | split: "|" %}
 		{% for item in mySlides %}
 		  {% assign enable = item | append: '_enable' %}
