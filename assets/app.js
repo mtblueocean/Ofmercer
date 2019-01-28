@@ -220,7 +220,7 @@
 		    },
 		    mouseleave: function(){
 			    var me = $(this);
-			    me.find('.img2').hide().prev('.img1').show();		    
+			    me.find('.img2').hide().prev('.img1').show();
 		    }
 		  });	
 	  }
@@ -230,7 +230,7 @@
 	function slickInit() {
 		var $slick = $('.slick');
 
-		if($slick.length > 0) {
+		if ($slick.length > 0) {
 			$('.slick').slick();
 		}
 	};
