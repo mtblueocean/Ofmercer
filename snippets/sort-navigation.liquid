@@ -1,0 +1,295 @@
+<div class="sort-nav-wrap">
+  <div class="filter sort-by">
+    <div class="col">
+      <h6>Sort by</h6>
+      <ul class="filter-collapse">
+        <li data-val="best-selling">Best Seller</li>
+        <li data-val="created-descending">New</li>
+        <li data-val="price-ascending">Price ($-$$$)</li>
+        <li data-val="price-descending">Price ($$$-$)</li>
+      </ul>
+    </div>
+  </div>
+
+  {% if settings.sort-dropdown-b-check %}
+    <div class="filter size-filter">
+      {% assign tags = settings.sort_by_size  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+      {% assign tags_numbers = settings.sort_by_size_number  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+      {% assign tags_numbers_2 = settings.sort_by_size_number_2  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+
+      <select class="coll-filter">
+        <option value="">Shop by Size</option>
+        
+        {% for tag in tags %}
+          {% if current_tags contains tag %}
+            <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+          {% elsif collection.all_tags contains tag %}
+            <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endif %}
+        {% endfor %}
+        
+        {% for tag in tags_numbers %}
+          {% if current_tags contains tag %}
+            <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+          {% elsif collection.all_tags contains tag %}
+            <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endif %}
+        {% endfor %}
+            
+            {% for tag in tags_numbers_2 %}
+          {% if current_tags contains tag %}
+            <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+          {% elsif collection.all_tags contains tag %}
+            <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+        
+      <div class="col">
+        <h6>Size</h6>
+        <ul class="filter-collapse">        
+          {% for tag in tags %}
+            {% if current_tags contains tag %}
+              <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+            {% elsif collection.all_tags contains tag %}
+              <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <ul class="filter-collapse">
+          {% for tag in tags_numbers %}
+            {% if current_tags contains tag %}
+              <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+            {% elsif collection.all_tags contains tag %}
+              <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+            {% endif %}
+          {% endfor %}                    
+        </ul>
+        <ul class="filter-collapse">
+          {% for tag in tags_numbers_2 %}
+            {% if current_tags contains tag %}
+              <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+            {% elsif collection.all_tags contains tag %}
+              <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+            {% endif %}
+          {% endfor %}                    
+        </ul>         
+      </div>
+        
+    </div>
+  {% endif %}     
+    
+  {% if settings.sort-dropdown-a-check %}
+    <div class="filter color-filter">
+      {% assign color_tags = settings.sort_by_color  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %} 
+
+      <select class="coll-filter">
+        <option value="">Shop by Color</option>
+        {% for tag in color_tags %}
+          {% if current_tags contains tag %}
+            <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+          {% elsif collection.all_tags contains tag %}
+            <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+        
+      <div class="col">
+        <h6>Color</h6>
+        <ul class="filter-collapse">
+        {% for tag in color_tags %}
+          {% if current_tags contains tag %}
+            <li data-value="{{ tag | handle }}">{{ tag | remove: 'Color_' }}</li>
+          {% elsif collection.all_tags contains tag %}
+            <li data-value="{{ tag | handle }}">{{ tag | remove: 'Color_' }}</li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+        
+  {% if settings.sort-dropdown-sf-check %}
+    <div class="filter special-feature-filter">
+      {% assign special_feature_tags = settings.sort_by_special_feature  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %} 
+
+      <select class="coll-filter">
+        <option value="">Special Feature</option>
+        {% for tag in special_feature_tags %}
+          {% if current_tags contains tag %}
+            <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+          {% elsif collection.all_tags contains tag %}
+            <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+        
+      <div class="col">
+        <h6>Special Feature</h6>
+        <ul class="filter-collapse">
+        {% for tag in special_feature_tags %}
+          {% if current_tags contains tag %}
+            <li data-value="{{ tag | handle }}">{{ tag | remove: 'Feature_' | replace: '-', ' ' }}</li>
+          {% elsif collection.all_tags contains tag %}
+            <li data-value="{{ tag | handle }}">{{ tag | remove: 'Feature_' | replace: '-', ' ' }}</li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+          
+  {% if settings.sort-dropdown-d-check %}
+    <div class="filter feature-filter">
+      {% assign feature_tags = settings.sort_by_feature  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %} 
+
+      <select class="coll-filter">
+        <option value="">Shop by Feature</option>
+        {% for tag in feature_tags %}
+          {% if current_tags contains tag %}
+            <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+          {% elsif collection.all_tags contains tag %}
+            <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      
+      <div class="col">
+        <h6>Body Type</h6>
+        <ul class="filter-collapse">
+        {% for tag in feature_tags %}
+          {% if current_tags contains tag %}
+            <li data-value="{{ tag | handle }}">{{ tag | remove: 'Feature_' | replace: '-', ' ' }}</li>
+          {% elsif collection.all_tags contains tag %}
+            <li data-value="{{ tag | handle }}">{{ tag | remove: 'Feature_' | replace: '-', ' ' }}</li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+    
+    
+  {% if settings.sort-dropdown-c-check %}
+    <div class="filter">
+      {% assign tags = settings.sort_by_anything_else  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}    
+
+      <select class="coll-filter">
+        <option value="">Shop by {{ settings.sort_by_anything_else_label }}</option>
+        {% for tag in tags %}
+        {% if current_tags contains tag %}
+        <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+        {% elsif collection.all_tags contains tag %}
+        <option value="{{ tag | handle }}">{{ tag }}</option>
+        {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+  {% endif %}
+</div>
+  
+<div class="form-horizontal" style="display:none;">
+  <label for="SortBy">title</label>
+  <select name="SortBy" id="SortBy">
+    <option value="best-selling">best_selling</option>
+    <option value="created-descending">new</option>
+    <option value="price-ascending">price_ascending</option>
+    <option value="price-descending">price_descending</option>
+  </select>
+</div>
+
+<script>
+  /*============================================================================
+    Inline JS because collection liquid object is only available
+    on collection pages, and not external JS files
+  ==============================================================================*/
+  Shopify.queryParams = {};
+  if (location.search.length) {
+    for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+      aKeyValue = aCouples[i].split('=');
+      if (aKeyValue.length > 1) {
+        Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+      }
+    }
+  }
+
+  $(function() {
+    console.log(Shopify.queryParams);
+    $('#SortBy')
+      .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+      .bind('change', function() {
+        Shopify.queryParams.sort_by = jQuery(this).val();
+        location.search = jQuery.param(Shopify.queryParams);           
+      }
+    );
+    
+    var me_val;
+    
+    $('.sort-by').find('li').click(function(){
+      me_val = $(this).data('val');
+      if(me_val == 'sale'){
+        {% if collection.handle %}
+          window.location.href = '/collections/{{ collection.handle }}/sale';
+        {% endif %}
+      } else {
+        $('#SortBy').val(me_val).change();  
+      }
+    });
+  });
+
+  /* Product Tag Filters - Good for any number of filters on any type of collection pages */
+  /* Give you product tag filter select element a class of coll-filter */
+  /* Give your collection select a class of coll-picker */
+  /* Brought to you by Caroline Schnapp */
+  (function(){
+    var new_val;
+    var allFilters = $('.coll-filter, .coll-picker');
+
+    allFilters.change(function() {
+      var newTags = [];
+      $('.coll-filter').each(function() { 
+        if ($(this).val()) {
+          newTags.push($(this).val());
+        }
+      });
+
+      if (newTags.length) {
+        var query = newTags.join('+');
+        if ($('.coll-picker').length) {
+          window.location.href = '/collections/' + $('.coll-picker').val() + '/' + query;
+        } else {
+          window.location.href = $('{{ '0my-tag0' | link_to_tag: '0my-tag0' }}').attr('href').replace('0my-tag0', query);
+        }
+      } else {
+        if ($('.coll-picker').length) {
+          window.location.href = '/collections/' + $('.coll-picker').val();
+        } else {
+          {% if collection.handle %}
+          window.location.href = '/collections/{{ collection.handle }}';
+          {% elsif collection.products.first.type == collection.title %}
+          window.location.href = '{{ collection.title | url_for_type }}';
+          {% elsif collection.products.first.vendor == collection.title %}
+          window.location.href = '{{ collection.title | url_for_vendor }}';
+          {% endif %}
+        }
+      }
+    });
+    
+    $('body').on('click', '.col li', function(e){
+      e.stopPropagation();
+      me = $(this);
+      new_val = me.data('value');
+      me.closest('.col').closest('.filter').find('.coll-filter').val(new_val).change();
+    });
+        
+    $('.coll-filter').each(function() { 
+      var selectedFilter = $(this).val();
+      if (selectedFilter.length > 0) {
+        $('#selected-filters').addClass('active');
+      var selectedFilterText = $(".col").find("[data-value='" + selectedFilter + "']").text();
+        $(".col").find("[data-value='" + selectedFilter + "']").addClass('active');
+      $('#selected-filters').prepend('<span>' + selectedFilterText + '</span>');
+      }
+    });
+  })(jQuery);
+</script>

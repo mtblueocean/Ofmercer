@@ -3406,9 +3406,12 @@ img {
 }
 
 .sort-controls {
+  overflow: visible !important;
+  padding-bottom: 0 !important;
 	@include clearfix();
 	padding: 2rem 0 1rem;
 	position: relative;
+
 	.sorter {
 		width: 100%;
 		margin-bottom: 2rem;
@@ -9050,11 +9053,53 @@ img {
 
 // New Sort Navigation Styles
 .sort-nav-wrap {
+  display: flex;
+  flex-wrap: wrap;
+
   .coll-filter {
     display: none;
   }
 
-  .col {
-    float: none;
+  .filter {
+    position: relative;
+    width: 20%;
+
+    @media screen and (max-width: 768px) {
+      width: 33.33%;
+    }
+
+    .col {
+      float: none;
+      padding: 15px 15px 5px;
+
+      ul {
+        display: inline-block;
+        padding-right: 1.5rem;
+
+        &.filter-collapse {
+          display: none;
+        }
+      }
+
+      > ul .new {
+        float: left;
+        clear: none;
+
+        ul {
+          text-transform: none;
+        }
+      }
+
+      &.active {
+        border: 1px solid #c2c2c2;
+        position: absolute;
+        z-index: 2;
+        background: #FFF;
+
+        .filter-collapse {
+          display: inline-block;
+        }
+      }
+    }
   }
 }

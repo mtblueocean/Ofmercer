@@ -615,6 +615,9 @@
     	$(this).parent('form').removeClass('expanded');
     });
   
+    $('.sort-nav-wrap .filter .col').on('click', function() {
+      $(this).toggleClass('active').parents('.filter').siblings().find('.col').removeClass('active');
+    });
     
     $('#footer-newsletter-2asdf form, #popup-newsletter-2asdf form').submit(function(e) {
         e.preventDefault();
@@ -700,10 +703,7 @@
   
   });
   
-  $('.mobile-menu-close').click(function(){
+  $('.mobile-menu-close').click(function() {
     $(this).parents('.mobile-only').removeClass('open');
-});
-
-  
+  });
 })(jQuery, this);
-
