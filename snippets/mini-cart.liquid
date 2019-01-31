@@ -1,5 +1,5 @@
-<div id="mini-cart" class="desktop-only">
-  <h3>Your Shopping Bag</h3>
+<div id="mini-cart" class="desktop-only" data-template-name="{{template.name}}">
+ 
   {% if cart.item_count > 0 %}
     <div class="mc-body has-items">
       {% for item in cart.items %}
@@ -9,27 +9,28 @@
 	        <a href="{{ item.product.url }}">{{ item.image | img_url: 'medium' | img_tag }}</a>
         </div>
         <div class="mci-deets">
-	        <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="remove-item" rel="{{ item.id }}"></a>
+	        {% comment %}
+            <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="remove-item" rel="{{ item.id }}"></a>
+          {% endcomment %}
+          <a href="#" class="remove-item mini-cart-remove-item" data-id="{{item.id}}" data-production-id="{{item.product.id}}"></a>
 	        <h6><a href="{{ item.product.url }}">{{ item.product.title }}</a>
-          	<span class="stacked"> {{ item.variant.option1 }} / {{ item.variant.option2 }} 
-</span>
+          	<span class="stacked"> {{ item.variant.option1 }} / {{ item.variant.option2 }} </span>
               <span class="stacked">
               {{ item.price | money }} </span>
               
           	</h6>
 	        <h6 class="product-info">
               <span>
-
-          {% if item.product.available and item.variant.inventory_quantity <= 0 and item.product.id != 383771721 and item.product.id != 186704345 %}
-          {% assign has_preorder = true %}
-          {% endif %}
-		     
-          {% assign metafields = item.product.metafields.custom_fields %}
-          {% if has_preorder %}
-            {% if metafields['preorder_message'].size > 0 %}
-              <span class="preorder-msg" >{{ metafields['preorder_message'] }}</span>
-            {% endif %}
-          {% endif %}
+                {% if item.product.available and item.variant.inventory_quantity <= 0 and item.product.id != 383771721 and item.product.id != 186704345 %}
+                {% assign has_preorder = true %}
+                {% endif %}
+      		     
+                {% assign metafields = item.product.metafields.custom_fields %}
+                {% if has_preorder %}
+                  {% if metafields['preorder_message'].size > 0 %}
+                    <span class="preorder-msg" >{{ metafields['preorder_message'] }}</span>
+                  {% endif %}
+                {% endif %}
               </span>
           	</h6>
         </div>
@@ -37,7 +38,7 @@
       {% endfor %}
     </div>
     <div class="mc-footer">
-      <h6>Subtotal <span>{{ cart.total_price | money }}</span></h6>
+      <div class="mini-cart-sub-total"><span>subtotal</span>{{ cart.total_price | money }}</div>
       <!-- a class="btn fullwidth" href="/cart">Checkout</a -->
       <form action="/cart" method="post" id="cartform">
       <input type="submit" name="checkout" id="checkout" style="width:100%!important" value="Checkout" class="btn button">
@@ -45,10 +46,56 @@
     </div>	        
   {% else %}
     <div class="mc-body no-items">
-      <span>Your shopping bag is feeling lonely! Let's change that!</span>
+      <span>There aren't any items in your bag yet!<br>Let's change that!</span>
     </div>
     <div class="mc-footer">
       <a class="btn" href="/collections/all">Continue Shopping</a>
     </div>
   {% endif %}
 </div>
+
+<script>
+  jQuery(document).on('click', '.mini-cart-remove-item', function(event) {
+    event.preventDefault();
+    var productId = parseInt(jQuery(this).attr('data-id'));
+    $.ajax({ 
+      type: 'POST',
+      url: '/cart/change.js',
+      data:  {quantity: 0, id: productId},
+      async: false, 
+      cache: false, 
+      dataType: 'json',
+      success: thisRemoveMiniCartItem,
+      error: removeMiniCartItemFail
+    });
+    $(this).parents('.mini-cart-item').hide('slow');
+
+    if (jQuery('#mini-cart').attr('data-template-name') == 'cart') {
+      $('.cart-item-' + productId).remove();
+    }
+  });
+  
+  function thisRemoveMiniCartItem(cart) {
+    var moneyFormat = "{{ shop.money_format }}";
+    var cart_count = cart.item_count;
+    var monetizeitemprice = $("#mini-cart .mini-cart-sub-total").html( '<span>subtotal</span>' + Shopify.formatMoney(cart.original_total_price, moneyFormat));
+    if (cart.item_count == 0) {
+      $('.mini-cart-trigger .fa-shopping-bag').removeClass('has-items');
+      $('.mini-cart-trigger .cart_count').html('');
+
+      if (jQuery('#mini-cart').attr('data-template-name') == 'cart') {
+        $('#cart_form').remove();
+      }
+
+      $('#mini-cart').html("<div class='mc-body no-items'><span>There aren't any items in your bag yet!<br>Let's change that!</span></div><div class='mc-footer'><a class='btn' href='/collections/all'>Continue Shopping</a></div>");
+    } else {
+      $('.mini-cart-trigger .cart_count').html(cart_count);
+    }
+  }
+  
+  function removeMiniCartItemFail(jqXHR, textStatus, errorThrown) {
+    var response = $.parseJSON(jqXHR.responseText);
+    console.error('PROBLEM REMOVING ITME FROM CART!', response.description);  
+    $('#add-to-cart-msg').addClass('error').text(response.description);
+  }
+</script>

@@ -35,37 +35,44 @@
 		      {% endfor %}
 		    </select>
 		    
-		    <div class="col">
-			    <h6>Size</h6>
-			    <ul>        
-			      {% for tag in tags %}
-			        {% if current_tags contains tag %}
-			          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
-			        {% elsif collection.all_tags contains tag %}
-			          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
-			        {% endif %}
-			      {% endfor %}
+		    <div class="col sort-item">
+			    <h6 class="filter-collapse-heading">Size</h6>
+			    <ul class="collapse-filter-items">
+			    	<li class="new">
+			    		<ul>
+					      {% for tag in tags %}
+					        {% if current_tags contains tag %}
+					          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+					        {% elsif collection.all_tags contains tag %}
+					          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+					        {% endif %}
+					      {% endfor %}
+			    		</ul>
+			    	</li>
+			    	<li class="new">
+			    		<ul>
+					      {% for tag in tags_numbers %}
+					        {% if current_tags contains tag %}
+					          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+					        {% elsif collection.all_tags contains tag %}
+					          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+					        {% endif %}
+					      {% endfor %}
+			    		</ul>
+			    	</li>
+			    	<li class="new">
+			    		<ul>
+					      {% for tag in tags_numbers_2 %}
+					        {% if current_tags contains tag %}
+					          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
+					        {% elsif collection.all_tags contains tag %}
+					          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
+					        {% endif %}
+					      {% endfor %}
+			    		</ul>
+			    	</li>
 			    </ul>
-			    <ul>
-			      {% for tag in tags_numbers %}
-			        {% if current_tags contains tag %}
-			          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
-			        {% elsif collection.all_tags contains tag %}
-			          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
-			        {% endif %}
-			      {% endfor %}				    		    
-			    </ul>
-			    <ul>
-			      {% for tag in tags_numbers_2 %}
-			        {% if current_tags contains tag %}
-			          <li data-value="{{ tag | handle }}">{{ tag | remove: 'size-'}}</li>
-			        {% elsif collection.all_tags contains tag %}
-			          <li data-value="{{ tag | handle }}" >{{ tag | remove: 'size-'}}</li>
-			        {% endif %}
-			      {% endfor %}				    		    
-			    </ul>			    
 		    </div>
-		    
 		  </li>
 		{% endif %}			
 		
@@ -83,9 +90,9 @@
 		      {% endfor %}
 		    </select>
 		    
-		    <div class="col">
-			    <h6>Color</h6>
-			    <ul>
+		    <div class="col sort-item">
+			    <h6 class="filter-collapse-heading">Color</h6>
+			    <ul class="collapse-filter-items">
 			    {% for tag in color_tags %}
 		        {% if current_tags contains tag %}
 		          <li data-value="{{ tag | handle }}">{{ tag | remove: 'Color_' }}</li>
@@ -98,9 +105,9 @@
 		  </li>
 		{% endif %}
         
-         {% if settings.sort-dropdown-sf-check %}
-         <!-- START NEW SORT -->
-        	<li class="clearfix filter special-feature-filter">
+     	{% if settings.sort-dropdown-sf-check %}
+     	<!-- START NEW SORT -->
+    	<li class="clearfix filter special-feature-filter">
 			{% assign special_feature_tags = settings.sort_by_special_feature  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %} 
 		    <select class="coll-filter">
 		      <option value="">Special Feature</option>
@@ -113,9 +120,9 @@
 		      {% endfor %}
 		    </select>
 		    
-		    <div class="col">
-			    <h6>Special Feature</h6>
-			    <ul>
+		    <div class="col sort-item">
+			    <h6 class="filter-collapse-heading">Special Feature</h6>
+			    <ul class="collapse-filter-items">
 			    {% for tag in special_feature_tags %}
 		        {% if current_tags contains tag %}
 		          <li data-value="{{ tag | handle }}">{{ tag | remove: 'Feature_' | replace: '-', ' ' }}</li>
@@ -126,8 +133,8 @@
 			    </ul>
 		    </div>
 		  </li>
-          {% endif %}
-          <!-- END NEW SORT -->
+      {% endif %}
+      <!-- END NEW SORT -->
           
          {% if settings.sort-dropdown-d-check %}
 		  <li class="clearfix filter feature-filter">
@@ -143,9 +150,9 @@
 		      {% endfor %}
 		    </select>
 		    
-		    <div class="col">
-			    <h6>Body Type</h6>
-			    <ul>
+		    <div class="col sort-item">
+			    <h6 class="filter-collapse-heading">Body Type</h6>
+			    <ul class="collapse-filter-items">
 			    {% for tag in feature_tags %}
 		        {% if current_tags contains tag %}
 		          <li data-value="{{ tag | handle }}">{{ tag | remove: 'Feature_' | replace: '-', ' ' }}</li>

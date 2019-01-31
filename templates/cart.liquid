@@ -6,18 +6,23 @@ fbq('track', 'InitiateCheckout');
 
 <div class="page" id="cart">
 	<div class="wrapper narrow-wrapper">
-		
-		<div style="padding-top:25px!important;padding-bottom:25px!important" class="page-header">
-			<h2>My Shopping Bag</h2>
-          
+		<div class="cart-left">
+		<div style="padding-top:25px!important" class="page-header">
+			<h3>My Shopping Bag</h3>
+
 		</div>
+      <div class="left">
+        <a id="returntoshopping" href="/collections/all" title="Browse our Catalog"><span><</span>Continue Shopping</a>
+          </div>
+      
+
 		{% if cart.item_count == 0 %}
 			<div class="empty-cart">
 			  <p class="cart-empty">Your shopping bag is currently empty.</p>
 			  <a class="btn btn-light" href="/collections/all">Continue Shopping</a>
 			</div>
 		{% else %}
-			<form action="/cart" method="post" id="cartform">
+			<form action="/cart" method="post" id="cart_form">
 				<div id="cart-items">
 					{% for item in cart.items %}
                  
@@ -30,7 +35,7 @@ fbq('track', 'InitiateCheckout');
                 	{% endif %}
 
 					
-						<div class="cart-item {{item.product.handle}} ">
+						<div class="cart-item {{item.product.handle}} cart-item-{{item.id}}">
 							
 							<div class="ci-col ci-img">
 								<div class="unvert-y">
@@ -78,13 +83,22 @@ fbq('track', 'InitiateCheckout');
 			              <span class="dec">
 				              <span></span>
 			              </span>
+                        
 		              </div>
 								</div>
+                              
+                               <div class="numberinc">
+                    <span class="faa fa-minuss"></span> <!--fa fa-minus -->
+                  <input type="text" attr-id="{{ item.id }}"  name="updates[{{ item.id }}]" id="updates_{{ item.id }}" value="{{ item.quantity }}">
+                  <div class="update_price" style="display:none;">{{item.price | money}}</div>	
+                  <span class="faa fa-pluss">+</span>
+                    </div>
 							</div>
 							
 							<div class="ci-col ci-total">
 								<div class="unvert-y">
-                                  <h6><span>{{ item.line_price | money }}</span></h6>
+                                  <h6> {% assign pricee =  forloop.index | minus: 1 %}
+              <span class="amount price-{{pricee}}">{{ item.line_price | money }}</span></h6>
 								</div>
 							</div>
 							
@@ -99,15 +113,23 @@ fbq('track', 'InitiateCheckout');
 
 				</div>
 				
-			  <div class="cart-footer">
+			  
+		  </form>
+		{% endif %}
+      </div>
+          
+          <div class="cart-right-side">
+           <div class="cart-footer">
+             
                   <div class="cart-info">
-                    <div class="left">
-                      <a id="returntoshopping" href="/collections/all" title="Browse our Catalog">Continue Shopping</a>
-                    </div><!-- END left -->
+                    <h4>Order Summary</h4>
+                    <!-- END left -->
                     <div class="right">
-                      <h6 style="float:right">Subtotal<span style="font-weight:bold">{{ cart.total_price | money }}</span></h6>
-				      <!-- input type="submit" name="update" id="update-cart" value="Update" class="checkout btn button cartrefresh" / -->
-              <a href="/cart/" id="update-cart">Update Cart</a>  
+                       
+<!--                <a href="/cart/" id="update-cart">Update Cart</a>   -->
+                      <p class="standard-shipping">Standard Shipping <span>Free</span></p>
+                      <h6>Subtotal<span style="font-weight:bold" class="subtotal-price"> {{ cart.total_price | money }}</span></h6>
+				     
                     </div><!-- END right -->                  
                   </div><!-- END cart info -->
                 
@@ -122,15 +144,14 @@ fbq('track', 'InitiateCheckout');
 				  </div>
 		    </div> 
 		          {% include 'gift-wrapping' %}
-		  </form>
-		{% endif %}
+          </div>
 		
 	</div>
 </div>
 
 <script type="text/javascript">
   $(function(){
-    analytics.page("Cart");
+	// analytics.page("Cart");
   });
 </script>
 
@@ -157,11 +178,131 @@ $('body').on('click', '#paypal-express-button', function() {
 {% endif %}
 
 <script>
-jQuery('.remove-item').on('click', function(event){
-  event.preventDefault();
-  var productId = parseInt(jQuery(this).attr('data-id'));
-  jQuery.post('/cart/change.js', {quantity: 0, id: productId});
-  $(this).parents('.cart-item').hide('slow');
-  // location.reload();
-});
+  jQuery('.remove-item').on('click', function(event){
+    event.preventDefault();
+    var productId = parseInt(jQuery(this).attr('data-id'));
+    $.ajax({ 
+      type: 'POST',
+      url: '/cart/change.js',
+      data:  {quantity: 0, id: productId},
+      async: false, 
+      cache: false, 
+      dataType: 'json',
+      success: thisRemoveCartItem,
+      error: removeCartItemFail
+    });
+    $(this).parents('.cart-item').hide('slow');
+    $('.mini-cart-remove-item[data-id="' + productId + '"]').parents('.mini-cart-item').remove();
+  });
+  
+  function thisRemoveCartItem(cart) {
+    console.log(cart);
+    var moneyFormat = "{{ shop.money_format }}";
+    var cart_count = cart.item_count;
+    var monetizeitemprice = $(".subtotal-price").html( Shopify.formatMoney(cart.original_total_price, moneyFormat));
+    $("#mini-cart .mini-cart-sub-total").html( '<span>subtotal</span>' + Shopify.formatMoney(cart.original_total_price, moneyFormat))
+    if (cart.item_count == 0) {
+      $('#cart .cart-left').append('<div class="empty-cart"><p class="cart-empty">Your shopping bag is currently empty.</p><a class="btn btn-light" href="/collections/all">Continue Shopping</a></div>');
+      $('.mini-cart-trigger .fa-shopping-bag').removeClass('has-items');
+      $('.mini-cart-trigger .cart_count').html('');
+      $('#mini-cart').html("<div class='mc-body no-items'><span>There aren't any items in your bag yet!<br>Let's change that!</span></div><div class='mc-footer'><a class='btn' href='/collections/all'>Continue Shopping</a></div>");
+    } else {
+      $('.mini-cart-trigger .cart_count').html(cart_count);
+    }
+  }
+  
+  function removeCartItemFail(jqXHR, textStatus, errorThrown) {
+    var response = $.parseJSON(jqXHR.responseText);
+    console.error('PROBLEM REMOVING ITME FROM CART!', response.description);  
+    $('#add-to-cart-msg').addClass('error').text(response.description);
+  }
+</script>
+  
+  
+   <script>
+  (function(){
+
+
+
+  $(".numberinc .faa").on("click", function() {
+
+    var $button = $(this);
+    var oldValue = $button.parent('.numberinc').find("input").val();
+    
+
+    if ($button.hasClass('fa-pluss')) {
+      var newVal = parseFloat(oldValue) + 1;
+    } else {
+     // Don't allow decrementing below zero
+      if (oldValue > 1) {
+        var newVal = parseFloat(oldValue) - 1;
+      } else {
+        newVal = 1;
+      }
+    }
+
+    $button.parent().find("input").val(newVal);
+
+  });
+  
+  })();
+  
+ 
+       
+   
+   function addItem(form_id) {
+      $.ajax({ 
+        type: 'POST',
+        url: '/cart/update.js',
+        data:  $('#'+form_id).serialize(),
+        async: false, 
+        cache: false, 
+        dataType: 'json',
+        success: thisGetUpdatedCart,
+        error: addToCartFail
+      });
+   }
+   
+   
+    $(".numberinc .faa").on('click', function (e) { 
+      e.preventDefault();     
+      var id=$(this).parents('form').attr('id');    
+      addItem(id);
+     
+   });   
+       
+        $(".numberinc input").on('keyup', function (e) { 
+        e.preventDefault();     
+        var id=$(this).parents('form').attr('id');
+        addItem(id);
+   });
+    
+  
+  function addToCartFail(jqXHR, textStatus, errorThrown){
+	var response = $.parseJSON(jqXHR.responseText);
+    console.error('PROBLEM ADDING TO CART!', response.description);  
+    $('#add-to-cart-msg').addClass('error').text(response.description);
+  }
+  function thisGetUpdatedCart(cart) {
+    var moneyFormat = "{{ shop.money_format }}";
+    var cart_count = cart.item_count;
+    console.log(cart.items);
+    $.each(cart, function(key, value) {
+      if (key === 'items') {
+        console.log(key);
+        if (value.length) {
+          var getitem_price; 
+          $.each(value, function(i, item) {           
+            getitem_price = (item.line_price);
+
+            console.log("price "+i+" "+getitem_price);
+            var itemprice = $(".amount.price-"+i).html( Shopify.formatMoney(item.line_price, moneyFormat ));
+
+            var monetizeitemprice = $(".subtotal-price").html( Shopify.formatMoney(cart.original_total_price, moneyFormat));
+          })}
+      }
+    });
+    $('.mini-cart-trigger .cart_count').html(cart_count);
+  }
+ 
 </script>

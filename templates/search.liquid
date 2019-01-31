@@ -40,7 +40,7 @@ search_string: '{{ search.terms }}'
               <div class="collection-image">              
                 <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
 	                {% assign productImage1 = item.images[0] | img_url:'master' %}
-	                {% assign productImage2 = item.images[1] | img_url:'master' %}
+	                {% assign productImage2 = item.images[2] | img_url:'master' %}
 									<img class="img1" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
 										srcset="
 										{% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,
