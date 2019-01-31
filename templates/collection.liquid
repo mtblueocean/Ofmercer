@@ -49,7 +49,7 @@
                     {% endif %}
                   </a>
                 {% else %}
-				          {{ large_image }}
+				  {{ large_image }}
                   {% if metafields['promo_1_text'] %}
                     <h2>{{ metafields['promo_1_text'] }}</h2>
                   {% endif %}
@@ -123,7 +123,7 @@
               </a>
             {% endif %}   
           </div>
-          <div class="collection-item-detail">
+          <div class="collection-item-detail">     
             <a href="{{ product.url | within: collection }}">
               <h6>{{ product.title | truncate: 70 }}
                 <span>{% include 'swatchesnosize2' %}</span> 
@@ -133,8 +133,8 @@
                   {% else %}
                     {{ product.price | money }} {% if product.price < product.compare_at_price %} was <span class="red">{{ product.compare_at_price | money }}</span>{% endif %}
                   {% endif %}
-                </span>
-              </h6>
+                  </span>
+                </h6>
             </a>
           </div>
         </div>
@@ -148,8 +148,7 @@
       {% endif %}
     </div> 
     
-    {% comment %}
-    <div id="bottom-paginate-bar" class="twelve columns">
+<!--     <div id="bottom-paginate-bar" class="twelve columns">
       {% if paginate.pages > 1 %}
       <ul class="pagination">
         {% if paginate.previous %}
@@ -170,8 +169,7 @@
         <li><a href="/collections/{{ collection.handle }}?view=all" style="margin-left: 10px">View All</a></li>
       </ul>
       {% endif %}  
-    </div>
-    {% endcomment %}
+    </div> -->
     
   {% endpaginate %}
 

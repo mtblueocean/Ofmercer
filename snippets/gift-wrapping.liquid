@@ -4,24 +4,16 @@
 
 {% if linklists.gift-wrapping.links.size > 0 and linklists.gift-wrapping.links.first.type == 'product_link' %}
 
-  <div id="is-a-gift" style="clear: left; margin: 30px 0" class="clearfix rte">
-    <h6>Have a promo code?</h6>
-    <p>
-      
-     Great! You'll be able to enter it on the next page.
-      
-    </p>
-    
-    <h6 style="padding-top:20px">Giving a gift?</h6>
+  <div id="is-a-gift" style="clear: left; margin: 50px 0" class="clearfix rte">
     <p>
       <input type="hidden" name="attributes[gift-wrapping]" value="" />
       <input id="gift-wrapping" type="checkbox" name="attributes[gift-wrapping]" value="yes" {% if cart.attributes.gift-wrapping %} checked="checked"{% endif %} style="float: none" />
       <label for="gift-wrapping" style="letter-spacing: .05em; display:inline; padding-left: 5px; float: none; text-transform:none">
-      Add gift wrapping to your order for {{ linklists.gift-wrapping.links.first.object.price | money }}.
+      This is a gift! Please gift wrap my order for {{ linklists.gift-wrapping.links.first.object.price | money }}.
       </label>
     </p>
     <p>
-      <label style="display:block" for="gift-note">Or add a free gift message to your order:</label>
+      <label style="display:block" for="gift-note">Gift message (free and optional):</label>
       <textarea name="attributes[gift-note]" id="gift-note">{{ cart.attributes.gift-note }}</textarea>
     </p>
   </div>

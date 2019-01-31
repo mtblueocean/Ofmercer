@@ -1,18 +1,29 @@
 {% assign metafields = ['collection'].metafields.custom_fields %}
 
-<div id="collection-header" class="T">
+<div id="collection-header">
   {% if collection.image %}
-    <img src="{{ collection.image.src | collection_img_url: '2048x2048' }}" alt="{{ collection.image.alt }}">
+    {% if metafields['collection_mobile_image'] != blank %}
+      <div class="mobile-show">
+      {{ metafields["collection_mobile_image"] }}
+      </div>
+      <div class="mobile-hide">
+        <img src="{{ collection.image.src | collection_img_url: '2048x2048' | split:'?' | first }}" alt="{{ collection.image.alt }}">
+      </div>
+    {% else %}
+      <img src="{{ collection.image.src | collection_img_url: '2048x2048' | split:'?' | first }}" alt="{{ collection.image.alt }}">
+    {% endif %}
   {% endif %}
+
   <div class="msg-group">
-    <h4>{{ collection.title }}</h4>
-    <h1>{{metafields['collection_tagline']}}</h1>
+    <h4>{{ metafields['collection_tagline'] }}</h4>
+    <h1>{{ collection.title }}</h1>
     {% if collection.description %}
       <p class="shortform">{{ collection.description }}</p>
     {% endif %}
   </div>
   <div class="triangle right"></div>
 </div>
+
 
 <div class="wrapper" style="position: relative;">
   
@@ -83,7 +94,7 @@
             {% if product.images.size > 1 %}      
               <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">                   
                 {% assign productImage1 = product.images[0] | img_url:'master' %}
-                {% assign productImage2 = product.images[2] | img_url:'master' %}
+                {% assign productImage2 = product.images[1] | img_url:'master' %}
                 <img class="img1" src="{% include 'imgix' src:productImage1 w:960 auto:'format' %}"
                   srcset="
                   {% include 'imgix' src:productImage1 w:320 auto:'format' %} 320w,

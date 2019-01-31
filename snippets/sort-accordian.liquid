@@ -5,7 +5,13 @@
 	<div></div> 	
 </div>
 <div class="acc-content sort-controls">
-	{% include 'collection-sort' %}
+
+	{% comment %}
+  {% include 'collection-sort' %}
 	{% include 'sort' %}
+  {% endcomment %}
+
+  {% include 'sort-navigation' %}
 	<span class="line"></span>
+
 </div>
