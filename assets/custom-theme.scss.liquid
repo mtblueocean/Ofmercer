@@ -644,13 +644,6 @@ textarea:-moz-placeholder {
 	cursor: pointer;
 }
 
-.acc-content {
-	display: none;
-  @include breakpoint(phone){
-		display: none;
-	}
-}
-
 .desktop-only {
 	display: none;
 	@include breakpoint(m){
@@ -3354,7 +3347,7 @@ img {
 
 #selected-filters {
     position: absolute;
-    left: 55px;
+    left: 15px;
     top: -2px;
   	display: none;
   	font-size: 1.5rem;
@@ -3449,14 +3442,12 @@ img {
 		}
 	}
 	.line {
-		position: absolute;
-		bottom: 0;
-		left: 0;
+		display: block;
 		width: 100%;
 		background: $color-light;
 		height: 1px;
 	}
-	@include breakpoint(m){
+	@include breakpoint(m) {
 		padding: 2.5rem 0 3rem;
 		.sorter {
 			width: 15%;
@@ -9073,7 +9064,16 @@ img {
 
     .col {
       float: none;
-      padding: 15px 15px 5px;
+      display: inline-block;
+      padding: 0;
+
+      .col-wrap {
+        padding: 15px 0 5px 15px;
+      }
+
+      h6 {
+        display: inline-block;
+      }
 
       ul {
         display: inline-block;
@@ -9093,6 +9093,10 @@ img {
         }
       }
 
+      .size-wrap {
+        display: flex;
+      }
+
       &.active {
         border: 1px solid #c2c2c2;
         position: absolute;
@@ -9100,7 +9104,11 @@ img {
         background: #FFF;
 
         .filter-collapse {
-          display: inline-block;
+          display: block;
+
+          &.color {
+            display: flex;
+          }
         }
       }
     }
