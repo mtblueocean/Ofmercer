@@ -102,14 +102,12 @@ input[class~="form-control"], select[class~="form-control"] {
     width: 49%;
     margin-right: 1%;
     text-align: center;
-    height: 60px;
+    height: 50px;
     font-family: "neuzeit-grotesk"!important;
     font-size: 14px!important;
     letter-spacing: .7px!important;
     color: #001a33!important;
-    
 }
-
 
 .btn.return-multiproduct-btn {
     margin: 5px 0 0!important;
@@ -128,7 +126,7 @@ a.btn.brand-btn,
 .voucher-content .use-instaref-btn {
     background-color: #001a33!important;
     border-radius: 0;
-    line-height: 25px!important;
+    line-height: 55px!important;
     height: 50px!important;
     transition: color .2s;
     font-family: "neuzeit-grotesk";
@@ -276,7 +274,7 @@ h1.rc-title {
 
 .card-body {
     max-width: 300px;
-    margin: 25px auto;
+    margin: 0 auto;
 }
 
 .return-details p {
@@ -419,7 +417,7 @@ details[open] i {
 
 @media (min-width: 960px) {
     header.rf-header return-button {
-        margin-left: -235px!important;
+        margin-right: -235px;
     }
 }
 

@@ -124,7 +124,7 @@
               </a>
             {% endif %}   
           </div>
-          <div class="collection-item-detail">     
+          <div class="collection-item-detail">
             <a href="{{ product.url | within: collection }}">
               <h6>{{ product.title | truncate: 70 }}
                 <span>{% include 'swatchesnosize2' %}</span> 
@@ -137,6 +137,20 @@
                   </span>
                 </h6>
             </a>
+          </div>
+          <div class="item-available-colors">
+            <div class="swatch">
+              <div class="sw-col">
+                {% if product.type == "Gift Card" %}
+                {% else %}
+                  <p class="size-title swatch-title"></p>
+                {% endif %}
+              </div>
+              <div class="sw-col">
+                <div class="swatch-container">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       {% endfor %}      
