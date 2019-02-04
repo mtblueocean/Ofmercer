@@ -6,130 +6,130 @@ fbq('track', 'InitiateCheckout');
 
 <div class="page" id="cart">
 	<div class="wrapper narrow-wrapper">
-		<div class="cart-left">
-  		<div style="padding-top:25px!important" class="page-header">
-  			<h3>My Shopping Bag</h3>
-  		</div>
-      <div class="left">
-        <a id="returntoshopping" href="/collections/all" title="Browse our Catalog"><span><</span>Continue Shopping</a>
-      </div>
-        
-  		{% if cart.item_count == 0 %}
-  			<div class="empty-cart">
-  			  <p class="cart-empty">Your shopping bag is currently empty.</p>
-  			  <a class="btn btn-light" href="/collections/all">Continue Shopping</a>
-  			</div>
-  		{% else %}
-  			<form action="/cart" method="post" id="cart_form">
-  				<div id="cart-items">
-  					{% for item in cart.items %}
-                   
-  			  		{% assign metafields = item.product.metafields.custom_fields %}
+    <form action="/cart" method="post" id="cart_form">
+  		<div class="cart-left">
+    		<div style="padding-top:25px!important" class="page-header">
+    			<h3>My Shopping Bag</h3>
+    		</div>
+        <div class="left">
+          <a id="returntoshopping" href="/collections/all" title="Browse our Catalog"><span><</span>Continue Shopping</a>
+        </div>
+          
+    		{% if cart.item_count == 0 %}
+    			<div class="empty-cart">
+    			  <p class="cart-empty">Your shopping bag is currently empty.</p>
+    			  <a class="btn btn-light" href="/collections/all">Continue Shopping</a>
+    			</div>
+    		{% else %}
+    				<div id="cart-items">
+    					{% for item in cart.items %}
+                     
+    			  		{% assign metafields = item.product.metafields.custom_fields %}
 
-      				{% assign use_for_preorder_only = item.product.metafields.metafield_template %}
-      			    
-            	{% if item.product.available and item.variant.inventory_quantity <= 0 and item.product.id != 383771721 and item.product.id != 186704345 %}
-      	    	  {% assign has_preorder = true %}
-        	    {% endif %}
+        				{% assign use_for_preorder_only = item.product.metafields.metafield_template %}
+        			    
+              	{% if item.product.available and item.variant.inventory_quantity <= 0 and item.product.id != 383771721 and item.product.id != 186704345 %}
+        	    	  {% assign has_preorder = true %}
+          	    {% endif %}
 
-      				<div class="cart-item {{item.product.handle}} cart-item-{{item.id}}">
-  							
-  							<div class="ci-col ci-img">
-  								<div class="unvert-y">
-  		              <a href="{{ item.product.url }}" title="{{ item.product.title | escape }}">
-  		                {% assign found = false %}
-  		                {% for img in item.product.images %}
-  		                  {% if found == false and item.variant.title contains img.alt %}
-  				                <img src="{{ img | product_img_url: 'medium' }}"  alt="{{ item.alt | escape }}" />
-  				                {% assign found = true %}
-  		                  {% endif %}
-  		                {% endfor %}
-  		                {% if found == false %}
-  		                  <img src="{{ item.product.featured_image | product_img_url: 'medium' }}"  alt="{{ item.product.featured_image.alt | escape }}" />
-  		                {% endif %}           
-  		              </a>
-  								</div>					
-  							</div>
-  							
-  							<div class="ci-col ci-title">
-  								<div class="unvert-y">
-  								  <h6>
-                    	<a href="{{ item.product.url }}">{{ item.product.title }}</a>
-  											<span class="stacked">
-                        	{{ item.variant.option1 }} / {{ item.variant.option2 }}<br/>
-                          {{ item.price | money }}{% if item.variant.compare_at_price > item.price %}<br /><del>{{ item.variant.compare_at_price | money }}</del>{% endif %}
-                        </span>
-                      	{% if metafields['preorder_message'].size > 0 and item.variant.inventory_quantity <= 0 %}
-          				  			<span class="preorder-msg" style="">{{ metafields['preorder_message'] }}</span>
-              					{% endif %}
-                    </h6>
-  								</div>
-  							</div>
-  							
-  							<div class="ci-col ci-qty">
-  								<div class="unvert-y">
-  									<input type="text" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="" data-id="{{ item.variant.id }}" />
-  		              <div class="num-incr">
-  			              <span class="inc">
-  				              <span></span>
-  				              <span></span>
-  			              </span>
-  			              <span class="dec">
-  				              <span></span>
-  			              </span>
-  		              </div>
-  								</div>
-                                
-                  <div class="numberinc quantity-{{item.product.handle}}">
-                      <span class="faa fa-minuss"></span> <!--fa fa-minus -->
-                      <input type="text" attr-id="{{ item.id }}" name="updates[{{ item.id }}]" id="updates_{{ item.id }}" value="{{ item.quantity }}">
-                      <div class="update_price" style="display:none;">{{item.price | money}}</div>	
-                      <span class="faa fa-pluss">+</span>
-                    </div>
-    						  </div>
-  							
-  							  <div class="ci-col ci-total">
-  								  <div class="unvert-y">
-                      <h6> {% assign pricee =  forloop.index | minus: 1 %}
-                        <span class="amount price-{{pricee}}">{{ item.line_price | money }}</span>
+        				<div class="cart-item {{item.product.handle}} cart-item-{{item.id}}">
+    							
+    							<div class="ci-col ci-img">
+    								<div class="unvert-y">
+    		              <a href="{{ item.product.url }}" title="{{ item.product.title | escape }}">
+    		                {% assign found = false %}
+    		                {% for img in item.product.images %}
+    		                  {% if found == false and item.variant.title contains img.alt %}
+    				                <img src="{{ img | product_img_url: 'medium' }}"  alt="{{ item.alt | escape }}" />
+    				                {% assign found = true %}
+    		                  {% endif %}
+    		                {% endfor %}
+    		                {% if found == false %}
+    		                  <img src="{{ item.product.featured_image | product_img_url: 'medium' }}"  alt="{{ item.product.featured_image.alt | escape }}" />
+    		                {% endif %}           
+    		              </a>
+    								</div>					
+    							</div>
+    							
+    							<div class="ci-col ci-title">
+    								<div class="unvert-y">
+    								  <h6>
+                      	<a href="{{ item.product.url }}">{{ item.product.title }}</a>
+    											<span class="stacked">
+                          	{{ item.variant.option1 }} / {{ item.variant.option2 }}<br/>
+                            {{ item.price | money }}{% if item.variant.compare_at_price > item.price %}<br /><del>{{ item.variant.compare_at_price | money }}</del>{% endif %}
+                          </span>
+                        	{% if metafields['preorder_message'].size > 0 and item.variant.inventory_quantity <= 0 %}
+            				  			<span class="preorder-msg" style="">{{ metafields['preorder_message'] }}</span>
+                					{% endif %}
                       </h6>
-  								  </div>
-  							  </div>
-  							
-  							  <div class="ci-col ci-remove">
-  								  <div class="unvert-y">
-            				  <a href="#" id="remove-i" class="remove-item" data-id="{{item.id}}" data-product-handle="{{item.product.handle}}"></a>
-  								  </div>
-  							  </div>
-  						  </div>
+    								</div>
+    							</div>
+    							
+    							<div class="ci-col ci-qty">
+    								<div class="unvert-y">
+    									<input type="text" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="" data-id="{{ item.variant.id }}" />
+    		              <div class="num-incr">
+    			              <span class="inc">
+    				              <span></span>
+    				              <span></span>
+    			              </span>
+    			              <span class="dec">
+    				              <span></span>
+    			              </span>
+    		              </div>
+    								</div>
+                                  
+                    <div class="numberinc quantity-{{item.product.handle}}">
+                        <span class="faa fa-minuss"></span> <!--fa fa-minus -->
+                        <input type="text" attr-id="{{ item.id }}" name="updates[{{ item.id }}]" id="updates_{{ item.id }}" value="{{ item.quantity }}">
+                        <div class="update_price" style="display:none;">{{item.price | money}}</div>	
+                        <span class="faa fa-pluss">+</span>
+                      </div>
+      						  </div>
+    							
+    							  <div class="ci-col ci-total">
+    								  <div class="unvert-y">
+                        <h6> {% assign pricee =  forloop.index | minus: 1 %}
+                          <span class="amount price-{{pricee}}">{{ item.line_price | money }}</span>
+                        </h6>
+    								  </div>
+    							  </div>
+    							
+    							  <div class="ci-col ci-remove">
+    								  <div class="unvert-y">
+              				  <a href="#" id="remove-i" class="remove-item" data-id="{{item.id}}" data-product-handle="{{item.product.handle}}"></a>
+    								  </div>
+    							  </div>
+    						  </div>
 
-  					  {% endfor %}
-  				</div>
-  		  </form>
-  		{% endif %}
-    </div>
-    <div class="cart-right-side">
-      <div class="cart-footer">
-        <div class="cart-info">
-          <h4>Order Summary</h4>
-          <!-- END left -->
-          <div class="right">
-            <!--<a href="/cart/" id="update-cart">Update Cart</a>   -->
-            <p class="standard-shipping">Standard Shipping <span>Free</span></p>
-            <h6>Subtotal<span style="font-weight:bold" class="subtotal-price"> {{ cart.total_price | money }}</span></h6>
-   
-          </div><!-- END right -->                  
-        </div><!-- END cart info -->
-            
-        <div class="button-container">
-          <div class="cart-buttons">
-            <input type="submit" name="checkout" id="checkout" style="width:100%!important" value="Checkout" class="btn button" />
-  	      {{ content_for_additional_checkout_buttons }}
-          </div><!-- END button container -->
-			  </div>
-      </div> 
-      {% include 'gift-wrapping' %}
-    </div>
+    					  {% endfor %}
+    				</div>
+    		{% endif %}
+      </div>
+      <div class="cart-right-side">
+        <div class="cart-footer">
+          <div class="cart-info">
+            <h4>Order Summary</h4>
+            <!-- END left -->
+            <div class="right">
+              <!--<a href="/cart/" id="update-cart">Update Cart</a>   -->
+              <p class="standard-shipping">Standard Shipping <span>Free</span></p>
+              <h6>Subtotal<span style="font-weight:bold" class="subtotal-price"> {{ cart.total_price | money }}</span></h6>
+     
+            </div><!-- END right -->                  
+          </div><!-- END cart info -->
+              
+          <div class="button-container">
+            <div class="cart-buttons">
+              <input type="submit" name="checkout" id="checkout" style="width:100%!important" value="Checkout" class="btn button" />
+    	      {{ content_for_additional_checkout_buttons }}
+            </div><!-- END button container -->
+  			  </div>
+        </div> 
+        {% include 'gift-wrapping' %}
+      </div>
+    </form>
 	</div>
 </div>
 
