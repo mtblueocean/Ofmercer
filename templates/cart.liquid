@@ -87,9 +87,9 @@ fbq('track', 'InitiateCheckout');
 		              </div>
 								</div>
                               
-                               <div class="numberinc">
+                               <div class="numberinc quantity-{{item.product.handle}}">
                     <span class="faa fa-minuss"></span> <!--fa fa-minus -->
-                  <input type="text" attr-id="{{ item.id }}"  name="updates[{{ item.id }}]" id="updates_{{ item.id }}" value="{{ item.quantity }}">
+                  <input type="text" attr-id="{{ item.id }}" name="updates[{{ item.id }}]" id="updates_{{ item.id }}" value="{{ item.quantity }}">
                   <div class="update_price" style="display:none;">{{item.price | money}}</div>	
                   <span class="faa fa-pluss">+</span>
                     </div>
@@ -104,20 +104,16 @@ fbq('track', 'InitiateCheckout');
 							
 							<div class="ci-col ci-remove">
 								<div class="unvert-y">
-		              				<a href="#" id="remove-i" class="remove-item" data-id="{{item.id}}"></a>
+          				<a href="#" id="remove-i" class="remove-item" data-id="{{item.id}}" data-product-handle="{{item.product.handle}}"></a>
 								</div>
 							</div>
-							
 						</div>
 					{% endfor %}
 
 				</div>
-				
-			  
 		  </form>
 		{% endif %}
       </div>
-          
           <div class="cart-right-side">
            <div class="cart-footer">
              
@@ -125,8 +121,7 @@ fbq('track', 'InitiateCheckout');
                     <h4>Order Summary</h4>
                     <!-- END left -->
                     <div class="right">
-                       
-<!--                <a href="/cart/" id="update-cart">Update Cart</a>   -->
+                      <!--<a href="/cart/" id="update-cart">Update Cart</a>   -->
                       <p class="standard-shipping">Standard Shipping <span>Free</span></p>
                       <h6>Subtotal<span style="font-weight:bold" class="subtotal-price"> {{ cart.total_price | money }}</span></h6>
 				     
@@ -181,6 +176,7 @@ $('body').on('click', '#paypal-express-button', function() {
   jQuery('.remove-item').on('click', function(event){
     event.preventDefault();
     var productId = parseInt(jQuery(this).attr('data-id'));
+    var productHandle = jQuery(this).attr('data-product-handle');
     $.ajax({ 
       type: 'POST',
       url: '/cart/change.js',
@@ -193,6 +189,10 @@ $('body').on('click', '#paypal-express-button', function() {
     });
     $(this).parents('.cart-item').hide('slow');
     $('.mini-cart-remove-item[data-id="' + productId + '"]').parents('.mini-cart-item').remove();
+
+    if (productHandle == 'gift-wrapping') {
+      $('input#gift-wrapping').prop('checked', false);
+    }
   });
   
   function thisRemoveCartItem(cart) {

@@ -1,7 +1,7 @@
 <div class="sorter">
-	<div class="col col-sort sort-item">
-		<h6 class="filter-collapse-heading">Sort by</h6>
-		<ul class="collapse-filter-items">
+	<div class="col col-sort">
+		<h6>Sort by</h6>
+		<ul>
 			<li data-val="best-selling">Best Seller</li>
 			<li data-val="created-descending">New</li>
 			<li data-val="price-ascending">Price ($-$$$)</li>
@@ -47,7 +47,7 @@
     
     var me_val;
 		
-		$('.col-sort').find('li').click(function() {
+		$('.col-sort').find('li').click(function(){
 			me_val = $(this).data('val');
 			if(me_val == 'sale'){
 				{% if collection.handle %}

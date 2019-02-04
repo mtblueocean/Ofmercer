@@ -1,11 +1,20 @@
 <div id="selected-filters"><a href="{{ collection.url }}">x Clear Filters</a></div>
+{% comment %}
 <div class="acc-trigger sort-trigger">
 	<div></div>
 	<div></div>
 	<div></div> 	
 </div>
+{% endcomment %}
+
 <div class="acc-content sort-controls">
-	{% include 'collection-sort' %}
-	{% include 'sort' %}
-	<span class="line"></span>
+
+  {% comment %}
+  {% include 'collection-sort' %}
+  {% include 'sort' %}
+  {% endcomment %}
+
+  {% include 'sort-navigation' %}
+  <span class="line"></span>
+
 </div>

@@ -17,15 +17,17 @@
       {% assign value = variant.options[option_index] %}
       {% capture wrapped_value %},{{ value }},{% endcapture %}
       {% unless values contains wrapped_value %}
+          {% if is_color %}
+      <div data-option-title="{{ value | escape }}" class="{% if is_color %}color {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
         {% if is_color %}
-          <div data-option-title="{{ value | escape }}" class="{% if is_color %}color {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
-            {% if is_color %}
-              {{ value }}
-            {% else %}
-            {% endif %}
-          </div>
-          {% capture values %}{{ values }}{{ wrapped_value }}{% endcapture %}
+        {{ value }}
+        {% else %}
+        
         {% endif %}
+        
+      </div>
+      {% capture values %}{{ values }}{{ wrapped_value }}{% endcapture %}
+           {% endif %}
       {% endunless %}
     {% endfor %}
     </ul>
