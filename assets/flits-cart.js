@@ -139,7 +139,7 @@ flits_docReady(function () {
                     el.parentElement.insertBefore(document.getElementById('flits-cart-automatic-code').children[0], el.parentElement.firstChild)
                 }
                 el.addEventListener("click", function (ev) {
-//                    ev.preventDefault();
+                   // ev.preventDefault();
                     var btn = this;
                     window.flitsApp.get_discount_code(ev, btn);
                 }, false);
